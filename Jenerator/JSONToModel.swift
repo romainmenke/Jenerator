@@ -1,8 +1,8 @@
 //
-//  JSONToModel.swift
+//  JSONToModel
 //  Jenerator
 //
-//  Created by XcodeBuildServer on 01/06/16.
+//  Created by Romain Menke on 01/06/16.
 //  Copyright © 2016 menke-dev. All rights reserved.
 //
 
@@ -125,7 +125,7 @@ indirect enum JSONDataType : Equatable {
     func typeStringWithNameSpace(nameSpace:String) -> String {
         switch self {
         case .JSONArray(let type) :
-            return "[\(nameSpace + type.typeString.uppercaseFirst)]"
+            return "[\(type.arrayTypeStringWithNameSpace(nameSpace).uppercaseFirst)]"
         case .JSONType(_) :
             return nameSpace + typeString
         default:
@@ -153,21 +153,32 @@ struct JSONToSwiftModelGenerator {
     var source : String?
     var parentType : JSONDataType?
     var nameSpace : String = ""
+    var firstIsCollection : Bool = false
     
     mutating func findTypes(parent:String?,key:String?,data:AnyObject) {
         
         if let dict = data as? [String:AnyObject] {
-            for keyValuePair in dict {
-                if keyValuePair.1 is [String:AnyObject] || keyValuePair.1 is [[String:AnyObject]] {
-                    objects[keyValuePair.0] = []
+            if objects.isEmpty && dict.count > 1 {
+                firstIsCollection = true
+                objects["Request"] = []
+                parentType = .JSONType(type: "Request")
+                for keyValuePair in dict {
+                    objects["Request"]?.append(JSONField(name: keyValuePair.0, type: .JSONType(type: keyValuePair.0)))
+                    findTypes("Request", key: keyValuePair.0, data: dict)
                 }
-                if parent == nil && key == nil {
-                    parentType = .JSONType(type: keyValuePair.0)
+            } else {
+                for keyValuePair in dict {
+                    if keyValuePair.1 is [String:AnyObject] || keyValuePair.1 is [[String:AnyObject]] {
+                        objects[keyValuePair.0] = []
+                    }
+                    if parent == nil && key == nil {
+                        parentType = .JSONType(type: keyValuePair.0)
+                    }
+                    if let parent = parent, key = key {
+                        objects[parent]?.appendUnique(JSONField(name: key, type: .JSONType(type: key)))
+                    }
+                    findTypes(key, key: keyValuePair.0, data: keyValuePair.1)
                 }
-                if let parent = parent, key = key {
-                    objects[parent]?.appendUnique(JSONField(name: key, type: .JSONType(type: key)))
-                }
-                findTypes(key, key: keyValuePair.0, data: keyValuePair.1)
             }
         } else {
             findFields(parent, key: key, data: data)
@@ -179,7 +190,9 @@ struct JSONToSwiftModelGenerator {
         // Array Of Objects
         if let dictArray = data as? [[String:AnyObject]] {
             for element in dictArray {
-                if let parent = parent, key = key { objects[parent]?.appendUnique(JSONField(name: key, type: .JSONArray(type: .JSONType(type: "\(key)")))) }
+                if let parent = parent, key = key {
+                    objects[parent]?.appendUnique(JSONField(name: key, type: .JSONArray(type: .JSONType(type: "\(key)"))))
+                }
                 findTypes(parent, key: key, data: element)
             }
         }
@@ -286,9 +299,13 @@ struct JSONToSwiftModelGenerator {
                 structString += "        }\n"
                 structString += "        do {\n"
                 structString += "            let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers)\n"
-                structString += "            if let dict = json as? [String:AnyObject], let objectData = dict[\"\(object.0)\"] as? [String:AnyObject] {\n"
+                if firstIsCollection {
+                    structString += "            if let dict = json as? [String:AnyObject] {\n"
+                } else {
+                    structString += "            if let outerDict = json as? [String:AnyObject], let dict = outerDict[\"\(object.0)\"] as? [String:AnyObject] {\n"
+                }
                 if let parentType = parentType {
-                    structString += "                return \(parentType.typeStringWithNameSpace(nameSpace))(data: objectData)\n"
+                    structString += "                return \(parentType.typeStringWithNameSpace(nameSpace))(data: dict)\n"
                 } else {
                     structString += "                return dict\n"
                 }
@@ -302,7 +319,6 @@ struct JSONToSwiftModelGenerator {
             
             modelString += structString
         }
-        
         return modelString.isEmpty ? nil : modelString
     }
     
