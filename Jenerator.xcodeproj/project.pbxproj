@@ -25,7 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7ADD6F7B1CFF409D007F59B8 /* Jenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Jenerator; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ADD6F7B1CFF409D007F59B8 /* jenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = jenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ADD6F7E1CFF409D007F59B8 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		7ADD6F851CFF40AE007F59B8 /* JSONToModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONToModel.swift; sourceTree = "<group>"; };
 		7ADD6F871CFF41A6007F59B8 /* info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = info.swift; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		7ADD6F7C1CFF409D007F59B8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7ADD6F7B1CFF409D007F59B8 /* Jenerator */,
+				7ADD6F7B1CFF409D007F59B8 /* jenerator */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,7 +85,7 @@
 			);
 			name = Jenerator;
 			productName = Jenerator;
-			productReference = 7ADD6F7B1CFF409D007F59B8 /* Jenerator */;
+			productReference = 7ADD6F7B1CFF409D007F59B8 /* jenerator */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -219,14 +219,14 @@
 		7ADD6F831CFF409D007F59B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = jenerator;
 			};
 			name = Debug;
 		};
 		7ADD6F841CFF409D007F59B8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = jenerator;
 			};
 			name = Release;
 		};
