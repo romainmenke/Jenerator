@@ -6,13 +6,13 @@ Build it -> Drop somewhere in your PATH -> Profit
 
 cmd : 
 
-`jenerator "myJSONSource" "saveDirectory" "filename"`
+`jenerator "myJSONSource" "saveDirectory" "filename" "classPrefix"`
 
 Try it:
 
 cmd : 
 
-`jenerator "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%202487889&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys" "$HOME/Desktop/" YahooWeatherCurrent`
+`jenerator "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%202487889&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys" "$HOME/Desktop/" YahooWeatherCurrent YW`
 
 turns this :
 
@@ -44,47 +44,47 @@ Into this :
 ```
 import Foundation
 
-struct Results {
+struct YWResults {
 
-    var channel : Channel?
+    var channel : YWChannel?
 
     init(data:[String:AnyObject]) {
 
         if let nested = data["channel"] as? [String:AnyObject] {
-            self.channel = Channel(data: nested)
+            self.channel = YWChannel(data: nested)
         }
     }
 }
 
-struct Channel {
+struct YWChannel {
 
-    var item : Item?
+    var item : YWItem?
 
     init(data:[String:AnyObject]) {
 
         if let nested = data["item"] as? [String:AnyObject] {
-            self.item = Item(data: nested)
+            self.item = YWItem(data: nested)
         }
     }
 }
 
-struct Item {
+struct YWItem {
 
-    var condition : Condition?
+    var condition : YWCondition?
 
     init(data:[String:AnyObject]) {
 
         if let nested = data["condition"] as? [String:AnyObject] {
-            self.condition = Condition(data: nested)
+            self.condition = YWCondition(data: nested)
         }
     }
 }
 
-struct Query {
+struct YWQuery {
 
     var lang : String
     var created : String
-    var results : Results?
+    var results : YWResults?
     var count : Int
 
     init(data:[String:AnyObject]) {
@@ -92,26 +92,26 @@ struct Query {
         self.created = (data["created"] as? String) ?? ""
 
         if let nested = data["results"] as? [String:AnyObject] {
-            self.results = Results(data: nested)
+            self.results = YWResults(data: nested)
         }
         self.count = (data["count"] as? Int) ?? 0
     }
 
-    static func fromSource() -> Query? {
+    static func fromSource() -> YWQuery? {
         guard let url = NSURL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%202487889&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys"), data = NSData(contentsOfURL: url) else {
             return nil
         }
         do {
             let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers)
             if let dict = json as? [String:AnyObject], let objectData = dict["query"] as? [String:AnyObject] {
-                return Query(data: objectData)
+                return YWQuery(data: objectData)
             }
         } catch {}
         return nil
     }
 }
 
-struct Condition {
+struct YWCondition {
 
     var code : String
     var temp : String
