@@ -25,24 +25,28 @@ func main() {
         
         var savePath : String = ""
         var saveFileName : String = "JSONModel.swift"
+        var nameSpace : String = ""
         
         // Check if the file exists, exit if not
         if sourceUrl.fileURL {
-            generator.fromFile(NSProcessInfo.processInfo().arguments[1])
             savePath = sourceUrl.absoluteString.stringByReplacingOccurrencesOfString(sourceUrl.lastPathComponent ?? "", withString: "")
             saveFileName = NSProcessInfo.processInfo().arguments[2].stringByReplacingOccurrencesOfString(".swift", withString: "") + ".swift"
+            if NSProcessInfo.processInfo().arguments.count > 3 {
+                nameSpace = NSProcessInfo.processInfo().arguments[3]
+            }
+            generator.fromFile(NSProcessInfo.processInfo().arguments[1], nameSpace: nameSpace)
+            
         } else if NSProcessInfo.processInfo().arguments.count > 2 {
-            generator.fromSource(sourceUrl)
             savePath = NSProcessInfo.processInfo().arguments[2]
             if NSProcessInfo.processInfo().arguments.count > 3 {
                 saveFileName = NSProcessInfo.processInfo().arguments[3].stringByReplacingOccurrencesOfString(".swift", withString: "") + ".swift"
             }
-        } else {
-            print("can't find source")
-            exit(EXIT_FAILURE)
-        }
+            if NSProcessInfo.processInfo().arguments.count > 4 {
+                nameSpace = NSProcessInfo.processInfo().arguments[4]
+            }
+            generator.fromSource(sourceUrl, nameSpace: nameSpace)
         
-        guard let saveUrl = NSURL(string: savePath) else {
+        } else {
             print("can't find source")
             exit(EXIT_FAILURE)
         }

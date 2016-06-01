@@ -63,19 +63,6 @@ indirect enum JSONDataType : Equatable {
         }
     }
     
-    var keyString : String {
-        get {
-            switch self {
-            case .JSONType(let type) :
-                return type
-            case .JSONArray(let type) :
-                return "[\(type.typeString)]"
-            default:
-                return ""
-            }
-        }
-    }
-    
     var defaultValue : String {
         get {
             switch self {
@@ -126,12 +113,23 @@ indirect enum JSONDataType : Equatable {
         }
     }
     
-    var arrayTypeString : String {
+    func arrayTypeStringWithNameSpace(nameSpace:String) -> String {
         switch self {
         case .JSONArray(let type) :
-            return type.typeString
+            return type.typeStringWithNameSpace(nameSpace)
         default:
-            return self.typeString
+            return self.typeStringWithNameSpace(nameSpace)
+        }
+    }
+    
+    func typeStringWithNameSpace(nameSpace:String) -> String {
+        switch self {
+        case .JSONArray(let type) :
+            return "[\(nameSpace + type.typeString.uppercaseFirst)]"
+        case .JSONType(_) :
+            return nameSpace + typeString
+        default:
+            return typeString
         }
     }
 }
@@ -154,6 +152,7 @@ struct JSONToSwiftModelGenerator {
     var objects : [String:[JSONField]] = [:]
     var source : String?
     var parentType : JSONDataType?
+    var nameSpace : String = ""
     
     mutating func findTypes(parent:String?,key:String?,data:AnyObject) {
         
@@ -246,11 +245,11 @@ struct JSONToSwiftModelGenerator {
             structString += "\n"
             
             // Declaration
-            structString += "struct \(object.0.uppercaseFirst) {\n\n"
+            structString += "struct \(nameSpace)\(object.0.uppercaseFirst) {\n\n"
             
             // Fields
             for field in object.1 {
-                structString += "    var \(field.name) : \(field.type.typeString)"
+                structString += "    var \(field.name) : \(field.type.typeStringWithNameSpace(nameSpace))"
                 if field.type.optionalType {
                     structString += "?\n"
                 } else {
@@ -266,30 +265,30 @@ struct JSONToSwiftModelGenerator {
                     structString += "\n        self.\(field.name) = []\n"
                     structString += "        if let arrayOfNested = data[\"\(field.name)\"] as? [[String:AnyObject]] {\n"
                     structString += "            for element in arrayOfNested {\n"
-                    structString += "                self.\(field.name).append(\(field.type.arrayTypeString)(data: element))\n"
+                    structString += "                self.\(field.name).append(\(field.type.arrayTypeStringWithNameSpace(nameSpace))(data: element))\n"
                     structString += "            }\n"
                     structString += "        }\n"
                 } else if field.type.isNestedType {
                     structString += "\n        if let nested = data[\"\(field.name)\"] as? [String:AnyObject] {\n"
-                    structString += "            self.\(field.name) = \(field.type.typeString)(data: nested)\n"
+                    structString += "            self.\(field.name) = \(field.type.typeStringWithNameSpace(nameSpace))(data: nested)\n"
                     structString += "        }\n"
                 } else {
-                    structString += "        self.\(field.name) = (data[\"\(field.name)\"] as? \(field.type.typeString)) ?? \(field.type.defaultValue)\n"
+                    structString += "        self.\(field.name) = (data[\"\(field.name)\"] as? \(field.type.typeStringWithNameSpace(nameSpace))) ?? \(field.type.defaultValue)\n"
                 }
             }
             structString += "    }\n"
             
             // Fetch
             if let source = source where object.0.uppercaseFirst == (parentType?.typeString ?? "") {
-                structString += "\n    static func fromSource() -> \(parentType?.typeString ?? "AnyObject")? {\n"
+                structString += "\n    static func fromSource() -> \(parentType?.typeStringWithNameSpace(nameSpace) ?? "AnyObject")? {\n"
                 structString += "        guard let url = NSURL(string: \"\(source)\"), data = NSData(contentsOfURL: url) else {\n"
                 structString += "            return nil\n"
                 structString += "        }\n"
                 structString += "        do {\n"
                 structString += "            let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers)\n"
                 structString += "            if let dict = json as? [String:AnyObject], let objectData = dict[\"\(object.0)\"] as? [String:AnyObject] {\n"
-                if let parentTypeString = parentType?.typeString {
-                    structString += "                return \(parentTypeString)(data: objectData)\n"
+                if let parentType = parentType {
+                    structString += "                return \(parentType.typeStringWithNameSpace(nameSpace))(data: objectData)\n"
                 } else {
                     structString += "                return dict\n"
                 }
@@ -307,9 +306,10 @@ struct JSONToSwiftModelGenerator {
         return modelString.isEmpty ? nil : modelString
     }
     
-    mutating func fromSource(url:NSURL) {
+    mutating func fromSource(url:NSURL, nameSpace:String) {
         
         self.source = url.absoluteString
+        self.nameSpace = nameSpace
         
         guard let data = NSData(contentsOfURL: url) else {
             return
@@ -323,7 +323,9 @@ struct JSONToSwiftModelGenerator {
         } catch {}
     }
     
-    mutating func fromFile(path:String) {
+    mutating func fromFile(path:String, nameSpace:String) {
+        
+        self.nameSpace = nameSpace
         
         guard let data = NSData(contentsOfFile: path) else {
             return
