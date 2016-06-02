@@ -121,7 +121,7 @@ indirect enum JSONDataType : Equatable {
     func arrayTypeStringWithNameSpace(nameSpace:String) -> String {
         switch self {
         case .JSONArray(let type) :
-            return type.typeStringWithNameSpace(nameSpace)
+            return type.arrayTypeStringWithNameSpace(nameSpace)
         default:
             return self.typeStringWithNameSpace(nameSpace)
         }
@@ -130,7 +130,7 @@ indirect enum JSONDataType : Equatable {
     func typeStringWithNameSpace(nameSpace:String) -> String {
         switch self {
         case .JSONArray(let type) :
-            return "[\(type.arrayTypeStringWithNameSpace(nameSpace).uppercaseFirst)]"
+            return "[\(type.typeStringWithNameSpace(nameSpace).uppercaseFirst)]"
         case .JSONType(_) :
             return nameSpace + typeString
         default:
