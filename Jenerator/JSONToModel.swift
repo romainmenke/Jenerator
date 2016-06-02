@@ -132,6 +132,17 @@ indirect enum JSONDataType : Equatable {
             return typeString
         }
     }
+    
+    func renameType(withNewName name:String) -> JSONDataType {
+        switch self {
+        case .JSONType(_) :
+            return JSONDataType.JSONType(type: name)
+        case .JSONArray(_) :
+            return JSONDataType.JSONArray(type: renameType(withNewName: name))
+        default :
+            return self
+        }
+    }
 }
 
 func == (lhs:JSONDataType,rhs:JSONDataType) -> Bool {
@@ -248,9 +259,42 @@ struct JSONToSwiftModelGenerator {
         findTypes(nil, key: nil, data: data)
     }
     
-    func formatAsSwift() -> String? {
+    mutating func formatAsSwift() -> String? {
         
-        var modelString : String = "import Foundation\n"
+        var typesToDelete : [(delete:String,keep:String)] = []
+        
+        for object in objects {
+            for possibleDuplicate in objects {
+        
+                // TypeName must not be equal to other object
+                guard object.0 != possibleDuplicate.0 else {
+                    continue
+                }
+                // Fields must be equal to other object
+                guard object.1 == possibleDuplicate.1 else {
+                    continue
+                }
+                
+                // TypeName must not be present in Keep and Delete must not be present in Delete
+                if !(typesToDelete.contains { $0.1 == possibleDuplicate.0 }) && !(typesToDelete.contains { $0.0 == possibleDuplicate.0 }) {
+                    typesToDelete.append((delete: possibleDuplicate.0,keep: object.0))
+                } else if !(typesToDelete.contains { $0.1 == object.0 }) && !(typesToDelete.contains { $0.0 == object.0 }) {
+                    typesToDelete.append((delete: object.0,keep: possibleDuplicate.0))
+                }
+            }
+        }
+        
+        for delete in typesToDelete {
+            objects.removeValueForKey(delete.delete)
+        }
+        
+        var modelString : String = "import Foundation\n\n"
+        
+        for alias in typesToDelete {
+            modelString += "typealias \(nameSpace)\(alias.0.uppercaseFirst) = \(nameSpace)\(alias.1.uppercaseFirst)\n"
+        }
+        
+        modelString += "\n"
         
         for object in objects {
             var structString : String = ""
@@ -295,10 +339,6 @@ struct JSONToSwiftModelGenerator {
             if let source = source where object.0.uppercaseFirst == (parentType?.typeString ?? "") {
                 structString += "\n    static func fromSource() -> \(parentType?.typeStringWithNameSpace(nameSpace) ?? "AnyObject")? {\n"
                 structString += "        guard let url = NSURL(string: \"\(source)\"), data = NSData(contentsOfURL: url) else {\n"
-            } else {
-                structString += "\n    static func fromSource(urlString : String) -> \(parentType?.typeStringWithNameSpace(nameSpace) ?? "AnyObject")? {\n"
-                structString += "        guard let url = NSURL(string: urlString), data = NSData(contentsOfURL: url) else {\n"
-            }
                 structString += "            return nil\n"
                 structString += "        }\n"
                 structString += "        do {\n"
@@ -317,6 +357,29 @@ struct JSONToSwiftModelGenerator {
                 structString += "        } catch {}\n"
                 structString += "        return nil\n"
                 structString += "    }\n"
+            } else if source == nil {
+                structString += "\n    static func fromSource(urlString : String) -> \(parentType?.typeStringWithNameSpace(nameSpace) ?? "AnyObject")? {\n"
+                structString += "        guard let url = NSURL(string: urlString), data = NSData(contentsOfURL: url) else {\n"
+                structString += "            return nil\n"
+                structString += "        }\n"
+                structString += "        do {\n"
+                structString += "            let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers)\n"
+                if firstIsCollection {
+                    structString += "            if let dict = json as? [String:AnyObject] {\n"
+                } else {
+                    structString += "            if let outerDict = json as? [String:AnyObject], let dict = outerDict[\"\(object.0)\"] as? [String:AnyObject] {\n"
+                }
+                if let parentType = parentType {
+                    structString += "                return \(parentType.typeStringWithNameSpace(nameSpace))(data: dict)\n"
+                } else {
+                    structString += "                return dict\n"
+                }
+                structString += "            }\n"
+                structString += "        } catch {}\n"
+                structString += "        return nil\n"
+                structString += "    }\n"
+            }
+            
             
             
             structString += "}\n"
