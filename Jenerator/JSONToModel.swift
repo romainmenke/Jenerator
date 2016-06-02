@@ -143,6 +143,17 @@ indirect enum JSONDataType : Equatable {
             return self
         }
     }
+    
+    func upgradeType(toType: JSONDataType) -> JSONDataType {
+        switch self {
+        case .JSONNull :
+            return toType
+        case .JSONArray(let type) :
+            return .JSONArray(type: type.upgradeType(toType))
+        default:
+            return self
+        }
+    }
 }
 
 func == (lhs:JSONDataType,rhs:JSONDataType) -> Bool {
@@ -155,7 +166,7 @@ struct JSONField : Equatable {
 }
 
 func == (lhs:JSONField,rhs:JSONField) -> Bool {
-    return lhs.name == rhs.name
+    return lhs.name == rhs.name && lhs.type == rhs.type
 }
 
 struct JSONToSwiftModelGenerator {
@@ -261,6 +272,7 @@ struct JSONToSwiftModelGenerator {
     
     mutating func formatAsSwift() -> String? {
         
+        // Generate Data for typealiasses
         var typesToDelete : [(delete:String,keep:String)] = []
         
         for object in objects {
@@ -288,6 +300,23 @@ struct JSONToSwiftModelGenerator {
             objects.removeValueForKey(delete.delete)
         }
         
+        for var object in objects {
+            for var field in object.1 {
+                let duplicateFields = object.1.filter { $0.name == field.name && $0 != field }
+                for dupe in duplicateFields {
+                    field.type = field.type.upgradeType(dupe.type)
+                    if let index = object.1.indexOf(field) {
+                        object.1[index] = field
+                    }
+                    if let dupeIndex = object.1.indexOf(dupe) {
+                        object.1.removeAtIndex(dupeIndex)
+                    }
+                    objects[object.0] = object.1
+                }
+            }
+        }
+        
+        // Start Generating Code
         var modelString : String = "import Foundation\n\n"
         
         for alias in typesToDelete {
