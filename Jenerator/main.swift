@@ -27,8 +27,8 @@ func main() {
         var saveFileName : String = "JSONModel.swift"
         var nameSpace : String = ""
         
-        // Check if the file exists, exit if not
-        if sourceUrl.fileURL {
+        
+        if sourceUrl.host == nil {
             savePath = sourceUrl.absoluteString.stringByReplacingOccurrencesOfString(sourceUrl.lastPathComponent ?? "", withString: "")
             saveFileName = NSProcessInfo.processInfo().arguments[2].stringByReplacingOccurrencesOfString(".swift", withString: "") + ".swift"
             if NSProcessInfo.processInfo().arguments.count > 3 {
@@ -59,7 +59,7 @@ func main() {
                 print("all done")
                 exit(EXIT_SUCCESS)
             } catch {
-                print("can't write")
+                print("can't write to path:", modelFilePath, savePath, sourceUrl)
                 exit(EXIT_FAILURE)
             }
         } else {
