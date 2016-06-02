@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7ADD6F7F1CFF409D007F59B8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD6F7E1CFF409D007F59B8 /* main.swift */; };
-		7ADD6F861CFF40AE007F59B8 /* JSONToModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD6F851CFF40AE007F59B8 /* JSONToModel.swift */; };
-		7ADD6F881CFF41A6007F59B8 /* info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD6F871CFF41A6007F59B8 /* info.swift */; };
+		7A3561961D0091E200A386E5 /* info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3561941D0091E200A386E5 /* info.swift */; };
+		7A3561971D0091E200A386E5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3561951D0091E200A386E5 /* main.swift */; };
+		7A3561991D0091EB00A386E5 /* JSONToModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3561981D0091EB00A386E5 /* JSONToModel.swift */; };
+		7A35619A1D0091EB00A386E5 /* JSONToModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3561981D0091EB00A386E5 /* JSONToModel.swift */; };
+		7A35619D1D0091F900A386E5 /* Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A35619B1D0091F900A386E5 /* Magic.swift */; };
+		7A35619E1D00924300A386E5 /* Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A35619B1D0091F900A386E5 /* Magic.swift */; };
+		7A3561A01D00928A00A386E5 /* MagicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A35619F1D00928A00A386E5 /* MagicTests.swift */; };
+		7A3561A21D00940700A386E5 /* JSONDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3561A11D00940700A386E5 /* JSONDataType.swift */; };
+		7A3561A31D00940700A386E5 /* JSONDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3561A11D00940700A386E5 /* JSONDataType.swift */; };
+		7A3561A51D00943200A386E5 /* JSONDataTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3561A41D00943200A386E5 /* JSONDataTypeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,13 +32,26 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7A3561891D00911500A386E5 /* JeneratorUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JeneratorUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A35618D1D00911500A386E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A3561941D0091E200A386E5 /* info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = info.swift; sourceTree = "<group>"; };
+		7A3561951D0091E200A386E5 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		7A3561981D0091EB00A386E5 /* JSONToModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONToModel.swift; sourceTree = "<group>"; };
+		7A35619B1D0091F900A386E5 /* Magic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Magic.swift; sourceTree = "<group>"; };
+		7A35619F1D00928A00A386E5 /* MagicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicTests.swift; sourceTree = "<group>"; };
+		7A3561A11D00940700A386E5 /* JSONDataType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDataType.swift; sourceTree = "<group>"; };
+		7A3561A41D00943200A386E5 /* JSONDataTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDataTypeTests.swift; sourceTree = "<group>"; };
 		7ADD6F7B1CFF409D007F59B8 /* jenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = jenerator; sourceTree = BUILT_PRODUCTS_DIR; };
-		7ADD6F7E1CFF409D007F59B8 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		7ADD6F851CFF40AE007F59B8 /* JSONToModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONToModel.swift; sourceTree = "<group>"; };
-		7ADD6F871CFF41A6007F59B8 /* info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = info.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7A3561861D00911500A386E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7ADD6F781CFF409D007F59B8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -42,10 +62,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A35618A1D00911500A386E5 /* JeneratorUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				7A35618D1D00911500A386E5 /* Info.plist */,
+				7A35619F1D00928A00A386E5 /* MagicTests.swift */,
+				7A3561A41D00943200A386E5 /* JSONDataTypeTests.swift */,
+			);
+			path = JeneratorUnitTests;
+			sourceTree = "<group>";
+		};
+		7A3561921D0091B900A386E5 /* CLI */ = {
+			isa = PBXGroup;
+			children = (
+				7A3561941D0091E200A386E5 /* info.swift */,
+				7A3561951D0091E200A386E5 /* main.swift */,
+			);
+			path = CLI;
+			sourceTree = "<group>";
+		};
+		7A3561931D0091B900A386E5 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				7A3561981D0091EB00A386E5 /* JSONToModel.swift */,
+				7A35619B1D0091F900A386E5 /* Magic.swift */,
+				7A3561A11D00940700A386E5 /* JSONDataType.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
 		7ADD6F721CFF409D007F59B8 = {
 			isa = PBXGroup;
 			children = (
 				7ADD6F7D1CFF409D007F59B8 /* Jenerator */,
+				7A35618A1D00911500A386E5 /* JeneratorUnitTests */,
 				7ADD6F7C1CFF409D007F59B8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				7ADD6F7B1CFF409D007F59B8 /* jenerator */,
+				7A3561891D00911500A386E5 /* JeneratorUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,9 +112,8 @@
 		7ADD6F7D1CFF409D007F59B8 /* Jenerator */ = {
 			isa = PBXGroup;
 			children = (
-				7ADD6F7E1CFF409D007F59B8 /* main.swift */,
-				7ADD6F851CFF40AE007F59B8 /* JSONToModel.swift */,
-				7ADD6F871CFF41A6007F59B8 /* info.swift */,
+				7A3561921D0091B900A386E5 /* CLI */,
+				7A3561931D0091B900A386E5 /* Mapper */,
 			);
 			path = Jenerator;
 			sourceTree = "<group>";
@@ -71,6 +121,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7A3561881D00911500A386E5 /* JeneratorUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A3561901D00911500A386E5 /* Build configuration list for PBXNativeTarget "JeneratorUnitTests" */;
+			buildPhases = (
+				7A3561851D00911500A386E5 /* Sources */,
+				7A3561861D00911500A386E5 /* Frameworks */,
+				7A3561871D00911500A386E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JeneratorUnitTests;
+			productName = JeneratorUnitTests;
+			productReference = 7A3561891D00911500A386E5 /* JeneratorUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		7ADD6F7A1CFF409D007F59B8 /* Jenerator */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7ADD6F821CFF409D007F59B8 /* Build configuration list for PBXNativeTarget "Jenerator" */;
@@ -98,6 +165,9 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "menke-dev";
 				TargetAttributes = {
+					7A3561881D00911500A386E5 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 					7ADD6F7A1CFF409D007F59B8 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
@@ -116,24 +186,71 @@
 			projectRoot = "";
 			targets = (
 				7ADD6F7A1CFF409D007F59B8 /* Jenerator */,
+				7A3561881D00911500A386E5 /* JeneratorUnitTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		7A3561871D00911500A386E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		7A3561851D00911500A386E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A35619A1D0091EB00A386E5 /* JSONToModel.swift in Sources */,
+				7A3561A01D00928A00A386E5 /* MagicTests.swift in Sources */,
+				7A3561A51D00943200A386E5 /* JSONDataTypeTests.swift in Sources */,
+				7A35619D1D0091F900A386E5 /* Magic.swift in Sources */,
+				7A3561A31D00940700A386E5 /* JSONDataType.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7ADD6F771CFF409D007F59B8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ADD6F881CFF41A6007F59B8 /* info.swift in Sources */,
-				7ADD6F861CFF40AE007F59B8 /* JSONToModel.swift in Sources */,
-				7ADD6F7F1CFF409D007F59B8 /* main.swift in Sources */,
+				7A3561971D0091E200A386E5 /* main.swift in Sources */,
+				7A3561991D0091EB00A386E5 /* JSONToModel.swift in Sources */,
+				7A3561961D0091E200A386E5 /* info.swift in Sources */,
+				7A3561A21D00940700A386E5 /* JSONDataType.swift in Sources */,
+				7A35619E1D00924300A386E5 /* Magic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		7A35618E1D00911500A386E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = JeneratorUnitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.menke-dev.JeneratorUnitTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7A35618F1D00911500A386E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = JeneratorUnitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.menke-dev.JeneratorUnitTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		7ADD6F801CFF409D007F59B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -219,13 +336,18 @@
 		7ADD6F831CFF409D007F59B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = jenerator;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		7ADD6F841CFF409D007F59B8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = jenerator;
 			};
 			name = Release;
@@ -233,6 +355,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7A3561901D00911500A386E5 /* Build configuration list for PBXNativeTarget "JeneratorUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A35618E1D00911500A386E5 /* Debug */,
+				7A35618F1D00911500A386E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		7ADD6F761CFF409D007F59B8 /* Build configuration list for PBXProject "Jenerator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -249,6 +379,7 @@
 				7ADD6F841CFF409D007F59B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

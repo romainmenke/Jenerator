@@ -8,153 +8,9 @@
 
 import Foundation
 
-extension Array where Element : Equatable {
-    mutating func appendUnique(element:Element) {
-        if self.contains(element) {
-            return
-        } else {
-            self.append(element)
-        }
-    }
-}
 
-extension String {
-    var first: String {
-        return String(characters.prefix(1))
-    }
-    var last: String {
-        return String(characters.suffix(1))
-    }
-    var uppercaseFirst: String {
-        return first.uppercaseString + String(characters.dropFirst())
-    }
-}
 
-indirect enum JSONDataType : Equatable {
-    case JSONArray(type:JSONDataType)
-    case JSONDictionary
-    case JSONString
-    case JSONInt
-    case JSONDouble
-    case JSONBool
-    case JSONNull
-    case JSONType(type:String)
-    
-    var typeString : String {
-        get {
-            switch self {
-            case .JSONString :
-                return "String".uppercaseFirst
-            case .JSONBool :
-                return "Bool".uppercaseFirst
-            case .JSONInt :
-                return "Int".uppercaseFirst
-            case .JSONDouble :
-                return "Double".uppercaseFirst
-            case .JSONNull :
-                return "Any".uppercaseFirst
-            case .JSONType(let type) :
-                return type.uppercaseFirst
-            case .JSONArray(let type) :
-                return "[\(type.typeString.uppercaseFirst)]"
-            default:
-                return ""
-            }
-        }
-    }
-    
-    var defaultValue : String {
-        get {
-            switch self {
-            case .JSONString :
-                return "\"\""
-            case .JSONBool :
-                return "false"
-            case .JSONInt :
-                return "0"
-            case .JSONDouble :
-                return "0.0"
-            case .JSONNull :
-                return "nil"
-            case .JSONType(_) :
-                return "nil"
-            case .JSONArray(_) :
-                return "[]"
-            default:
-                return "nil"
-            }
-        }
-    }
-    
-    var optionalType : Bool {
-        switch self {
-        case .JSONType(_) :
-            return true
-        default:
-            return false
-        }
-    }
-    
-    var isNestedArrayType : Bool {
-        switch self {
-        case .JSONArray(let type) where type.isNestedType :
-            return true
-        default:
-            return false
-        }
-    }
-    
-    var isNestedType : Bool {
-        switch self {
-        case .JSONType(_) :
-            return true
-        default:
-            return false
-        }
-    }
-    
-    func arrayTypeStringWithNameSpace(nameSpace:String) -> String {
-        switch self {
-        case .JSONArray(let type) :
-            return type.typeStringWithNameSpace(nameSpace)
-        default:
-            return self.typeStringWithNameSpace(nameSpace)
-        }
-    }
-    
-    func typeStringWithNameSpace(nameSpace:String) -> String {
-        switch self {
-        case .JSONArray(let type) :
-            return "[\(type.arrayTypeStringWithNameSpace(nameSpace).uppercaseFirst)]"
-        case .JSONType(_) :
-            return nameSpace + typeString
-        default:
-            return typeString
-        }
-    }
-    
-    func renameType(withNewName name:String) -> JSONDataType {
-        switch self {
-        case .JSONType(_) :
-            return JSONDataType.JSONType(type: name)
-        case .JSONArray(_) :
-            return JSONDataType.JSONArray(type: renameType(withNewName: name))
-        default :
-            return self
-        }
-    }
-    
-    func upgradeType(toType: JSONDataType) -> JSONDataType {
-        switch self {
-        case .JSONNull :
-            return toType
-        case .JSONArray(let type) :
-            return .JSONArray(type: type.upgradeType(toType))
-        default:
-            return self
-        }
-    }
-}
+
 
 func == (lhs:JSONDataType,rhs:JSONDataType) -> Bool {
     return lhs.typeString == rhs.typeString
@@ -386,7 +242,7 @@ struct JSONToSwiftModelGenerator {
                 structString += "        } catch {}\n"
                 structString += "        return nil\n"
                 structString += "    }\n"
-            } else if source == nil {
+            } else if source == nil && object.0.uppercaseFirst == (parentType?.typeString ?? "") {
                 structString += "\n    static func fromSource(urlString : String) -> \(parentType?.typeStringWithNameSpace(nameSpace) ?? "AnyObject")? {\n"
                 structString += "        guard let url = NSURL(string: urlString), data = NSData(contentsOfURL: url) else {\n"
                 structString += "            return nil\n"
