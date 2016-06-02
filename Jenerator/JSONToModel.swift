@@ -295,6 +295,10 @@ struct JSONToSwiftModelGenerator {
             if let source = source where object.0.uppercaseFirst == (parentType?.typeString ?? "") {
                 structString += "\n    static func fromSource() -> \(parentType?.typeStringWithNameSpace(nameSpace) ?? "AnyObject")? {\n"
                 structString += "        guard let url = NSURL(string: \"\(source)\"), data = NSData(contentsOfURL: url) else {\n"
+            } else {
+                structString += "\n    static func fromSource(urlString : String) -> \(parentType?.typeStringWithNameSpace(nameSpace) ?? "AnyObject")? {\n"
+                structString += "        guard let url = NSURL(string: urlString), data = NSData(contentsOfURL: url) else {\n"
+            }
                 structString += "            return nil\n"
                 structString += "        }\n"
                 structString += "        do {\n"
@@ -313,7 +317,7 @@ struct JSONToSwiftModelGenerator {
                 structString += "        } catch {}\n"
                 structString += "        return nil\n"
                 structString += "    }\n"
-            }
+            
             
             structString += "}\n"
             
