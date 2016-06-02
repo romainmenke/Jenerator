@@ -93,6 +93,8 @@ indirect enum JSONDataType : Equatable {
         switch self {
         case .JSONType(_) :
             return true
+        case .JSONNull :
+            return true
         default:
             return false
         }
