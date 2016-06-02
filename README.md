@@ -4,9 +4,13 @@ Create Swift Models from JSON files or API calls
 
 Build it -> Drop somewhere in your PATH -> Profit
 
+Download from releases -> Drop somewhere in your PATH -> Profit
+
 cmd : 
 
-`jenerator "myJSONSource" "saveDirectory" "filename" "classPrefix"`
+`jenerator "myJSONRemoteSource" "saveDirectory" "filename" "classPrefix"`
+
+`jenerator "myJSONLocalSource" "filename" "classPrefix"`
 
 Try it:
 
