@@ -471,6 +471,174 @@ class JSONDataTypeTests: XCTestCase {
         XCTAssert(customArrayType.arrayTypeStringWithNameSpace(classPrefix) == "CPCustom")
         
     }
+    
+    func testRenameType() {
+        
+        let string : AnyObject = "true"
+        let otherString : AnyObject = "1"
+        let int : AnyObject = 1
+        let double : AnyObject = 1.1
+        let bool : AnyObject = true
+        let null : AnyObject = NSNull()
+        
+        let stringType = JSONDataType.generate(string).renameType(withNewName: "Bad")
+        let otherStringType = JSONDataType.generate(otherString).renameType(withNewName: "Int")
+        let intType = JSONDataType.generate(int).renameType(withNewName: "Bad")
+        let doubleType = JSONDataType.generate(double).renameType(withNewName: "Bad")
+        let boolType = JSONDataType.generate(bool).renameType(withNewName: "Bad")
+        let nullType = JSONDataType.generate(null).renameType(withNewName: "Bad")
+        
+        XCTAssert(stringType.typeString == "String")
+        XCTAssert(otherStringType.typeString == "String")
+        XCTAssert(intType.typeString == "Int")
+        XCTAssert(doubleType.typeString == "Double")
+        XCTAssert(boolType.typeString == "Bool")
+        XCTAssert(nullType.typeString == "Any")
+        
+        let customType = JSONDataType.JSONType(type: "Custom").renameType(withNewName: "Rename")
+        XCTAssert(customType.typeString == "Rename")
+        
+        
+        let stringArray : AnyObject = ["true"]
+        let otherStringArray : AnyObject = ["1"]
+        let intArray : AnyObject = [1]
+        let doubleArray : AnyObject = [1.1]
+        let boolArray : AnyObject = [true]
+        let nullArray : AnyObject = [NSNull()]
+        
+        let stringArrayType = JSONDataType.generate(stringArray).renameType(withNewName: "")
+        let otherStringArrayType = JSONDataType.generate(otherStringArray).renameType(withNewName: "Bad")
+        let intArrayType = JSONDataType.generate(intArray).renameType(withNewName: "Bad")
+        let doubleArrayType = JSONDataType.generate(doubleArray).renameType(withNewName: "Bad")
+        let boolArrayType = JSONDataType.generate(boolArray).renameType(withNewName: "Bad")
+        let nullArrayType = JSONDataType.generate(nullArray).renameType(withNewName: "Bad")
+        
+        XCTAssert(stringArrayType.typeString == "[String]")
+        XCTAssert(otherStringArrayType.typeString == "[String]")
+        XCTAssert(intArrayType.typeString == "[Int]")
+        XCTAssert(doubleArrayType.typeString == "[Double]")
+        XCTAssert(boolArrayType.typeString == "[Bool]")
+        XCTAssert(nullArrayType.typeString == "[Any]")
+        
+        let nestedArray : AnyObject = [["SomeString"]]
+        let nestedArrayType = JSONDataType.generate(nestedArray).renameType(withNewName: "Bad")
+        XCTAssert(nestedArrayType.typeString == "[[String]]")
+        
+        let customArrayType = JSONDataType.JSONArray(type: JSONDataType.JSONType(type: "Custom")).renameType(withNewName: "Rename")
+        XCTAssert(customArrayType.typeString == "[Rename]")
+        
+    }
+    
+    func testUpgradeType() {
+        
+        let string : AnyObject = "true"
+        let int : AnyObject = 1
+        let double : AnyObject = 1.1
+        let bool : AnyObject = true
+        let null : AnyObject = NSNull()
+        
+        let stringType = JSONDataType.generate(string).upgradeType(JSONDataType.JSONInt)
+        let intType = JSONDataType.generate(int).upgradeType(JSONDataType.JSONBool)
+        let otherIntType = JSONDataType.generate(int).upgradeType(JSONDataType.JSONDouble)
+        let doubleType = JSONDataType.generate(double).upgradeType(JSONDataType.JSONInt)
+        let boolType = JSONDataType.generate(bool).upgradeType(JSONDataType.JSONInt)
+        let nullType = JSONDataType.generate(null).upgradeType(JSONDataType.JSONString)
+        
+        XCTAssert(stringType.typeString == "String")
+        XCTAssert(intType.typeString == "Int")
+        XCTAssert(otherIntType.typeString == "Double")
+        XCTAssert(doubleType.typeString == "Double")
+        XCTAssert(boolType.typeString == "Bool")
+        XCTAssert(nullType.typeString == "String")
+        
+        let customType = JSONDataType.JSONType(type: "Custom").upgradeType(JSONDataType.JSONType(type: "Upgrade"))
+        XCTAssert(customType.typeString == "Custom")
+        
+        
+        let stringArray : AnyObject = ["true"]
+        let intArray : AnyObject = [1]
+        let doubleArray : AnyObject = [1.1]
+        let boolArray : AnyObject = [true]
+        let nullArray : AnyObject = [NSNull()]
+        
+        let stringArrayType = JSONDataType.generate(stringArray).upgradeType(JSONDataType.JSONInt)
+        let intArrayType = JSONDataType.generate(intArray).upgradeType(JSONDataType.JSONBool)
+        let otherArrayIntType = JSONDataType.generate(intArray).upgradeType(JSONDataType.JSONDouble)
+        let doubleArrayType = JSONDataType.generate(doubleArray).upgradeType(JSONDataType.JSONInt)
+        let boolArrayType = JSONDataType.generate(boolArray).upgradeType(JSONDataType.JSONInt)
+        let nullArrayType = JSONDataType.generate(nullArray).upgradeType(JSONDataType.JSONString)
+        
+        XCTAssert(stringArrayType.typeString == "[String]")
+        XCTAssert(intArrayType.typeString == "[Int]")
+        XCTAssert(otherArrayIntType.typeString == "[Double]")
+        XCTAssert(doubleArrayType.typeString == "[Double]")
+        XCTAssert(boolArrayType.typeString == "[Bool]")
+        XCTAssert(nullArrayType.typeString == "[String]")
+        
+        let nestedArray : AnyObject = [["SomeString"]]
+        let nestedArrayType = JSONDataType.generate(nestedArray).upgradeType(JSONDataType.JSONType(type: "Int"))
+        XCTAssert(nestedArrayType.typeString == "[[String]]")
+        
+        let customArrayType = JSONDataType.JSONArray(type: JSONDataType.JSONType(type: "Custom")).upgradeType(JSONDataType.JSONType(type: "Upgrade"))
+        XCTAssert(customArrayType.typeString == "[Custom]")
+        
+    }
+    
+    func testEquality() {
+        
+        let string : AnyObject = "true"
+        let int : AnyObject = 1
+        let otherInt : AnyObject = -1
+        let double : AnyObject = 1.1
+        let bool : AnyObject = true
+        let null : AnyObject = NSNull()
+        
+        let stringType = JSONDataType.generate(string)
+        let intType = JSONDataType.generate(int)
+        let otherIntType = JSONDataType.generate(otherInt)
+        let doubleType = JSONDataType.generate(double)
+        let boolType = JSONDataType.generate(bool)
+        let nullType = JSONDataType.generate(null)
+        
+        XCTAssert(stringType != intType)
+        XCTAssert(stringType != otherIntType)
+        XCTAssert(intType == otherIntType)
+        XCTAssert(stringType != doubleType)
+        XCTAssert(stringType != boolType)
+        XCTAssert(stringType != nullType)
+        
+        let customType = JSONDataType.JSONType(type: "Custom")
+        XCTAssert(customType != nullType)
+        
+        
+        let stringArray : AnyObject = ["true"]
+        let intArray : AnyObject = [1]
+        let doubleArray : AnyObject = [1.1]
+        let boolArray : AnyObject = [true]
+        let nullArray : AnyObject = [NSNull()]
+        
+        let stringArrayType = JSONDataType.generate(stringArray)
+        let intArrayType = JSONDataType.generate(intArray)
+        let otherArrayIntType = JSONDataType.generate(intArray)
+        let doubleArrayType = JSONDataType.generate(doubleArray)
+        let boolArrayType = JSONDataType.generate(boolArray)
+        let nullArrayType = JSONDataType.generate(nullArray)
+        
+        XCTAssert(stringArrayType != stringType)
+        XCTAssert(intArrayType != intType)
+        XCTAssert(otherArrayIntType != otherIntType)
+        XCTAssert(doubleArrayType != doubleType)
+        XCTAssert(boolArrayType != boolType)
+        XCTAssert(nullArrayType != nullType)
+        
+        let nestedArray : AnyObject = [["SomeString"]]
+        let nestedArrayType = JSONDataType.generate(nestedArray)
+        XCTAssert(nestedArrayType != stringArrayType)
+        
+        let customArrayType = JSONDataType.JSONArray(type: JSONDataType.JSONType(type: "Custom"))
+        XCTAssert(customArrayType != customType)
+        
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.

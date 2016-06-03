@@ -142,8 +142,8 @@ indirect enum JSONDataType : Equatable {
         switch self {
         case .JSONType(_) :
             return JSONDataType.JSONType(type: name)
-        case .JSONArray(_) :
-            return JSONDataType.JSONArray(type: renameType(withNewName: name))
+        case .JSONArray(let type) :
+            return JSONDataType.JSONArray(type: type.renameType(withNewName: name))
         default :
             return self
         }
@@ -166,3 +166,13 @@ indirect enum JSONDataType : Equatable {
         }
     }
 }
+
+func == (lhs:JSONDataType,rhs:JSONDataType) -> Bool {
+    return lhs.typeString == rhs.typeString
+}
+
+func != (lhs:JSONDataType,rhs:JSONDataType) -> Bool {
+    return !(lhs == rhs)
+}
+
+

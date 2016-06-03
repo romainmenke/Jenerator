@@ -11,11 +11,6 @@ import Foundation
 
 
 
-
-func == (lhs:JSONDataType,rhs:JSONDataType) -> Bool {
-    return lhs.typeString == rhs.typeString
-}
-
 struct JSONField : Equatable {
     var name : String
     var type : JSONDataType
