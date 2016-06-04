@@ -16,7 +16,6 @@
 		7A3D34511D031826004B281E /* JSONDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D342B1D0317F1004B281E /* JSONDataType.swift */; };
 		7A3D34521D031826004B281E /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D342C1D0317F1004B281E /* JSONDecoder.swift */; };
 		7A3D34531D031826004B281E /* JSONField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D342D1D0317F1004B281E /* JSONField.swift */; };
-		7A3D34541D031826004B281E /* JSONToModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D342E1D0317F1004B281E /* JSONToModel.swift */; };
 		7A3D34551D031826004B281E /* JSONToSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D342F1D0317F1004B281E /* JSONToSwift.swift */; };
 		7A3D34561D031826004B281E /* Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D34301D0317F1004B281E /* Magic.swift */; };
 		7A3D34571D031826004B281E /* ModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D34311D0317F1004B281E /* ModelBuilder.swift */; };
@@ -33,7 +32,6 @@
 		7A3D346D1D0318F2004B281E /* JSONDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D342B1D0317F1004B281E /* JSONDataType.swift */; };
 		7A3D346E1D0318F2004B281E /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D342C1D0317F1004B281E /* JSONDecoder.swift */; };
 		7A3D346F1D0318F2004B281E /* JSONField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D342D1D0317F1004B281E /* JSONField.swift */; };
-		7A3D34701D0318F2004B281E /* JSONToModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D342E1D0317F1004B281E /* JSONToModel.swift */; };
 		7A3D34711D0318F2004B281E /* JSONToSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D342F1D0317F1004B281E /* JSONToSwift.swift */; };
 		7A3D34721D0318F2004B281E /* Magic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D34301D0317F1004B281E /* Magic.swift */; };
 		7A3D34731D0318F2004B281E /* ModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D34311D0317F1004B281E /* ModelBuilder.swift */; };
@@ -70,7 +68,6 @@
 		7A3D342B1D0317F1004B281E /* JSONDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDataType.swift; sourceTree = "<group>"; };
 		7A3D342C1D0317F1004B281E /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
 		7A3D342D1D0317F1004B281E /* JSONField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONField.swift; sourceTree = "<group>"; };
-		7A3D342E1D0317F1004B281E /* JSONToModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONToModel.swift; sourceTree = "<group>"; };
 		7A3D342F1D0317F1004B281E /* JSONToSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONToSwift.swift; sourceTree = "<group>"; };
 		7A3D34301D0317F1004B281E /* Magic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Magic.swift; sourceTree = "<group>"; };
 		7A3D34311D0317F1004B281E /* ModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelBuilder.swift; sourceTree = "<group>"; };
@@ -133,7 +130,6 @@
 				7A3D342B1D0317F1004B281E /* JSONDataType.swift */,
 				7A3D342C1D0317F1004B281E /* JSONDecoder.swift */,
 				7A3D342D1D0317F1004B281E /* JSONField.swift */,
-				7A3D342E1D0317F1004B281E /* JSONToModel.swift */,
 				7A3D342F1D0317F1004B281E /* JSONToSwift.swift */,
 				7A3D34301D0317F1004B281E /* Magic.swift */,
 				7A3D34311D0317F1004B281E /* ModelBuilder.swift */,
@@ -338,7 +334,6 @@
 				7A3D34501D031826004B281E /* JSONCustomType.swift in Sources */,
 				7A3D34531D031826004B281E /* JSONField.swift in Sources */,
 				7A3D34551D031826004B281E /* JSONToSwift.swift in Sources */,
-				7A3D34541D031826004B281E /* JSONToModel.swift in Sources */,
 				7A3D34571D031826004B281E /* ModelBuilder.swift in Sources */,
 				7A3D344F1D031826004B281E /* JSONAliasses.swift in Sources */,
 				7A3D34561D031826004B281E /* Magic.swift in Sources */,
@@ -366,7 +361,6 @@
 				7A3D34731D0318F2004B281E /* ModelBuilder.swift in Sources */,
 				7A3D346E1D0318F2004B281E /* JSONDecoder.swift in Sources */,
 				7A3D346B1D0318F2004B281E /* JSONAliasses.swift in Sources */,
-				7A3D34701D0318F2004B281E /* JSONToModel.swift in Sources */,
 				7A3D34721D0318F2004B281E /* Magic.swift in Sources */,
 				7A3561971D0091E200A386E5 /* main.swift in Sources */,
 				7A3D346C1D0318F2004B281E /* JSONCustomType.swift in Sources */,

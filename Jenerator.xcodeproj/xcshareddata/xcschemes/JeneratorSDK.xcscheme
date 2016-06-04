@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7A3D33E01D031497004B281E"
+               BlueprintIdentifier = "7A3D34371D031814004B281E"
                BuildableName = "JeneratorSDK.framework"
                BlueprintName = "JeneratorSDK"
                ReferencedContainer = "container:Jenerator.xcodeproj">
@@ -33,7 +33,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7A3D33931D030F76004B281E"
+               BlueprintIdentifier = "7A3D34401D031814004B281E"
                BuildableName = "JeneratorSDKTests.xctest"
                BlueprintName = "JeneratorSDKTests"
                ReferencedContainer = "container:Jenerator.xcodeproj">
@@ -43,7 +43,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7A3D33E01D031497004B281E"
+            BlueprintIdentifier = "7A3D34371D031814004B281E"
             BuildableName = "JeneratorSDK.framework"
             BlueprintName = "JeneratorSDK"
             ReferencedContainer = "container:Jenerator.xcodeproj">
@@ -65,7 +65,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7A3D33E01D031497004B281E"
+            BlueprintIdentifier = "7A3D34371D031814004B281E"
             BuildableName = "JeneratorSDK.framework"
             BlueprintName = "JeneratorSDK"
             ReferencedContainer = "container:Jenerator.xcodeproj">
@@ -83,7 +83,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7A3D33E01D031497004B281E"
+            BlueprintIdentifier = "7A3D34371D031814004B281E"
             BuildableName = "JeneratorSDK.framework"
             BlueprintName = "JeneratorSDK"
             ReferencedContainer = "container:Jenerator.xcodeproj">
