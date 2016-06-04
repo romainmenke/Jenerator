@@ -17,22 +17,13 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7A3561881D00911500A386E5"
-               BuildableName = "JeneratorUnitTests.xctest"
-               BlueprintName = "JeneratorUnitTests"
+               BlueprintIdentifier = "7A3D336F1D030C4C004B281E"
+               BuildableName = "JeneratorTests.xctest"
+               BlueprintName = "JeneratorTests"
                ReferencedContainer = "container:Jenerator.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7ADD6F7A1CFF409D007F59B8"
-            BuildableName = "jenerator"
-            BlueprintName = "Jenerator"
-            ReferencedContainer = "container:Jenerator.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

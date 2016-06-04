@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Jenerator
 
 class JSONCustomTypeTests: XCTestCase {
 

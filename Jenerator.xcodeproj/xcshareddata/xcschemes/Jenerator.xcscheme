@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7ADD6F7A1CFF409D007F59B8"
-               BuildableName = "jenerator"
+               BuildableName = "Jenerator"
                BlueprintName = "Jenerator"
                ReferencedContainer = "container:Jenerator.xcodeproj">
             </BuildableReference>
@@ -28,12 +28,22 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7A3D336F1D030C4C004B281E"
+               BuildableName = "JeneratorTests.xctest"
+               BlueprintName = "JeneratorTests"
+               ReferencedContainer = "container:Jenerator.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7ADD6F7A1CFF409D007F59B8"
-            BuildableName = "jenerator"
+            BuildableName = "Jenerator"
             BlueprintName = "Jenerator"
             ReferencedContainer = "container:Jenerator.xcodeproj">
          </BuildableReference>
@@ -56,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7ADD6F7A1CFF409D007F59B8"
-            BuildableName = "jenerator"
+            BuildableName = "Jenerator"
             BlueprintName = "Jenerator"
             ReferencedContainer = "container:Jenerator.xcodeproj">
          </BuildableReference>
@@ -75,7 +85,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7ADD6F7A1CFF409D007F59B8"
-            BuildableName = "jenerator"
+            BuildableName = "Jenerator"
             BlueprintName = "Jenerator"
             ReferencedContainer = "container:Jenerator.xcodeproj">
          </BuildableReference>
