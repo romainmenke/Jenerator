@@ -39,6 +39,7 @@
 		7A3D34761D032370004B281E /* JSONAliasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D34751D032370004B281E /* JSONAliasTests.swift */; };
 		7AEC2D671D0346FC00AFB96A /* JSONCoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEC2D661D0346FC00AFB96A /* JSONCoderTests.swift */; };
 		7AEC2D6A1D034F6D00AFB96A /* json-test-alpha.json in Resources */ = {isa = PBXBuildFile; fileRef = 7AEC2D681D034EE300AFB96A /* json-test-alpha.json */; };
+		7AEC2D6C1D0350D500AFB96A /* json-test-beta.json in Resources */ = {isa = PBXBuildFile; fileRef = 7AEC2D6B1D0350D500AFB96A /* json-test-beta.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		7ADD6F7B1CFF409D007F59B8 /* Jenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Jenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AEC2D661D0346FC00AFB96A /* JSONCoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONCoderTests.swift; sourceTree = "<group>"; };
 		7AEC2D681D034EE300AFB96A /* json-test-alpha.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "json-test-alpha.json"; sourceTree = "<group>"; };
+		7AEC2D6B1D0350D500AFB96A /* json-test-beta.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "json-test-beta.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 				7A3D34601D031836004B281E /* JSONModelBuilderTests.swift */,
 				7AEC2D661D0346FC00AFB96A /* JSONCoderTests.swift */,
 				7AEC2D681D034EE300AFB96A /* json-test-alpha.json */,
+				7AEC2D6B1D0350D500AFB96A /* json-test-beta.json */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AEC2D6A1D034F6D00AFB96A /* json-test-alpha.json in Resources */,
+				7AEC2D6C1D0350D500AFB96A /* json-test-beta.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
