@@ -16,8 +16,6 @@ func main() {
     }
     else {
         
-        var generator = JSONToSwiftModelGenerator()
-        
         guard let sourceUrl = NSURL(string: NSProcessInfo.processInfo().arguments[1]) else {
             print("bad source")
             exit(EXIT_FAILURE)
@@ -25,16 +23,17 @@ func main() {
         
         var savePath : String = ""
         var saveFileName : String = "JSONModel.swift"
-        var nameSpace : String = ""
+        var classPrefix : String = ""
         
+        var builder : ModelBuilder?
         
         if sourceUrl.host == nil {
             savePath = sourceUrl.absoluteString.stringByReplacingOccurrencesOfString(sourceUrl.lastPathComponent ?? "", withString: "")
             saveFileName = NSProcessInfo.processInfo().arguments[2].stringByReplacingOccurrencesOfString(".swift", withString: "") + ".swift"
             if NSProcessInfo.processInfo().arguments.count > 3 {
-                nameSpace = NSProcessInfo.processInfo().arguments[3]
+                classPrefix = NSProcessInfo.processInfo().arguments[3]
             }
-            generator.fromFile(NSProcessInfo.processInfo().arguments[1], nameSpace: nameSpace)
+            builder = JSONToSwift.fromFile(NSProcessInfo.processInfo().arguments[1], classPrefix: classPrefix)
             
         } else if NSProcessInfo.processInfo().arguments.count > 2 {
             savePath = NSProcessInfo.processInfo().arguments[2]
@@ -42,20 +41,21 @@ func main() {
                 saveFileName = NSProcessInfo.processInfo().arguments[3].stringByReplacingOccurrencesOfString(".swift", withString: "") + ".swift"
             }
             if NSProcessInfo.processInfo().arguments.count > 4 {
-                nameSpace = NSProcessInfo.processInfo().arguments[4]
+                classPrefix = NSProcessInfo.processInfo().arguments[4]
             }
-            generator.fromSource(sourceUrl, nameSpace: nameSpace)
+            builder = JSONToSwift.fromSource(sourceUrl, classPrefix: classPrefix)
         
         } else {
             print("can't find source")
             exit(EXIT_FAILURE)
         }
         
-        if let modelString = generator.formatAsSwift() {
+        if let builder = builder, let code = SwiftGenerator.generate(model: builder) {
+            
             let modelFilePath = savePath + "/" + saveFileName
             
             do {
-                try modelString.writeToFile(modelFilePath, atomically:true, encoding:NSUTF8StringEncoding)
+                try code.writeToFile(modelFilePath, atomically:true, encoding:NSUTF8StringEncoding)
                 print("all done")
                 exit(EXIT_SUCCESS)
             } catch {

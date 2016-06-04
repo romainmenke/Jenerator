@@ -639,6 +639,19 @@ class JSONDataTypeTests: XCTestCase {
         XCTAssert(customArrayType != customType)
         
     }
+    
+    func testDimensions() {
+        
+        let arrayTypeA = JSONDataType.JSONArray(type: JSONDataType.JSONInt)
+        XCTAssert(arrayTypeA.dimensions == 1)
+        
+        let arrayTypeB = JSONDataType.JSONArray(type: arrayTypeA)
+        XCTAssert(arrayTypeB.dimensions == 2)
+        
+        let arrayTypeC = JSONDataType.JSONArray(type: arrayTypeB)
+        XCTAssert(arrayTypeC.dimensions == 3)
+        
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.

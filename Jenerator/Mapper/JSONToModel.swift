@@ -9,17 +9,6 @@
 import Foundation
 
 
-
-
-struct JSONField : Equatable {
-    var name : String
-    var type : JSONDataType
-}
-
-func == (lhs:JSONField,rhs:JSONField) -> Bool {
-    return lhs.name == rhs.name && lhs.type == rhs.type
-}
-
 struct JSONToSwiftModelGenerator {
     
     var objects : [String:[JSONField]] = [:]

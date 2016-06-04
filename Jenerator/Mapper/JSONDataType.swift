@@ -9,17 +9,23 @@
 import Foundation
 
 
-indirect enum JSONDataType : Equatable {
+indirect enum JSONDataType : Equatable, CustomStringConvertible {
+    case JSONType(type:String)
     case JSONArray(type:JSONDataType)
-    case JSONDictionary
     case JSONString
     case JSONInt
     case JSONDouble
     case JSONBool
     case JSONNull
-    case JSONType(type:String)
+    
+    var description: String {
+        get {
+            return typeString
+        }
+    }
     
     static func generate(object:AnyObject) -> JSONDataType {
+        
         if let object = object as? [AnyObject] {
             if let first = object.first {
                 return JSONDataType.JSONArray(type: JSONDataType.generate(first))
@@ -60,8 +66,6 @@ indirect enum JSONDataType : Equatable {
                 return type.uppercaseFirst
             case .JSONArray(let type) :
                 return "[\(type.typeString.uppercaseFirst)]"
-            default:
-                return ""
             }
         }
     }
@@ -83,8 +87,6 @@ indirect enum JSONDataType : Equatable {
                 return "nil"
             case .JSONArray(_) :
                 return "[]"
-            default:
-                return "nil"
             }
         }
     }
@@ -106,6 +108,42 @@ indirect enum JSONDataType : Equatable {
             return true
         default:
             return false
+        }
+    }
+    
+    var unNestOneDimension : JSONDataType {
+        switch self {
+        case .JSONArray(let type) :
+            return type
+        default:
+            return self
+        }
+    }
+    
+    var isMultiDimensional : Bool {
+        switch self {
+        case .JSONArray(let type) :
+            switch type {
+            case .JSONArray(_):
+                return true
+            default:
+                return false
+            }
+        default:
+            return false
+        }
+    }
+    
+    var dimensions : Int {
+        return gatherDimensions(0)
+    }
+    
+    private func gatherDimensions(current:Int) -> Int {
+        switch self {
+        case .JSONArray(let type) :
+            return type.gatherDimensions(current + 1)
+        default:
+            return current
         }
     }
     
