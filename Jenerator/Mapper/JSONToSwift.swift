@@ -19,7 +19,7 @@ struct JSONToSwift {
         do {
             let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers)
             if let dict = json as? [String:AnyObject] {
-                return ModelBuilder(rootName: "Query", classPrefix: classPrefix, source: url.absoluteString).buildModel(dict)
+                return ModelBuilder(rootName: "Container", classPrefix: classPrefix, source: url.absoluteString).buildModel(dict)
             }
         } catch {}
         
@@ -35,7 +35,7 @@ struct JSONToSwift {
         do {
             let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers)
             if let dict = json as? [String:AnyObject] {
-                return ModelBuilder(rootName: "Query", classPrefix: classPrefix).buildModel(dict)
+                return ModelBuilder(rootName: "Container", classPrefix: classPrefix).buildModel(dict)
             }
         } catch {}
         
