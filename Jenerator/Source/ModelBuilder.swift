@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ModelBuilder {
+public struct ModelBuilder {
     
     var types : [JSONCustomType] = []
     var typeAliasses : [JSONTypeAlias] = []
@@ -17,7 +17,7 @@ struct ModelBuilder {
     var source : String?
     var classPrefix : String
 
-    init(rootName root:String, classPrefix: String, source:String? = nil) {
+    public init(rootName root:String, classPrefix: String, source:String? = nil) {
         self.root = root
         self.classPrefix = classPrefix
         self.source = source
@@ -52,7 +52,7 @@ struct ModelBuilder {
         return (type,nil)
     }
     
-    func buildModel(data:AnyObject) -> ModelBuilder {
+    public func buildModel(data:AnyObject) -> ModelBuilder {
         if let data = data as? [String:AnyObject] {
             return self.startWithDictionary(data)
         } else if let data = data as? [AnyObject] {
@@ -179,7 +179,7 @@ struct ModelBuilder {
         
     }
     
-    func findAliasses() -> ModelBuilder {
+    public func findAliasses() -> ModelBuilder {
         var copy = self
         
         for type in copy.types {

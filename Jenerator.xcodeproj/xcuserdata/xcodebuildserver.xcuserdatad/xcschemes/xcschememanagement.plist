@@ -9,7 +9,12 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>JeneratorTests.xcscheme</key>
+		<key>JeneratorSDK.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>JeneratorSDKTests.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>
@@ -23,6 +28,41 @@
 			<true/>
 		</dict>
 		<key>7A3D336F1D030C4C004B281E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7A3D338A1D030F75004B281E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7A3D33931D030F76004B281E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7A3D33C81D031445004B281E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7A3D33E01D031497004B281E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7A3D33E91D031498004B281E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7A3D34371D031814004B281E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7A3D34401D031814004B281E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

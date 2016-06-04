@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SwiftGenerator {
+public struct SwiftGenerator {
     
     private static func generateHeader(model model: ModelBuilder) -> String {
         
@@ -142,7 +142,7 @@ struct SwiftGenerator {
         return structFooter
     }
     
-    static func generate(model model:ModelBuilder) -> String? {
+    public static func generate(model model:ModelBuilder) -> String? {
         
         guard model.types.count > 0 else {
             return nil

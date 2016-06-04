@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct JSONToSwift {
+public struct JSONToSwift {
     
-    static func fromSource(url:NSURL, classPrefix:String) -> ModelBuilder? {
+    public static func fromSource(url:NSURL, classPrefix:String) -> ModelBuilder? {
         
         guard let data = NSData(contentsOfURL: url) else {
             return nil
@@ -26,7 +26,7 @@ struct JSONToSwift {
         return nil
     }
     
-    static func fromFile(path:String, classPrefix:String) -> ModelBuilder? {
+    public static func fromFile(path:String, classPrefix:String) -> ModelBuilder? {
         
         guard let data = NSData(contentsOfFile: path) else {
             return nil

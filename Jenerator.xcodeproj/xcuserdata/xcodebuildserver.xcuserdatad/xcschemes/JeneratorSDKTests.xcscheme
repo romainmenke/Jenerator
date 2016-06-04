@@ -10,16 +10,15 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7A3D336F1D030C4C004B281E"
-               BuildableName = "JeneratorTests.xctest"
-               BlueprintName = "JeneratorTests"
+               BlueprintIdentifier = "7A3D33E91D031498004B281E"
+               BuildableName = "JeneratorSDKTests.xctest"
+               BlueprintName = "JeneratorSDKTests"
                ReferencedContainer = "container:Jenerator.xcodeproj">
             </BuildableReference>
          </TestableReference>

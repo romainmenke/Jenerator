@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Jenerator
+@testable import JeneratorSDK
 
 class JSONDataTypeTests: XCTestCase {
 
