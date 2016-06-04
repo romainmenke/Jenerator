@@ -1,6 +1,9 @@
-[![Build Status](https://travis-ci.org/romainmenke/Jenerator.svg?branch=master)](https://travis-ci.org/romainmenke/Jenerator)
-[![codecov](https://codecov.io/gh/romainmenke/Jenerator/branch/master/graph/badge.svg)](https://codecov.io/gh/romainmenke/Jenerator)
-
+<p align="center">
+    <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-2.3-brightgreen.svg?style=flat" alt="Swift" /></a>
+    <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-3.0-brightgreen.svg?style=flat" alt="Swift" /></a>
+    <a href="https://travis-ci.org/romainmenke/Jenerator"><img src="https://travis-ci.org/romainmenke/Jenerator.svg?branch=master" alt="Travis CI" /></a>
+    <a href="https://codecov.io/gh/romainmenke/Jenerator"><img src="https://codecov.io/gh/romainmenke/Jenerator/branch/master/graph/badge.svg" alt="CodeCov" /></a>
+</p>
 
 # Jenerator
 Create Swift Models from JSON files or API calls
