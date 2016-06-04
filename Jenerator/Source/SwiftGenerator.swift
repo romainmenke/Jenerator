@@ -135,11 +135,11 @@ public struct SwiftGenerator {
         
         var fetchComment = ""
         
-        fetchComment += "/**\n"
-        fetchComment += " Give this function some parameters to make the query a bit more dynamic\n"
-        fetchComment += "\n"
-        fetchComment += " - returns: Your Return Description Here.\n"
-        fetchComment += " */\n"
+        fetchComment += "    /**\n"
+        fetchComment += "     Give this function some parameters to make the query a bit more dynamic\n"
+        fetchComment += "    \n"
+        fetchComment += "     - returns: Your Return Description Here.\n"
+        fetchComment += "     */\n"
         
         return fetchComment
     }
