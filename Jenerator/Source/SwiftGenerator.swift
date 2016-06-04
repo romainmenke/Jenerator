@@ -12,9 +12,12 @@ public struct SwiftGenerator {
     
     private static func generateHeader(model model: ModelBuilder) -> String {
         
-        var header : String = ""
-        header += "// Generated with Jenerator : github.com/romainmenke/Jenerator\n\n"
-        header += "import Foundation\n\n"
+        var header = "\n"
+        
+        header += "// Generated with Jenerator : github.com/romainmenke/Jenerator\n"
+        header += "\n"
+        header += "import Foundation\n"
+        
         return header
         
     }
@@ -24,24 +27,44 @@ public struct SwiftGenerator {
         guard model.typeAliasses.count > 0 else {
             return ""
         }
+        var aliasses = "\n"
         
-        var aliasses : String = "\n"
+        aliasses += "// TypeAliasses : \n"
+        
         for alias in model.typeAliasses {
             aliasses += "typealias \(model.classPrefix)\(alias.alias.name.uppercaseFirst) = \(model.classPrefix)\(alias.original.name.uppercaseFirst)\n"
         }
-        aliasses += "\n"
+        aliasses += ""
+        
         return aliasses
     }
     
+    private static func generateStructComments(model model: ModelBuilder,type: JSONCustomType) -> String {
+        
+        var structComment = ""
+        
+        structComment += "/**\n"
+        structComment += " *  Your Description For \(model.classPrefix)\(type.name.uppercaseFirst) Goes Here\n"
+        structComment += " */\n"
+        
+        return structComment
+    }
+    
     private static func generateStructHeader(model model: ModelBuilder, type: JSONCustomType) -> String {
-        var structHeader : String = "\n"
+        
+        var structHeader = "\n"
+        
+        structHeader += generateStructComments(model: model, type: type)
         structHeader += "struct \(model.classPrefix)\(type.name.uppercaseFirst) {\n"
-        structHeader += "\n"
+        structHeader += ""
+        
         return structHeader
     }
     
     private static func generateFields(model model: ModelBuilder, type: JSONCustomType) -> String {
-        var structFields : String = ""
+        
+        var structFields = "\n"
+        
         for field in type.fields {
             structFields += "    var \(field.name) : \(field.type.typeStringWithNameSpace(model.classPrefix))"
             if field.type.optionalType {
@@ -50,25 +73,28 @@ public struct SwiftGenerator {
                 structFields += "\n"
             }
         }
-        structFields += "\n"
+        structFields += ""
         
         return structFields
     }
     
     private static func generateStructInitialiser(model model: ModelBuilder, type: JSONCustomType) -> String {
-        var structInitialiser : String = "\n"
+        
+        var structInitialiser = "\n"
+        
         structInitialiser += "    init(data:[String:AnyObject]) {\n"
         
         // for each field
         for field in type.fields {
             // if field is an array
+            structInitialiser += "\n"
             if field.type.isNestedArrayType {
-                structInitialiser += "\n        self.\(field.name) = []\n"
+                structInitialiser += "        self.\(field.name) = []\n"
                 structInitialiser += "        if let array = data[\"\(field.name)\"] as? [AnyObject] {\n"
                 structInitialiser += generateArrayInitialiser(model: model, field: field, currentIndent: "            ")
                 structInitialiser += "        }\n"
             } else if field.type.isNestedType {
-                structInitialiser += "\n        if let object = data[\"\(field.name)\"] as? [String:AnyObject] {\n"
+                structInitialiser += "        if let object = data[\"\(field.name)\"] as? [String:AnyObject] {\n"
                 structInitialiser += "            self.\(field.name) = \(field.type.typeStringWithNameSpace(model.classPrefix))(data: object)\n"
                 structInitialiser += "        }\n"
             } else {
@@ -76,6 +102,8 @@ public struct SwiftGenerator {
             }
         }
         structInitialiser += "    }\n"
+        structInitialiser += ""
+        
         return structInitialiser
     }
     
@@ -85,7 +113,8 @@ public struct SwiftGenerator {
         
         let newIndent = currentIndent + "        "
         
-        var arrayInitialiser : String = ""
+        var arrayInitialiser = ""
+        
         arrayInitialiser +=         "\(currentIndent)for element in array {\n"
         if field.type.isMultiDimensional {
             let newField = JSONField(name: field.name, type: field.type.unNestOneDimension)
@@ -102,9 +131,24 @@ public struct SwiftGenerator {
         return arrayInitialiser
     }
     
+    private static func generateFetchComment() -> String {
+        
+        var fetchComment = ""
+        
+        fetchComment += "/**\n"
+        fetchComment += " Give this function some parameters to make the query a bit more dynamic\n"
+        fetchComment += "\n"
+        fetchComment += " - returns: Your Return Description Here.\n"
+        fetchComment += " */\n"
+        
+        return fetchComment
+    }
+    
     private static func generateFetch(model model: ModelBuilder, type: JSONCustomType) -> String {
         
-        var fetchString = ""
+        var fetchString = "\n"
+        
+        fetchString += generateFetchComment()
         
         guard type.name.uppercaseFirst == model.root.uppercaseFirst && model.dictionaryAtRoot else {
             return ""
@@ -130,15 +174,19 @@ public struct SwiftGenerator {
         fetchString += "        } catch {}\n"
         fetchString += "        return nil\n"
         fetchString += "    }\n"
+        fetchString += ""
         
         return fetchString
     }
     
     
     private static func generateStructFooter() -> String {
-        var structFooter : String = "\n"
+        
+        var structFooter = ""
+        
         structFooter += "}\n"
-        structFooter += "\n"
+        structFooter += "\n\n"
+        
         return structFooter
     }
     
@@ -149,7 +197,7 @@ public struct SwiftGenerator {
         }
         
         // Start Generating Code
-        var modelString : String = ""
+        var modelString = ""
         
         modelString += generateHeader(model: model)
         modelString += generateAliasses(model: model)
