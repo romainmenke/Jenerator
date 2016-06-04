@@ -29,9 +29,9 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
         if let object = object as? [AnyObject] {
             if let first = object.first {
                 return JSONDataType.JSONArray(type: JSONDataType.generate(first))
-            } else {
-                return JSONDataType.JSONArray(type: .JSONNull)
             }
+            
+            return JSONDataType.JSONArray(type: .JSONNull)
         }
         
         if let number = object as? NSNumber {

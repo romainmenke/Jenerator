@@ -49,6 +49,7 @@ class JSONDataTypeTests: XCTestCase {
         let doubleArray : AnyObject = [1.1]
         let boolArray : AnyObject = [true]
         let nullArray : AnyObject = [NSNull()]
+        let emptyArray : AnyObject = []
         
         let stringArrayType = JSONDataType.generate(stringArray)
         let otherStringArrayType = JSONDataType.generate(otherStringArray)
@@ -56,6 +57,7 @@ class JSONDataTypeTests: XCTestCase {
         let doubleArrayType = JSONDataType.generate(doubleArray)
         let boolArrayType = JSONDataType.generate(boolArray)
         let nullArrayType = JSONDataType.generate(nullArray)
+        let emptyArrayType = JSONDataType.generate(emptyArray)
         
         XCTAssert(stringArrayType == JSONDataType.JSONArray(type: JSONDataType.JSONString))
         XCTAssert(otherStringArrayType == JSONDataType.JSONArray(type: JSONDataType.JSONString))
@@ -63,6 +65,7 @@ class JSONDataTypeTests: XCTestCase {
         XCTAssert(doubleArrayType == JSONDataType.JSONArray(type: JSONDataType.JSONDouble))
         XCTAssert(boolArrayType == JSONDataType.JSONArray(type: JSONDataType.JSONBool))
         XCTAssert(nullArrayType == JSONDataType.JSONArray(type: JSONDataType.JSONNull))
+        XCTAssert(emptyArrayType == JSONDataType.JSONArray(type: JSONDataType.JSONNull))
         
         let nestedArray : AnyObject = [["SomeString"]]
         let nestedArrayType = JSONDataType.generate(nestedArray)
@@ -652,12 +655,27 @@ class JSONDataTypeTests: XCTestCase {
         XCTAssert(arrayTypeC.dimensions == 3)
         
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testUnNestDimension() {
+        
+        let intType = JSONDataType.JSONInt
+        let arrayTypeA = JSONDataType.JSONArray(type: intType)
+        
+        XCTAssert(intType == arrayTypeA.unNestOneDimension)
+        XCTAssert(arrayTypeA != arrayTypeA.unNestOneDimension)
+        XCTAssert(intType == intType.unNestOneDimension)
+        
+    }
+    
+    func testIsMutliDimensional() {
+        
+        let arrayTypeA = JSONDataType.JSONArray(type: JSONDataType.JSONArray(type: JSONDataType.JSONInt))
+        let arrayTypeB = JSONDataType.JSONArray(type: JSONDataType.JSONInt)
+        let intType = JSONDataType.JSONInt
+        
+        XCTAssert(arrayTypeA.isMultiDimensional == true)
+        XCTAssert(arrayTypeB.isMultiDimensional == false)
+        XCTAssert(intType.isMultiDimensional == false)
     }
 
 }
