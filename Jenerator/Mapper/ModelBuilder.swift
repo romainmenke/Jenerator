@@ -29,7 +29,7 @@ struct ModelBuilder {
             current = first
         }
         
-        if let _ = current.first as? [String:AnyObject] {
+        if let _ = current.first as? [String:AnyObjec] {
             return true
         } else {
             return false
