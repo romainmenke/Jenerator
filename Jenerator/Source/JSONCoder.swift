@@ -12,6 +12,9 @@ import Foundation
 struct JSONCoder {
     
     static func encode(object:AnyObject) -> NSData? {
+        guard NSJSONSerialization.isValidJSONObject(object) else {
+            return nil
+        }
         do {
             let jsonData = try NSJSONSerialization.dataWithJSONObject(object, options: NSJSONWritingOptions.PrettyPrinted)
             return jsonData
@@ -20,9 +23,9 @@ struct JSONCoder {
         }
     }
     
-    static func decode(data:NSData) -> [String:AnyObject]? {
+    static func decode(data:NSData) -> AnyObject? {
         do {
-            let decoded = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
+            let decoded = try NSJSONSerialization.JSONObjectWithData(data, options: [])
             return decoded
         } catch _ as NSError {
             return nil
