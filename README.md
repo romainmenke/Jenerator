@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/romainmenke/Jenerator.svg?branch=master)](https://travis-ci.org/romainmenke/Jenerator)
+
 # Jenerator
 Create Swift Models from JSON files or API calls
 
