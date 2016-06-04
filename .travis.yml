@@ -1,4 +1,6 @@
 language: objective-c
+xcode_project: Jenerator.xcodeproj
+xcode_scheme: JeneratorUnitTests
 branches:
   only:
     - master
