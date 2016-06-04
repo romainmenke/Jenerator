@@ -165,4 +165,37 @@ class JSONModelBuilderTests: XCTestCase {
         XCTAssert(builder.typeAliasses.count == 1)
         
     }
+    
+    func testFromSource() {
+        
+        guard let url = NSURL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22BHP.AX%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=") else {
+            XCTFail()
+            return
+        }
+        
+        guard let builder = ModelBuilder.fromSource(url, classPrefix: "YF") else {
+            XCTFail()
+            return
+        }
+        
+        XCTAssert(SwiftGenerator.generate(model: builder.findAliasses()) != nil)
+        
+    }
+    
+    func testFromFile() {
+        
+        guard let path = NSBundle(forClass: JSONModelBuilderTests.self).pathForResource("json-test-alpha", ofType: "json") else {
+            XCTFail()
+            return
+        }
+        
+        
+        guard let builder = ModelBuilder.fromFile(path, classPrefix: "UT") else {
+            XCTFail()
+            return
+        }
+        
+        XCTAssert(SwiftGenerator.generate(model: builder.findAliasses()) != nil)
+        
+    }
 }

@@ -34,6 +34,7 @@ class JSONCoderTests: XCTestCase {
     func testDecode() {
         let object : [String:AnyObject] = ["user":["name":"bob"]]
         let array : AnyObject = [1,2]
+        let empty : AnyObject = [:]
         
         if let json = JSONCoder.encode(object), decodedObject = JSONCoder.decode(json) as? [String:AnyObject], let user = decodedObject["user"] as? [String:String] {
             XCTAssert(user == ["name":"bob"])
@@ -43,6 +44,12 @@ class JSONCoderTests: XCTestCase {
         
         if let json = JSONCoder.encode(array), decodedArray = JSONCoder.decode(json) as? [NSNumber], original = array as? [NSNumber] {
             XCTAssert(decodedArray == original)
+        } else {
+            XCTFail()
+        }
+        
+        if let json = JSONCoder.encode(empty) {
+            XCTAssert((JSONCoder.decode(json) as? NSDictionary) != nil)
         } else {
             XCTFail()
         }

@@ -33,7 +33,7 @@ func main() {
             if NSProcessInfo.processInfo().arguments.count > 3 {
                 classPrefix = NSProcessInfo.processInfo().arguments[3]
             }
-            builder = JSONToSwift.fromFile(NSProcessInfo.processInfo().arguments[1], classPrefix: classPrefix)?.findAliasses()
+            builder = ModelBuilder.fromFile(NSProcessInfo.processInfo().arguments[1], classPrefix: classPrefix)?.findAliasses()
             
         } else if NSProcessInfo.processInfo().arguments.count > 2 {
             savePath = NSProcessInfo.processInfo().arguments[2]
@@ -43,7 +43,7 @@ func main() {
             if NSProcessInfo.processInfo().arguments.count > 4 {
                 classPrefix = NSProcessInfo.processInfo().arguments[4]
             }
-            builder = JSONToSwift.fromSource(sourceUrl, classPrefix: classPrefix)?.findAliasses()
+            builder = ModelBuilder.fromSource(sourceUrl, classPrefix: classPrefix)?.findAliasses()
         
         } else {
             print("can't find source")
