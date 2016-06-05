@@ -8,7 +8,9 @@
 
 import Foundation
 
-
+/**
+ *  A JSON field
+ */
 struct JSONField : Equatable, CustomStringConvertible {
     var name : String
     var type : JSONDataType
