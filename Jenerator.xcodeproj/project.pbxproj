@@ -233,6 +233,7 @@
 				7A3D34341D031814004B281E /* Frameworks */,
 				7A3D34351D031814004B281E /* Headers */,
 				7A3D34361D031814004B281E /* Resources */,
+				051BE4771D049DCE009B8CEF /* Universal */,
 			);
 			buildRules = (
 			);
@@ -290,6 +291,7 @@
 				TargetAttributes = {
 					7A3D34371D031814004B281E = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = UXG58KCAGQ;
 					};
 					7A3D34401D031814004B281E = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -336,6 +338,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		051BE4771D049DCE009B8CEF /* Universal */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Universal;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7A3D34331D031814004B281E /* Sources */ = {
