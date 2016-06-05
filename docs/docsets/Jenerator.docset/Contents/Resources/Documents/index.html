@@ -13,7 +13,7 @@
     <a title="Jenerator  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Jenerator Docs</a> (19% documented)</p>
+        <p><a href="index.html">Jenerator Docs</a> (20% documented)</p>
         <p class="header-right"><a href="https://github.com/romainmenke/Jenerator"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -42,6 +42,9 @@
             <a href="Structs.html">Structs</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Structs.html#/s:V9Jenerator9JSONField">JSONField</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs/JSONTypeAlias.html">JSONTypeAlias</a>
               </li>
             </ul>
@@ -57,6 +60,7 @@
     <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat" alt="Swift" /></a>
     <a href="https://travis-ci.org/romainmenke/Jenerator"><img src="https://travis-ci.org/romainmenke/Jenerator.svg?branch=master" alt="Travis CI" /></a>
     <a href="https://codecov.io/gh/romainmenke/Jenerator"><img src="https://codecov.io/gh/romainmenke/Jenerator/branch/master/graph/badge.svg" alt="CodeCov" /></a>
+    <a href="http://romainmenke.github.io/Jenerator/"><img src="https://img.shields.io/badge/Documented-19%25-blue.svg" alt="Jazzy" /></a>
 </p>
 <a href='#jenerator' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='jenerator'>Jenerator</h1>
 
@@ -66,7 +70,7 @@
 
 <p>Download from releases -&gt; Drop somewhere in your PATH -&gt; Profit</p>
 
-<p>cmd : </p>
+<p>cmd :</p>
 
 <p><code>jenerator &quot;myJSONRemoteSource&quot; &quot;saveDirectory&quot; &quot;filename&quot; &quot;classPrefix&quot;</code></p>
 
@@ -74,7 +78,7 @@
 
 <p>Try it:</p>
 
-<p>cmd : </p>
+<p>cmd :</p>
 
 <p><code>jenerator &quot;https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%202487889&amp;format=json&amp;env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&quot; &quot;$HOME/Desktop/&quot; YahooWeatherCurrent YW</code></p>
 
@@ -100,7 +104,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Into this : </p>
+<p>Into this :</p>
 <pre class="highlight plaintext"><code>import Foundation
 
 struct YWResults {
