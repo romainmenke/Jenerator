@@ -50,6 +50,14 @@ The commands will look like this:
 
 `$ jenerator "myJSONLocalSource" filename classPrefix`
 
+### Install
+
+[Download](https://github.com/romainmenke/Jenerator/releases "Download")
+
+- Drop the CLI somewhere in your `PATH`, for example in `usr/local/bin/`
+
+- Copy the Framework into your OSX project. (iOS Compiled Framework is Coming Soon)
+
 An example can be found here:
 
 [Example](https://github.com/romainmenke/Jenerator/tree/master/examples/sample "Example")
