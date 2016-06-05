@@ -36,10 +36,11 @@ An example can be found here:
 
 [Example](https://github.com/romainmenke/Jenerator/tree/master/examples/sample "Example")
 
+The generated Swift code will have template documentation making it easy for you to add some extra info about each Type.
 
-The top level Type will have a `fromSource()` method that can be used to fetch the data to goes with the model. Obviously you can and should modify this to create other queries.
+If the code was generated from a remote API call it will include a method to repeat the query. The method can be modified easily to have parameters. In seconds you can have an awesome dynamic SDK for any API. 
 
 
 Note :
 
-Swift CLI's don't like urls as arguments, will see if I can fix it in an update.
+Swift CLI's don't like urls as arguments, that is why they need the double quotes, I will see if I can fix it in an update.
