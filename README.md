@@ -9,9 +9,11 @@
 
 # Jenerator
 
+
 ### Why?
 
 There are many great libraries out there to make JSON responses from API's easier to use in Swift. What none of them do is write the code for you. Insteads of reading for hours about the response structure of various API calls and then mapping those with your favorite JSON lib you can also just pass the API call to Jenerator and let it generate a model.
+
 
 ### How?
 
@@ -50,6 +52,7 @@ The commands will look like this:
 
 `$ jenerator "myJSONLocalSource" filename classPrefix`
 
+
 ### Install
 
 [Download](https://github.com/romainmenke/Jenerator/releases "Download")
@@ -57,6 +60,9 @@ The commands will look like this:
 - Drop the CLI somewhere in your `PATH`, for example in `usr/local/bin/`
 
 - Copy the Framework into your OSX project. (iOS Compiled Framework is Coming Soon)
+
+
+### See More
 
 An example can be found here:
 
@@ -66,7 +72,10 @@ The generated Swift code will have template documentation making it easy for you
 
 If the code was generated from a remote API call it will include a method to repeat the query. The method can be modified easily to have parameters. In seconds you can have an awesome dynamic SDK for any API.
 
+### License
 
-Note :
+Use as you like.
+
+### Note
 
 Swift CLI's don't like urls as arguments, that is why they need the double quotes, I will see if I can fix it in an update.
