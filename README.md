@@ -1,4 +1,5 @@
 <p align="center">
+	<br>
     <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-2.3-orange.svg?style=flat" alt="Swift" /></a>
     <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat" alt="Swift" /></a>
     <a href="https://travis-ci.org/romainmenke/Jenerator"><img src="https://travis-ci.org/romainmenke/Jenerator.svg?branch=master" alt="Travis CI" /></a>
@@ -7,18 +8,29 @@
 </p>
 
 # Jenerator
-Create Swift Models from JSON files or API calls
 
+### Why?
 
-Build it -> Drop somewhere in your PATH -> Profit
+There are many great libraries out there to make JSON responses from API's easier to use in Swift. What none of them do is write the code for you. Insteads of reading for hours about the response structure of various API calls and then mapping those with your favorite JSON lib you can also just pass the API call to Jenerator and let it generate a model.
 
-Download from releases -> Drop somewhere in your PATH -> Profit
+### How?
 
-cmd :
+Jenerator comes in two forms : a Swift Framework and a Command Line Tool. 
 
-`jenerator "myJSONRemoteSource" "saveDirectory" "filename" "classPrefix"`
+- The Framework can be imported into your Xcode project where you would pass it a JSON response
+from an API call. Using the debug console you print out the generated code and copy/paste that into a new .swift file. Then you can passs the same JSON response to your newly generated model and start using the data.
 
-`jenerator "myJSONLocalSource" "filename" "classPrefix"`
+- The CLI has two modes : Local .json file and remote API call
+
+ - The local mode takes a path to .json file, a save file name and a class prefix. It will parse the .json file, build a model, generate the Swift code and save to a file with the specified name in the same directory as the .json file.
+
+ - The remote mode takes a url, a save directory, a save file name and a class prefix. It will then parse it and save it in the specified directory.
+
+the commands will look like this:
+
+`$ jenerator "myJSONRemoteSource" "saveDirectory" filename classPrefix`
+
+`$ jenerator "myJSONLocalSource" filename classPrefix`
 
 Try it:
 
