@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JSONDataType Enum Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Enum/JSONDataType" class="dashAnchor"></a>
+    <a title="JSONDataType Enum Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Jenerator Docs</a> (61% documented)</p>
+        <p class="header-right"><a href="https://github.com/romainmenke/Jenerator"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Jenerator Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        JSONDataType Enum Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/JSONDataType.html">JSONDataType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSNumber.html">NSNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF9Jeneratoroi2neFTVS_9JSONFieldS0__Sb">!=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF9Jeneratoroi2neFTVS_13JSONTypeAliasS0__Sb">!=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF9Jeneratoroi2neFTOS_12JSONDataTypeS0__Sb">!=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF9Jeneratoroi2neFTVS_14JSONCustomTypeS0__Sb">!=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF9Jeneratoroi2eeFTOS_12JSONDataTypeS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF9Jeneratoroi2eeFTVS_14JSONCustomTypeS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF9Jeneratoroi2eeFTVS_9JSONFieldS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF9Jeneratoroi2eeFTVS_13JSONTypeAliasS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F9Jenerator4infoFT_SS">info()</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F9Jenerator4mainFT_T_">main()</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/JSONCoder.html">JSONCoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/JSONCustomType.html">JSONCustomType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/JSONField.html">JSONField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/JSONTypeAlias.html">JSONTypeAlias</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ModelBuilder.html">ModelBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SwiftGenerator.html">SwiftGenerator</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>JSONDataType</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="n">indirect</span> <span class="kd">enum</span> <span class="kt">JSONDataType</span> <span class="p">:</span> <span class="kt">Equatable</span><span class="p">,</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                </div>
+              </div>
+            <p>Container for JSON data types</p>
+
+<ul>
+<li>JSONType:   Custom Type</li>
+<li>JSONArray:  Array Type</li>
+<li>JSONString: String</li>
+<li>JSONInt:    Int</li>
+<li>JSONDouble: Double</li>
+<li>JSONBool:   Bool</li>
+<li>JSONNull:   Nil</li>
+</ul>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO9Jenerator12JSONDataType8JSONTypeFMS0_FT4typeSS_S0_"></a>
+                    <a name="//apple_ref/swift/Element/JSONType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO9Jenerator12JSONDataType8JSONTypeFMS0_FT4typeSS_S0_">JSONType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Custom Type</p>
+
+<p>@param type:String Name for the custom type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">JSONType</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO9Jenerator12JSONDataType9JSONArrayFMS0_FT4typeS0__S0_"></a>
+                    <a name="//apple_ref/swift/Element/JSONArray" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO9Jenerator12JSONDataType9JSONArrayFMS0_FT4typeS0__S0_">JSONArray</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Array Type</p>
+
+<p>@param type:JSONDataType Type of the array element</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">JSONArray</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span><span class="kt">JSONDataType</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO9Jenerator12JSONDataType10JSONStringFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/JSONString" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO9Jenerator12JSONDataType10JSONStringFMS0_S0_">JSONString</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>String Type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">JSONString</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO9Jenerator12JSONDataType7JSONIntFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/JSONInt" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO9Jenerator12JSONDataType7JSONIntFMS0_S0_">JSONInt</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Int Type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">JSONInt</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO9Jenerator12JSONDataType10JSONDoubleFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/JSONDouble" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO9Jenerator12JSONDataType10JSONDoubleFMS0_S0_">JSONDouble</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>FloatingPoint Type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">JSONDouble</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO9Jenerator12JSONDataType8JSONBoolFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/JSONBool" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO9Jenerator12JSONDataType8JSONBoolFMS0_S0_">JSONBool</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Boolean Type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">JSONBool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO9Jenerator12JSONDataType8JSONNullFMS0_S0_"></a>
+                    <a name="//apple_ref/swift/Element/JSONNull" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO9Jenerator12JSONDataType8JSONNullFMS0_S0_">JSONNull</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Nil Type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">JSONNull</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vO9Jenerator12JSONDataType11descriptionSS"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vO9Jenerator12JSONDataType11descriptionSS">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>returns the typeString</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFO9Jenerator12JSONDataType8generateFPs9AnyObject_S0_"></a>
+                    <a name="//apple_ref/swift/Method/generate(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFO9Jenerator12JSONDataType8generateFPs9AnyObject_S0_">generate(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Generate a type based on an AnyObject</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">generate</span><span class="p">(</span><span class="nv">object</span><span class="p">:</span><span class="kt">AnyObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JSONDataType</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>object</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A decoded JSON object</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A JSONDataType of the corresponding JSON Type</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vO9Jenerator12JSONDataType10typeStringSS"></a>
+                    <a name="//apple_ref/swift/Property/typeString" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vO9Jenerator12JSONDataType10typeStringSS">typeString</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Swift equivalent of JSON type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">typeString</span> <span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vO9Jenerator12JSONDataType12defaultValueSS"></a>
+                    <a name="//apple_ref/swift/Property/defaultValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vO9Jenerator12JSONDataType12defaultValueSS">defaultValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Default value for field initialisation</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">defaultValue</span> <span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vO9Jenerator12JSONDataType12optionalTypeSb"></a>
+                    <a name="//apple_ref/swift/Property/optionalType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vO9Jenerator12JSONDataType12optionalTypeSb">optionalType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>True if JSONDataType is optional</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">optionalType</span> <span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vO9Jenerator12JSONDataType17isNestedArrayTypeSb"></a>
+                    <a name="//apple_ref/swift/Property/isNestedArrayType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vO9Jenerator12JSONDataType17isNestedArrayTypeSb">isNestedArrayType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>True if Array contains a Custom Type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">isNestedArrayType</span> <span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vO9Jenerator12JSONDataType12isNestedTypeSb"></a>
+                    <a name="//apple_ref/swift/Property/isNestedType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vO9Jenerator12JSONDataType12isNestedTypeSb">isNestedType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>True if Type is a Custom Type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">isNestedType</span> <span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vO9Jenerator12JSONDataType18unNestOneDimensionS0_"></a>
+                    <a name="//apple_ref/swift/Property/unNestOneDimension" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vO9Jenerator12JSONDataType18unNestOneDimensionS0_">unNestOneDimension</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns Element Type for an Array Type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">unNestOneDimension</span> <span class="p">:</span> <span class="kt">JSONDataType</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vO9Jenerator12JSONDataType18isMultiDimensionalSb"></a>
+                    <a name="//apple_ref/swift/Property/isMultiDimensional" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vO9Jenerator12JSONDataType18isMultiDimensionalSb">isMultiDimensional</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns True if Type is an Array Type with an Array Type as Element</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">isMultiDimensional</span> <span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vO9Jenerator12JSONDataType10dimensionsSi"></a>
+                    <a name="//apple_ref/swift/Property/dimensions" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vO9Jenerator12JSONDataType10dimensionsSi">dimensions</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the number of dimensions in a multi-dimensional Array Type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">dimensions</span> <span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO9Jenerator12JSONDataTypeP33_6E0710C87C759875CF2BDC4B48608B0B16gatherDimensionsFSiSi"></a>
+                    <a name="//apple_ref/swift/Method/gatherDimensions(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO9Jenerator12JSONDataTypeP33_6E0710C87C759875CF2BDC4B48608B0B16gatherDimensionsFSiSi">gatherDimensions(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Recursive helper function for <code><a href="../Enums/JSONDataType.html#/s:vO9Jenerator12JSONDataType10dimensionsSi">dimensions</a></code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">gatherDimensions</span><span class="p">(</span><span class="nv">current</span><span class="p">:</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>current</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>start with 0</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>returns the number of dimensions</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO9Jenerator12JSONDataType28arrayTypeStringWithNameSpaceFSSSS"></a>
+                    <a name="//apple_ref/swift/Method/arrayTypeStringWithNameSpace(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO9Jenerator12JSONDataType28arrayTypeStringWithNameSpaceFSSSS">arrayTypeStringWithNameSpace(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Construct the typeString for an Array Type with Class Prefix</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">arrayTypeStringWithNameSpace</span><span class="p">(</span><span class="nv">nameSpace</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>nameSpace</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Class Prefix</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>typeString</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO9Jenerator12JSONDataType23typeStringWithNameSpaceFSSSS"></a>
+                    <a name="//apple_ref/swift/Method/typeStringWithNameSpace(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO9Jenerator12JSONDataType23typeStringWithNameSpaceFSSSS">typeStringWithNameSpace(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Construct the typeString with Class Prefix</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">typeStringWithNameSpace</span><span class="p">(</span><span class="nv">nameSpace</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>nameSpace</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Class Prefix</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>typeString</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO9Jenerator12JSONDataType10renameTypeFT11withNewNameSS_S0_"></a>
+                    <a name="//apple_ref/swift/Method/renameType(withNewName:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO9Jenerator12JSONDataType10renameTypeFT11withNewNameSS_S0_">renameType(withNewName:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Change name of Custom Type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">renameType</span><span class="p">(</span><span class="n">withNewName</span> <span class="nv">name</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JSONDataType</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the new name</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Custom Type with the new name</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FO9Jenerator12JSONDataType11upgradeTypeFS0_S0_"></a>
+                    <a name="//apple_ref/swift/Method/upgradeType(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FO9Jenerator12JSONDataType11upgradeTypeFS0_S0_">upgradeType(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Increase specificity of Type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">upgradeType</span><span class="p">(</span><span class="nv">toType</span><span class="p">:</span> <span class="kt">JSONDataType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JSONDataType</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>toType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Target Type</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Turns an Int into a Double and a Null into a non-nil Type</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://github.com/romainmenke" target="_blank" rel="external">Romain Menke</a>. All rights reserved. (Last updated: 2016-06-05)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
