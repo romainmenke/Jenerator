@@ -1,0 +1,10 @@
+framework module JeneratorSDK {
+  umbrella header "JeneratorSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module JeneratorSDK.Swift {
+    header "JeneratorSDK-Swift.h"
+}

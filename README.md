@@ -15,10 +15,28 @@ There are many great libraries out there to make JSON responses from API's easie
 
 ### How?
 
-Jenerator comes in two forms : a Swift Framework and a Command Line Tool. 
+Jenerator comes in two forms : a Swift Framework and a Command Line Tool.
 
 - The Framework can be imported into your Xcode project where you would pass it a JSON response
 from an API call. Using the debug console you print out the generated code and copy/paste that into a new .swift file. Then you can pass the same JSON response to your newly generated model and start using the data. Before moving to production, you can remove Jenerator as it has no place there.
+
+```
+import JeneratorSDK
+```
+
+```
+guard let apiQueryUrl = NSURL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%202487889&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys") else {
+  print("not a valid url")
+  return
+}
+
+guard let builder = ModelBuilder.fromSource(apiQueryUrl, classPrefix: "YW")?.findAliasses() else {
+  print("invalid JSON, or no data")
+  return
+}
+
+print(SwiftGenerator.generate(model: builder))
+```
 
 - The CLI has two modes : local .json file or remote API call
 
@@ -38,7 +56,7 @@ An example can be found here:
 
 The generated Swift code will have template documentation making it easy for you to add some extra info about each Type.
 
-If the code was generated from a remote API call it will include a method to repeat the query. The method can be modified easily to have parameters. In seconds you can have an awesome dynamic SDK for any API. 
+If the code was generated from a remote API call it will include a method to repeat the query. The method can be modified easily to have parameters. In seconds you can have an awesome dynamic SDK for any API.
 
 
 Note :
