@@ -8,22 +8,62 @@
 
 import Foundation
 
-
+/**
+ Container for JSON data types
+ 
+ - JSONType:   Custom Type
+ - JSONArray:  Array Type
+ - JSONString: String
+ - JSONInt:    Int
+ - JSONDouble: Double
+ - JSONBool:   Bool
+ - JSONNull:   Nil
+ */
 indirect enum JSONDataType : Equatable, CustomStringConvertible {
+    
+    /**
+     *  Custom Type
+     *
+     *  @param type:String Name for the custom type
+     */
     case JSONType(type:String)
+    
+    /**
+     *  Array Type
+     *
+     *  @param type:JSONDataType Type of the array element
+     */
     case JSONArray(type:JSONDataType)
+    
+    /// String Type
     case JSONString
+    
+    /// Int Type
     case JSONInt
+    
+    /// FloatingPoint Type
     case JSONDouble
+    
+    /// Boolean Type
     case JSONBool
+    
+    /// Nil Type
     case JSONNull
     
+    /// returns the typeString
     var description: String {
         get {
             return typeString
         }
     }
     
+    /**
+     Generate a type based on an AnyObject
+     
+     - parameter object: A decoded JSON object
+     
+     - returns: A JSONDataType of the corresponding JSON Type
+     */
     static func generate(object:AnyObject) -> JSONDataType {
         
         if let object = object as? [AnyObject] {
@@ -49,6 +89,7 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
         return JSONDataType.JSONNull
     }
     
+    /// Swift equivalent of JSON type
     var typeString : String {
         get {
             switch self {
@@ -70,6 +111,7 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
         }
     }
     
+    /// Default value for field initialisation
     var defaultValue : String {
         get {
             switch self {
@@ -91,6 +133,7 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
         }
     }
     
+    /// True if JSONDataType is optional
     var optionalType : Bool {
         switch self {
         case .JSONType(_) :
@@ -102,6 +145,7 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
         }
     }
     
+    /// True if Array contains a Custom Type
     var isNestedArrayType : Bool {
         switch self {
         case .JSONArray(let type) where type.isNestedType :
@@ -111,6 +155,17 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
         }
     }
     
+    /// True if Type is a Custom Type
+    var isNestedType : Bool {
+        switch self {
+        case .JSONType(_) :
+            return true
+        default:
+            return false
+        }
+    }
+    
+    /// Returns Element Type for an Array Type
     var unNestOneDimension : JSONDataType {
         switch self {
         case .JSONArray(let type) :
@@ -120,6 +175,7 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
         }
     }
     
+    /// Returns True if Type is an Array Type with an Array Type as Element
     var isMultiDimensional : Bool {
         switch self {
         case .JSONArray(let type) :
@@ -134,10 +190,18 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
         }
     }
     
+    /// Returns the number of dimensions in a multi-dimensional Array Type
     var dimensions : Int {
         return gatherDimensions(0)
     }
     
+    /**
+     Recursive helper function for `dimensions`
+     
+     - parameter current: start with 0
+     
+     - returns: returns the number of dimensions
+     */
     private func gatherDimensions(current:Int) -> Int {
         switch self {
         case .JSONArray(let type) :
@@ -147,15 +211,13 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
         }
     }
     
-    var isNestedType : Bool {
-        switch self {
-        case .JSONType(_) :
-            return true
-        default:
-            return false
-        }
-    }
-    
+    /**
+     Construct the typeString for an Array Type with Class Prefix
+     
+     - parameter nameSpace: Class Prefix
+     
+     - returns: typeString
+     */
     func arrayTypeStringWithNameSpace(nameSpace:String) -> String {
         switch self {
         case .JSONArray(let type) :
@@ -165,6 +227,13 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
         }
     }
     
+    /**
+     Construct the typeString with Class Prefix
+     
+     - parameter nameSpace: Class Prefix
+     
+     - returns: typeString
+     */
     func typeStringWithNameSpace(nameSpace:String) -> String {
         switch self {
         case .JSONArray(let type) :
@@ -176,6 +245,13 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
         }
     }
     
+    /**
+     Change name of Custom Type
+     
+     - parameter name: the new name
+     
+     - returns: Custom Type with the new name
+     */
     func renameType(withNewName name:String) -> JSONDataType {
         switch self {
         case .JSONType(_) :
@@ -187,6 +263,13 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
         }
     }
     
+    /**
+     Increase specificity of Type
+     
+     - parameter toType: Target Type
+     
+     - returns: Turns an Int into a Double and a Null into a non-nil Type
+     */
     func upgradeType(toType: JSONDataType) -> JSONDataType {
         switch self {
         case .JSONInt :
@@ -205,10 +288,26 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
     }
 }
 
+/**
+ Equality
+ 
+ - parameter lhs: JSONDataType
+ - parameter rhs: JSONDataType
+ 
+ - returns: true if typeStrings are equal
+ */
 func == (lhs:JSONDataType,rhs:JSONDataType) -> Bool {
     return lhs.typeString == rhs.typeString
 }
 
+/**
+ Inequality
+ 
+ - parameter lhs: JSONDataType
+ - parameter rhs: JSONDataType
+ 
+ - returns: true if typeStrings are different
+ */
 func != (lhs:JSONDataType,rhs:JSONDataType) -> Bool {
     return !(lhs == rhs)
 }

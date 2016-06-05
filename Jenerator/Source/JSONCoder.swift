@@ -9,8 +9,18 @@
 import Foundation
 
 
+/**
+ *  JSON Helper Type
+ */
 struct JSONCoder {
     
+    /**
+     Encode a collection into NSJONSerialised NSData
+     
+     - parameter object: a collection
+     
+     - returns: NSData if the collection is a valid JSON Object and serialization succeeds
+     */
     static func encode(object:AnyObject) -> NSData? {
         guard NSJSONSerialization.isValidJSONObject(object) else {
             return nil
@@ -23,6 +33,13 @@ struct JSONCoder {
         }
     }
     
+    /**
+     Decode NSData into a collection
+     
+     - parameter data: NSData containing a JSON
+     
+     - returns: a collection if serialization succeeds
+     */
     static func decode(data:NSData) -> AnyObject? {
         do {
             let decoded = try NSJSONSerialization.JSONObjectWithData(data, options: [])

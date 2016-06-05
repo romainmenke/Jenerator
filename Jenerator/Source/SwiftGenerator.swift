@@ -8,8 +8,19 @@
 
 import Foundation
 
+
+/**
+ *  Swift Lang Code Generator
+ */
 public struct SwiftGenerator {
     
+    /**
+     Generate File Header
+     
+     - parameter model: A ModelBuilder that has analysed a JSON
+     
+     - returns: File Header as String
+     */
     private static func generateHeader(model model: ModelBuilder) -> String {
         
         var header = "\n"
@@ -22,6 +33,13 @@ public struct SwiftGenerator {
         
     }
     
+    /**
+     Generate Aliasses
+     
+     - parameter model: A ModelBuilder that has analysed a JSON
+     
+     - returns: Type Aliasses as String
+     */
     private static func generateAliasses(model model: ModelBuilder) -> String {
         
         guard model.typeAliasses.count > 0 else {
@@ -39,6 +57,14 @@ public struct SwiftGenerator {
         return aliasses
     }
     
+    /**
+     Generate Comments
+     
+     - parameter model: A ModelBuilder that has analysed a JSON
+     - parameter type:  The current Type
+     
+     - returns: Comments as String
+     */
     private static func generateStructComments(model model: ModelBuilder,type: JSONCustomType) -> String {
         
         var structComment = ""
@@ -50,6 +76,14 @@ public struct SwiftGenerator {
         return structComment
     }
     
+    /**
+     Generate Struct Header
+     
+     - parameter model: A ModelBuilder that has analysed a JSON
+     - parameter type:  The current Type
+     
+     - returns: Struct Header as String
+     */
     private static func generateStructHeader(model model: ModelBuilder, type: JSONCustomType) -> String {
         
         var structHeader = "\n"
@@ -61,6 +95,14 @@ public struct SwiftGenerator {
         return structHeader
     }
     
+    /**
+     Generate Fields
+     
+     - parameter model: A ModelBuilder that has analysed a JSON
+     - parameter type:  The current Type
+     
+     - returns: Fields as String
+     */
     private static func generateFields(model model: ModelBuilder, type: JSONCustomType) -> String {
         
         var structFields = "\n"
@@ -78,6 +120,14 @@ public struct SwiftGenerator {
         return structFields
     }
     
+    /**
+     Generate Struct Initialiser
+     
+     - parameter model: A ModelBuilder that has analysed a JSON
+     - parameter type:  The current Type
+     
+     - returns: Initialiser as String
+     */
     private static func generateStructInitialiser(model model: ModelBuilder, type: JSONCustomType) -> String {
         
         var structInitialiser = "\n"
@@ -107,8 +157,14 @@ public struct SwiftGenerator {
         return structInitialiser
     }
     
-    
-    
+    /**
+     Generate Array Initialiser
+     
+     - parameter model: A ModelBuilder that has analysed a JSON
+     - parameter field:  The current Field
+     
+     - returns: Initialiser as String
+     */
     private static func generateArrayInitialiser(model model: ModelBuilder, field: JSONField, currentIndent:String) -> String {
         
         let newIndent = currentIndent + "        "
@@ -131,6 +187,11 @@ public struct SwiftGenerator {
         return arrayInitialiser
     }
     
+    /**
+     Generate Fetch Comment
+     
+     - returns: Default Instructions
+     */
     private static func generateFetchComment() -> String {
         
         var fetchComment = ""
@@ -144,6 +205,14 @@ public struct SwiftGenerator {
         return fetchComment
     }
     
+    /**
+     Generate Fetch for Root Object
+     
+     - parameter model: A ModelBuilder that has analysed a JSON
+     - parameter type:  The current Type
+     
+     - returns: Fetch Method as String
+     */
     private static func generateFetch(model model: ModelBuilder, type: JSONCustomType) -> String {
         
         var fetchString = "\n"
@@ -179,7 +248,11 @@ public struct SwiftGenerator {
         return fetchString
     }
     
-    
+    /**
+     Generate Struct Footer
+     
+     - returns: Struct Footer as String
+     */
     private static func generateStructFooter() -> String {
         
         var structFooter = ""
@@ -190,6 +263,13 @@ public struct SwiftGenerator {
         return structFooter
     }
     
+    /**
+     Generate Swift Code based on Model
+     
+     - parameter model: A ModelBuilder that has analysed a JSON
+     
+     - returns: Generated Code if the model contained Types.
+     */
     public static func generate(model model:ModelBuilder) -> String? {
         
         guard model.types.count > 0 else {
