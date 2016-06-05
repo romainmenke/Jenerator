@@ -13,7 +13,7 @@ https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20wea
 
 Response :
 
-```
+```json
 {
   "query":
   {
@@ -43,7 +43,7 @@ Response :
 
 Result :
 
-```
+```swift
 // Generated with Jenerator : github.com/romainmenke/Jenerator
 
 import Foundation

@@ -20,11 +20,11 @@ Jenerator comes in two forms : a Swift Framework and a Command Line Tool.
 - The Framework can be imported into your Xcode project where you would pass it a JSON response
 from an API call. Using the debug console you print out the generated code and copy/paste that into a new .swift file. Then you can pass the same JSON response to your newly generated model and start using the data. Before moving to production, you can remove Jenerator as it has no place there.
 
-```
+```swift
 import JeneratorSDK
 ```
 
-```
+```swift
 guard let apiQueryUrl = NSURL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%202487889&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys") else {
   print("not a valid url")
   return
