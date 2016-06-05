@@ -14,7 +14,7 @@
     <a title="ModelBuilder Struct Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Jenerator Docs</a> (61% documented)</p>
+        <p><a href="../index.html">Jenerator Docs</a> (97% documented)</p>
         <p class="header-right"><a href="https://github.com/romainmenke/Jenerator"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -114,7 +114,13 @@
         <section>
           <section class="section">
             <h1>ModelBuilder</h1>
-            <p>Undocumented</p>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ModelBuilder</span></code></pre>
+
+                </div>
+              </div>
+            <p>JSON Analyser</p>
 
           </section>
           <section class="section task-group-section">
@@ -133,8 +139,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Types Found in the JSON data</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">types</span> <span class="p">:</span> <span class="p">[</span><span class="kt">JSONCustomType</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -152,8 +166,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Type Aliasses for Types with the same fields</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">typeAliasses</span> <span class="p">:</span> <span class="p">[</span><span class="kt">JSONTypeAlias</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -171,8 +193,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Root Object for the query and top level objects</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">root</span> <span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -190,8 +220,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>top level object is a dictionary, set to false if it is an array</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">dictionaryAtRoot</span> <span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -209,8 +247,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Source Url as String</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">source</span> <span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -228,8 +274,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Class Prefix for all Types</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">classPrefix</span> <span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -247,7 +301,66 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Initialiser</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">rootName</span> <span class="nv">root</span><span class="p">:</span><span class="kt">String</span><span class="p">,</span> <span class="nv">classPrefix</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">source</span><span class="p">:</span><span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>root</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Name for Root Object</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>classPrefix</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Class Prefix for All Types</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>source</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Source Url as String</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a ModelBuilder</p>
 
                       </div>
                     </section>
@@ -266,7 +379,40 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Array of AnyObject contains Dictionary</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">arrayContainsObjects</span><span class="p">(</span><span class="nv">array</span> <span class="p">:</span> <span class="p">[</span><span class="kt">AnyObject</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>array</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>an Array</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>true if Array.Element is of Type Dictionary</p>
 
                       </div>
                     </section>
@@ -285,7 +431,53 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Helper for multi-dimensional Arrays</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">buildMultiDimentionalArrayOfObject</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span><span class="kt">String</span><span class="p">,</span> <span class="nv">array</span><span class="p">:[</span><span class="kt">AnyObject</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">dataType</span><span class="p">:</span><span class="kt">JSONDataType</span><span class="p">,</span><span class="nv">content</span><span class="p">:[</span><span class="kt">String</span><span class="p">:</span><span class="kt">AnyObject</span><span class="p">]?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>name of the Type</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>array</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Array</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a JSONDataType and data of the first element that is not an Array</p>
 
                       </div>
                     </section>
@@ -304,7 +496,40 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Start of Analysis</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">buildModel</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span><span class="kt">AnyObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ModelBuilder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>data</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Data returned from an API call or read from a .json file</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A ModelBuilder containing the constructed Model</p>
 
                       </div>
                     </section>
@@ -323,7 +548,40 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Top level Object is an Array</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">startWithArray</span><span class="p">(</span><span class="nv">data</span><span class="p">:[</span><span class="kt">AnyObject</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">ModelBuilder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>data</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Data from JSON</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A ModelBuilder containing the constructed Model</p>
 
                       </div>
                     </section>
@@ -342,7 +600,40 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Top level Object is a Dictionary</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">startWithDictionary</span><span class="p">(</span><span class="nv">data</span><span class="p">:[</span><span class="kt">String</span><span class="p">:</span><span class="kt">AnyObject</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">ModelBuilder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>data</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Data from JSON</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A ModelBuilder containing the constructed Model</p>
 
                       </div>
                     </section>
@@ -361,7 +652,66 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Construct Types</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">buildTypes</span><span class="p">(</span><span class="nv">existingTypes</span><span class="p">:[</span><span class="kt">JSONCustomType</span><span class="p">],</span> <span class="nv">name</span><span class="p">:</span><span class="kt">String</span><span class="p">,</span> <span class="nv">fields</span><span class="p">:[</span><span class="kt">String</span><span class="p">:</span><span class="kt">AnyObject</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">JSONCustomType</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>existingTypes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Current found Types</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Field name</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fields</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Data for the field</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An Array of Types</p>
 
                       </div>
                     </section>
@@ -380,7 +730,20 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Strip duplicate Types from the model</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">findAliasses</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">ModelBuilder</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A ModelBuilder without duplicate Types but with Type Aliasses</p>
 
                       </div>
                     </section>
@@ -403,7 +766,53 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Constructer for a remote JSON source</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">fromSource</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span><span class="kt">NSURL</span><span class="p">,</span> <span class="nv">classPrefix</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ModelBuilder</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Url that will return the JSON</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>classPrefix</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Class Prefix for the Types</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>an initialised ModelBuilder if the url returned valid JSON data</p>
 
                       </div>
                     </section>
@@ -422,7 +831,53 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Constructer for a local JSON source</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">fromFile</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span><span class="kt">String</span><span class="p">,</span> <span class="nv">classPrefix</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ModelBuilder</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>path</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Path to a .json file as a string</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>classPrefix</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Class Prefix for the Types</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>an initialised ModelBuilder if the file contained valid JSON data</p>
 
                       </div>
                     </section>
