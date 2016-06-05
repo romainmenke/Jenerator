@@ -1,0 +1,7 @@
+swift_version: 2.2
+author: Romain Menke
+author_url: https://github.com/romainmenke
+module: Jenerator
+github_url: https://github.com/romainmenke/Jenerator
+skip_undocumented: true
+min_acl: private

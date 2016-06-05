@@ -8,9 +8,15 @@
 
 import Foundation
 
+/**
+ *  Container for Type Aliasses
+ */
 struct JSONTypeAlias : Equatable {
     
+    /// The Type that will be fully declared
     var original : JSONCustomType
+    
+    /// The Type that will be created as an alias
     var alias : JSONCustomType
     
     
