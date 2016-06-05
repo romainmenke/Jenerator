@@ -20,7 +20,7 @@ Jenerator comes in two forms : a Swift Framework and a Command Line Tool.
 - The Framework can be imported into your Xcode project where you would pass it a JSON response
 from an API call. Using the debug console you print out the generated code and copy/paste that into a new .swift file. Then you can passs the same JSON response to your newly generated model and start using the data.
 
-- The CLI has two modes : Local .json file and remote API call
+- The CLI has two modes : local .json file or remote API call
 
  - The local mode takes a path to .json file, a save file name and a class prefix. It will parse the .json file, build a model, generate the Swift code and save to a file with the specified name in the same directory as the .json file.
 
