@@ -13,19 +13,35 @@ import Foundation
  */
 struct JSONTypeAlias : Equatable {
     
-    /// The Type that will be fully declared
+    /// The type that will be fully declared
     var original : JSONCustomType
     
-    /// The Type that will be created as an alias
+    /// The type that will be created as an alias
     var alias : JSONCustomType
     
     
 }
 
+/**
+ Equality
+ 
+ - parameter lhs: JSONTypeAlias
+ - parameter rhs: JSONTypeAlias
+ 
+ - returns: true if both the alias and original are equal
+ */
 func ==(lhs:JSONTypeAlias,rhs:JSONTypeAlias) -> Bool {
     return lhs.alias == rhs.alias && lhs.original == rhs.original
 }
 
+/**
+ Inequality
+ 
+ - parameter lhs: JSONTypeAlias
+ - parameter rhs: JSONTypeAlias
+ 
+ - returns: true if either the alias or original is different
+ */
 func !=(lhs:JSONTypeAlias,rhs:JSONTypeAlias) -> Bool {
     return !(lhs == rhs)
 }

@@ -8,12 +8,18 @@
 
 import Foundation
 
-
+/**
+ *  A JSON dictionary
+ */
 struct JSONCustomType : Equatable, CustomStringConvertible {
     
+    /// The key-value pairs found in the JSON dictionary
     var fields : [JSONField] = []
+    
+    /// The name of the Type
     var name : String
     
+    /// Formatted list of the name and fields
     var description: String {
         get {
             var descr = ""
@@ -27,10 +33,26 @@ struct JSONCustomType : Equatable, CustomStringConvertible {
     }
 }
 
+/**
+ Equality
+ 
+ - parameter lhs: JSONCustomType
+ - parameter rhs: JSONCustomType
+ 
+ - returns: true if the names are equal
+ */
 func == (lhs:JSONCustomType,rhs:JSONCustomType) -> Bool {
     return lhs.name == rhs.name
 }
 
+/**
+ Inequality
+ 
+ - parameter lhs: JSONCustomType
+ - parameter rhs: JSONCustomType
+ 
+ - returns: true if the names are different
+ */
 func != (lhs:JSONCustomType,rhs:JSONCustomType) -> Bool {
     return !(lhs.name == rhs.name)
 }
