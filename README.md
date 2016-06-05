@@ -3,6 +3,7 @@
     <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat" alt="Swift" /></a>
     <a href="https://travis-ci.org/romainmenke/Jenerator"><img src="https://travis-ci.org/romainmenke/Jenerator.svg?branch=master" alt="Travis CI" /></a>
     <a href="https://codecov.io/gh/romainmenke/Jenerator"><img src="https://codecov.io/gh/romainmenke/Jenerator/branch/master/graph/badge.svg" alt="CodeCov" /></a>
+    <a href="https://github.com/romainmenke/Jenerator/docs/index.html"><img src="https://img.shields.io/badge/Documented-19%25-blue.svg" alt="Jazzy" /></a>
 </p>
 
 # Jenerator
@@ -13,7 +14,7 @@ Build it -> Drop somewhere in your PATH -> Profit
 
 Download from releases -> Drop somewhere in your PATH -> Profit
 
-cmd : 
+cmd :
 
 `jenerator "myJSONRemoteSource" "saveDirectory" "filename" "classPrefix"`
 
@@ -21,7 +22,7 @@ cmd :
 
 Try it:
 
-cmd : 
+cmd :
 
 `jenerator "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%202487889&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys" "$HOME/Desktop/" YahooWeatherCurrent YW`
 
@@ -49,7 +50,7 @@ turns this :
 }
 ```
 
-Into this : 
+Into this :
 
 
 ```

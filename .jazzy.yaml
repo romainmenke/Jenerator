@@ -5,3 +5,5 @@ module: Jenerator
 github_url: https://github.com/romainmenke/Jenerator
 skip_undocumented: true
 min_acl: private
+clean: true
+source_dir: /Users/romainmenke/Swift/src/github.com/romainmenke/Jenerator/Jenerator
