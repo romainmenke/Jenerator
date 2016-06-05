@@ -1,2 +1,5 @@
 # Ignore build results
 /build
+
+.DS_Store
+Jenerator.xcodeproj/project.xcworkspace/xcuserdata/romainmenke.xcuserdatad/UserInterfaceState.xcuserstate
