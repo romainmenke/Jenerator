@@ -34,7 +34,8 @@ The commands will look like this:
 
 An example can be found here:
 
-[Example](github.com/romainmenke/Jenerator/examples/sample "Example")
+[Example](https://github.com/romainmenke/Jenerator/tree/master/examples/sample "Example")
+
 
 The top level Type will have a `fromSource()` method that can be used to fetch the data to goes with the model. Obviously you can and should modify this to create other queries.
 
