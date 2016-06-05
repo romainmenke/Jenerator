@@ -1,6 +1,6 @@
 <p align="center">
 	<br>
-    <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-2.3-orange.svg?style=flat" alt="Swift" /></a>
+    <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-2.2-orange.svg?style=flat" alt="Swift" /></a>
     <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat" alt="Swift" /></a>
     <a href="https://travis-ci.org/romainmenke/Jenerator"><img src="https://travis-ci.org/romainmenke/Jenerator.svg?branch=master" alt="Travis CI" /></a>
     <a href="https://codecov.io/gh/romainmenke/Jenerator"><img src="https://codecov.io/gh/romainmenke/Jenerator/branch/master/graph/badge.svg" alt="CodeCov" /></a>
@@ -18,9 +18,9 @@ There are many great libraries out there to make JSON responses from API's easie
 Jenerator comes in two forms : a Swift Framework and a Command Line Tool. 
 
 - The Framework can be imported into your Xcode project where you would pass it a JSON response
-from an API call. Using the debug console you print out the generated code and copy/paste that into a new .swift file. Then you can passs the same JSON response to your newly generated model and start using the data.
+from an API call. Using the debug console you print out the generated code and copy/paste that into a new .swift file. Then you can pass the same JSON response to your newly generated model and start using the data. Before moving to production, you can remove Jenerator as it has no place there.
 
-- The CLI has two modes : Local .json file and remote API call
+- The CLI has two modes : local .json file or remote API call
 
  - The local mode takes a path to .json file, a save file name and a class prefix. It will parse the .json file, build a model, generate the Swift code and save to a file with the specified name in the same directory as the .json file.
 
@@ -36,10 +36,11 @@ An example can be found here:
 
 [Example](https://github.com/romainmenke/Jenerator/tree/master/examples/sample "Example")
 
+The generated Swift code will have template documentation making it easy for you to add some extra info about each Type.
 
-The top level Type will have a `fromSource()` method that can be used to fetch the data to goes with the model. Obviously you can and should modify this to create other queries.
+If the code was generated from a remote API call it will include a method to repeat the query. The method can be modified easily to have parameters. In seconds you can have an awesome dynamic SDK for any API. 
 
 
 Note :
 
-Swift CLI's don't like urls as arguments, will see if I can fix it in an update.
+Swift CLI's don't like urls as arguments, that is why they need the double quotes, I will see if I can fix it in an update.
