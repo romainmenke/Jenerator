@@ -18,7 +18,7 @@ There are many great libraries out there to make JSON responses from API's easie
 Jenerator comes in two forms : a Swift Framework and a Command Line Tool. 
 
 - The Framework can be imported into your Xcode project where you would pass it a JSON response
-from an API call. Using the debug console you print out the generated code and copy/paste that into a new .swift file. Then you can passs the same JSON response to your newly generated model and start using the data.
+from an API call. Using the debug console you print out the generated code and copy/paste that into a new .swift file. Then you can pass the same JSON response to your newly generated model and start using the data. Before moving to production, you can remove Jenerator as it has no place there.
 
 - The CLI has two modes : local .json file or remote API call
 
