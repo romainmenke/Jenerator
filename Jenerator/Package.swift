@@ -3,5 +3,6 @@ import PackageDescription
 
 let package = Package(
 	name: "Jenerator",
-	targets: []
+	targets: [].
+	exclude: ["Tests"]
 )
