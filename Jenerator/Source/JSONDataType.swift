@@ -64,25 +64,25 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
      
      - returns: A JSONDataType of the corresponding JSON Type
      */
-    static func generate(object object:AnyObject) -> JSONDataType {
+    static func generate(object value:AnyObject) -> JSONDataType {
         
-        if let object = object as? [AnyObject] {
-            if let first = object.first {
+        if let value = value as? [AnyObject] {
+            if let first = value.first {
                 return JSONDataType.JSONArray(type: JSONDataType.generate(object: first))
             }
             
             return JSONDataType.JSONArray(type: .JSONNull)
         }
         
-        if let number = object as? NSNumber {
+        if let number = value as? NSNumber {
             if number.isBool() {
                 return JSONDataType.JSONBool
-            } else if let int = object as? Int where int == number {
+            } else if let int = value as? Int where int == number {
                 return JSONDataType.JSONInt
             } else {
                 return JSONDataType.JSONDouble
             }
-        } else if object is String {
+        } else if value is String {
             return JSONDataType.JSONString
         }
             
