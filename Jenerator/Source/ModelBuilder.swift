@@ -229,7 +229,7 @@ public struct ModelBuilder {
             // Is a value
 
             // user generate to determine the type
-            let dataType = JSONDataType.generate(keyValuePair.1)
+            let dataType = JSONDataType.generate(object: keyValuePair.1)
             
             // create a field for the new type
             let field = JSONField(name: keyValuePair.0, type: dataType)

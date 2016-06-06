@@ -64,11 +64,11 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
      
      - returns: A JSONDataType of the corresponding JSON Type
      */
-    static func generate(object:AnyObject) -> JSONDataType {
+    static func generate(object object:AnyObject) -> JSONDataType {
         
         if let object = object as? [AnyObject] {
             if let first = object.first {
-                return JSONDataType.JSONArray(type: JSONDataType.generate(first))
+                return JSONDataType.JSONArray(type: JSONDataType.generate(object: first))
             }
             
             return JSONDataType.JSONArray(type: .JSONNull)
