@@ -90,6 +90,17 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
             
         #elseif os(Linux)
             
+            if let type = String.fromCString(value.objCType) {
+                switch type {
+                case "c" : print("is Bool", value as! Bool)
+                case "q" : print("is Int", value as! Int)
+                case "d" : print("is Double", value as! Double)
+                default :  print("no idea")
+                }
+            } else {
+                print("no matching objCType")
+            }
+            
             if let number = value as? NSNumber {
                 if number.isBool() {
                     return JSONDataType.JSONBool
