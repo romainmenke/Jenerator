@@ -96,7 +96,7 @@ func parseJSON() {
  */
 func writeToFile() {
     
-    if let builder = builder, let code = SwiftGenerator.generate(model: builder) {
+    if let builder = builder, let code = SwiftGenerator.generate(withModel: builder) {
         
         let modelFilePath = savePath + "/" + fileName
         

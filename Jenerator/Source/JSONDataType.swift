@@ -77,7 +77,7 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
         if let number = value as? NSNumber {
             if number.isBool() {
                 return JSONDataType.JSONBool
-            } else if let int = value as? Int where (int as NSNumber) == number {
+            } else if let int = value as? Int where NSNumber(long: int) == number {
                 return JSONDataType.JSONInt
             } else {
                 return JSONDataType.JSONDouble

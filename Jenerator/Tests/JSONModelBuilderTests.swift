@@ -178,7 +178,7 @@ class JSONModelBuilderTests: XCTestCase {
             return
         }
         
-        XCTAssert(SwiftGenerator.generate(model: builder.findAliasses()) != nil)
+        XCTAssert(SwiftGenerator.generate(withModel: builder.findAliasses()) != nil)
         
     }
     
@@ -195,7 +195,7 @@ class JSONModelBuilderTests: XCTestCase {
             return
         }
         
-        XCTAssert(SwiftGenerator.generate(model: builder.findAliasses()) != nil)
+        XCTAssert(SwiftGenerator.generate(withModel: builder.findAliasses()) != nil)
         
     }
     

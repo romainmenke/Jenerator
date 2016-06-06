@@ -24,7 +24,7 @@ struct JSONCoder {
      
      - returns: NSData if the collection is a valid JSON Object and serialization succeeds
      */
-    static func encode(object:Any) -> NSData? {
+    static func encode(_ object:Any) -> NSData? {
         
         guard let anyObject = object as? AnyObject where NSJSONSerialization.isValidJSONObject(anyObject) else {
             return nil
@@ -59,7 +59,7 @@ struct JSONCoder {
      
      - returns: a collection if serialization succeeds
      */
-    static func decode(data:NSData) -> AnyObject? {
+    static func decode(_ data:NSData) -> AnyObject? {
         
         #if os(OSX) || os(iOS) || os(watchOS) || os(tvOS)
             
@@ -76,13 +76,13 @@ struct JSONCoder {
             let count = data.length / sizeof(UInt8)
             
             // create array of appropriate length:
-            var array = [UInt8](count: count, repeatedValue: 0)
+            var array = [UInt8](repeatedValue: 0, count: count)
             
             // copy bytes into array
             data.getBytes(&array, length:count * sizeof(UInt8))
             
             do {
-                return try Jay().jsonFromData(data) as? AnyObject
+                return try Jay().jsonFromData(array) as? AnyObject
             } catch {
                 return nil
             }
