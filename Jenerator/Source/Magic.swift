@@ -72,9 +72,33 @@ extension NSURL {
      - returns: the url without it's last component
      */
     func removeLast() -> NSURL? {
-        var arrayOfComponents = self.absoluteString.characters.split("/")
+        var arrayOfComponents = self.absoluteString.split("/")
         arrayOfComponents.removeLast()
-        let url = String(arrayOfComponents.joinWithSeparator(["/"]))
+        let url = arrayOfComponents.reduce("", combine: { $0 + "/" + $1 })
         return NSURL(string: url)
+    }
+}
+
+
+extension String {
+    func split(_ on: Character) -> [String] {
+        
+        var segments = [String]()
+        var current = ""
+        
+        for char in self.characters {
+            if (char == on) {
+                segments.append(current)
+                current = ""
+            } else {
+                current.append(char)
+            }
+        }
+        
+        if current.characters.count > 0 {
+            segments.append(current)
+        }
+        
+        return segments
     }
 }

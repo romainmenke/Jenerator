@@ -285,7 +285,7 @@ public struct ModelBuilder {
             
             for alias in copy.typeAliasses {
                 if let index = copy.types.index(of: alias.alias) {
-                    copy.types.remove(index)
+                    copy.types.remove(at: index)
                 }
             }
             
