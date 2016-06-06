@@ -90,4 +90,12 @@ class MagicTests: XCTestCase {
         XCTAssert(anyAsNumber(boolFalseAny).isBool() == true)
         
     }
+    
+    func testRemoveLastComponent() {
+        let url = NSURL(string: "$HOME/Desktop")!
+        let compareUrl = NSURL(string: "$HOME")!
+        let urlWithoutLast = url.removeLast()!
+        
+        XCTAssert(urlWithoutLast == compareUrl)
+    }
 }

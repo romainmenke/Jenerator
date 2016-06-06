@@ -35,7 +35,17 @@ extension String {
     }
     /// Make the first character uppercase
     var uppercaseFirst: String {
-        return first.uppercaseString + String(characters.dropFirst())
+        
+        #if os(OSX) || os(iOS) || os(watchOS) || os(tvOS)
+            
+            return first.uppercaseString + String(characters.dropFirst())
+            
+        #elseif os(Linux)
+            
+            return first.uppercased() + String(characters.dropFirst())
+            
+        #endif
+        
     }
 }
 
@@ -62,6 +72,9 @@ extension NSURL {
      - returns: the url without it's last component
      */
     func removeLast() -> NSURL? {
-        return NSURL(string: self.absoluteString.stringByReplacingOccurrencesOfString(self.lastPathComponent ?? "", withString: ""))
+        var arrayOfComponents = self.absoluteString.characters.split("/")
+        arrayOfComponents.removeLast()
+        let url = String(arrayOfComponents.joinWithSeparator(["/"]))
+        return NSURL(string: url)
     }
 }
