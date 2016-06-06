@@ -15,7 +15,7 @@ extension Array where Element : Equatable {
      
      - parameter element: a new element
      */
-    mutating func appendUnique(element:Element) {
+    mutating func appendUnique(_ element:Element) {
         if self.contains(element) {
             return
         } else {

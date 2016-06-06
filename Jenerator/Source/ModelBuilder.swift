@@ -74,7 +74,7 @@ public struct ModelBuilder {
      
      - returns: a JSONDataType and data of the first element that is not an Array
      */
-    func buildMultiDimentionalArrayOfObject(name:String, array:[AnyObject]) -> (dataType:JSONDataType,content:[String:AnyObject]?) {
+    func buildMultiDimentionalArrayOfObject(_ name:String, array:[AnyObject]) -> (dataType:JSONDataType,content:[String:AnyObject]?) {
         var type = JSONDataType.JSONArray(type: JSONDataType.JSONNull)
         var current = array
         while let first = current.first as? [AnyObject] {
@@ -161,7 +161,7 @@ public struct ModelBuilder {
      
      - returns: An Array of Types
      */
-    private func buildTypes(existingTypes:[JSONCustomType], name:String, fields:[String:AnyObject]) -> [JSONCustomType] {
+    private func buildTypes(_ existingTypes:[JSONCustomType], name:String, fields:[String:AnyObject]) -> [JSONCustomType] {
         
         var currentTypes = existingTypes
         
@@ -273,11 +273,23 @@ public struct ModelBuilder {
             }
         }
         
-        for alias in copy.typeAliasses {
-            if let index = copy.types.indexOf(alias.alias) {
-                copy.types.removeAtIndex(index)
+        #if os(OSX) || os(iOS) || os(watchOS) || os(tvOS)
+            
+            for alias in copy.typeAliasses {
+                if let index = copy.types.indexOf(alias.alias) {
+                    copy.types.removeAtIndex(index)
+                }
             }
-        }
+            
+        #elseif os(Linux)
+            
+            for alias in copy.typeAliasses {
+                if let index = copy.types.index(of: alias.alias) {
+                    copy.types.removeAtIndex(index)
+                }
+            }
+            
+        #endif
         
         return copy
     }
