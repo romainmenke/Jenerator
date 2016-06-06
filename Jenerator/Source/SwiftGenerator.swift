@@ -108,7 +108,7 @@ public struct SwiftGenerator {
         var structFields = "\n"
         
         for field in type.fields {
-            structFields += "    var \(field.name) : \(field.type.typeStringWithNameSpace(model.classPrefix))"
+            structFields += "    var \(field.name) : \(field.type.typeStringWithClassPrefix(classPrefix: model.classPrefix))"
             if field.type.optionalType {
                 structFields += "?\n"
             } else {
@@ -145,10 +145,10 @@ public struct SwiftGenerator {
                 structInitialiser += "        }\n"
             } else if field.type.isNestedType {
                 structInitialiser += "        if let object = data[\"\(field.name)\"] as? [String:AnyObject] {\n"
-                structInitialiser += "            self.\(field.name) = \(field.type.typeStringWithNameSpace(model.classPrefix))(data: object)\n"
+                structInitialiser += "            self.\(field.name) = \(field.type.typeStringWithClassPrefix(classPrefix: model.classPrefix))(data: object)\n"
                 structInitialiser += "        }\n"
             } else {
-                structInitialiser += "        self.\(field.name) = (data[\"\(field.name)\"] as? \(field.type.typeStringWithNameSpace(model.classPrefix))) ?? \(field.type.defaultValue)\n"
+                structInitialiser += "        self.\(field.name) = (data[\"\(field.name)\"] as? \(field.type.typeStringWithClassPrefix(classPrefix: model.classPrefix))) ?? \(field.type.defaultValue)\n"
             }
         }
         structInitialiser += "    }\n"
@@ -179,7 +179,7 @@ public struct SwiftGenerator {
             arrayInitialiser +=     "    }\n"
         } else {
             arrayInitialiser +=     "\(currentIndent)    if let element = element as? [String:AnyObject] {\n"
-            arrayInitialiser +=     "\(currentIndent)        self.\(field.name).append(\(field.type.arrayTypeStringWithNameSpace(model.classPrefix))(data: element))\n"
+            arrayInitialiser +=     "\(currentIndent)        self.\(field.name).append(\(field.type.arrayTypeStringWithClassPrefix(classPrefix: model.classPrefix))(data: element))\n"
             arrayInitialiser +=     "\(currentIndent)    }\n"
         }
         arrayInitialiser +=         "\(currentIndent)}\n"

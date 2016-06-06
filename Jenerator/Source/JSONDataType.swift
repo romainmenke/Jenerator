@@ -77,7 +77,7 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
         if let number = value as? NSNumber {
             if number.isBool() {
                 return JSONDataType.JSONBool
-            } else if let int = value as? Int where int == number {
+            } else if let int = value as? Int where (int as NSNumber) == number {
                 return JSONDataType.JSONInt
             } else {
                 return JSONDataType.JSONDouble
@@ -192,7 +192,7 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
     
     /// Returns the number of dimensions in a multi-dimensional Array Type
     var dimensions : Int {
-        return gatherDimensions(0)
+        return gatherDimensions(currentDimension: 0)
     }
     
     /**
@@ -202,10 +202,10 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
      
      - returns: returns the number of dimensions
      */
-    private func gatherDimensions(current:Int) -> Int {
+    private func gatherDimensions(currentDimension current:Int) -> Int {
         switch self {
         case .JSONArray(let type) :
-            return type.gatherDimensions(current + 1)
+            return type.gatherDimensions(currentDimension: current + 1)
         default:
             return current
         }
@@ -218,12 +218,12 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
      
      - returns: typeString
      */
-    func arrayTypeStringWithNameSpace(nameSpace:String) -> String {
+    func arrayTypeStringWithClassPrefix(classPrefix cp:String) -> String {
         switch self {
         case .JSONArray(let type) :
-            return type.arrayTypeStringWithNameSpace(nameSpace)
+            return type.arrayTypeStringWithClassPrefix(classPrefix: cp)
         default:
-            return self.typeStringWithNameSpace(nameSpace)
+            return self.typeStringWithClassPrefix(classPrefix: cp)
         }
     }
     
@@ -234,12 +234,12 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
      
      - returns: typeString
      */
-    func typeStringWithNameSpace(nameSpace:String) -> String {
+    func typeStringWithClassPrefix(classPrefix cp:String) -> String {
         switch self {
         case .JSONArray(let type) :
-            return "[\(type.typeStringWithNameSpace(nameSpace).uppercaseFirst)]"
+            return "[\(type.typeStringWithClassPrefix(classPrefix: cp).uppercaseFirst)]"
         case .JSONType(_) :
-            return nameSpace + typeString
+            return cp + typeString
         default:
             return typeString
         }
@@ -270,18 +270,18 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
      
      - returns: Turns an Int into a Double and a Null into a non-nil Type
      */
-    func upgradeType(toType: JSONDataType) -> JSONDataType {
+    func upgradeType(toType target: JSONDataType) -> JSONDataType {
         switch self {
         case .JSONInt :
-            if toType == .JSONDouble {
+            if target == .JSONDouble {
                 return .JSONDouble
             } else {
                 return self
             }
         case .JSONNull :
-            return toType
+            return target
         case .JSONArray(let type) :
-            return .JSONArray(type: type.upgradeType(toType))
+            return .JSONArray(type: type.upgradeType(toType: target))
         default:
             return self
         }

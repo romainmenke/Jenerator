@@ -79,11 +79,11 @@ public struct ModelBuilder {
         var current = array
         while let first = current.first as? [AnyObject] {
             current = first
-            type = type.upgradeType(JSONDataType.JSONArray(type: JSONDataType.JSONNull))
+            type = type.upgradeType(toType: JSONDataType.JSONArray(type: JSONDataType.JSONNull))
         }
         
         if let content = current.first as? [String:AnyObject] {
-            type = type.upgradeType(JSONDataType.JSONType(type: name))
+            type = type.upgradeType(toType: JSONDataType.JSONType(type: name))
             return (type,content)
         }
         

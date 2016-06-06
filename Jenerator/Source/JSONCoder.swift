@@ -42,7 +42,7 @@ struct JSONCoder {
         #elseif os(Linux)
             
             do {
-                let dataOut = try Jay().dataFromAnyJson(json: object)
+                let dataOut = try Jay().dataFromJson(object)
                 return NSData(bytes: dataOut, length: dataOut.count)
             } catch {
                 return nil
