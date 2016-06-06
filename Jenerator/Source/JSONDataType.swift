@@ -74,17 +74,35 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
             return JSONDataType.JSONArray(type: .JSONNull)
         }
         
-        if let number = value as? NSNumber {
-            if number.isBool() {
-                return JSONDataType.JSONBool
-            } else if let int = value as? Int where NSNumber(long: int) == number {
-                return JSONDataType.JSONInt
-            } else {
-                return JSONDataType.JSONDouble
+        #if os(OSX) || os(iOS) || os(watchOS) || os(tvOS)
+            
+            if let number = value as? NSNumber {
+                if number.isBool() {
+                    return JSONDataType.JSONBool
+                } else if let int = value as? Int where NSNumber(long: int) == number {
+                    return JSONDataType.JSONInt
+                } else {
+                    return JSONDataType.JSONDouble
+                }
+            } else if value is String {
+                return JSONDataType.JSONString
             }
-        } else if value is String {
-            return JSONDataType.JSONString
-        }
+            
+        #elseif os(Linux)
+            
+            if let number = value as? NSNumber {
+                if number.isBool() {
+                    return JSONDataType.JSONBool
+                } else if let int = value as? Int where NSNumber(value: int) == number {
+                    return JSONDataType.JSONInt
+                } else {
+                    return JSONDataType.JSONDouble
+                }
+            } else if value is String {
+                return JSONDataType.JSONString
+            }
+            
+        #endif
             
         return JSONDataType.JSONNull
     }

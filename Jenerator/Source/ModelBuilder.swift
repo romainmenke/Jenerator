@@ -53,7 +53,7 @@ public struct ModelBuilder {
      
      - returns: true if Array.Element is of Type Dictionary
      */
-    func arrayContainsObjects(array : [AnyObject]) -> Bool {
+    func arrayContainsObjects(_ array : [AnyObject]) -> Bool {
         var current = array
         while let first = current.first as? [AnyObject] {
             current = first
@@ -97,7 +97,7 @@ public struct ModelBuilder {
      
      - returns: A ModelBuilder containing the constructed Model
      */
-    public func buildModel(data:AnyObject) -> ModelBuilder {
+    public func buildModel(_ data:AnyObject) -> ModelBuilder {
         if let data = data as? [String:AnyObject] {
             return self.startWithDictionary(data)
         } else if let data = data as? [AnyObject] {
@@ -113,7 +113,7 @@ public struct ModelBuilder {
      
      - returns: A ModelBuilder containing the constructed Model
      */
-    private func startWithArray(data:[AnyObject]) -> ModelBuilder {
+    private func startWithArray(_ data:[AnyObject]) -> ModelBuilder {
         var copy = self
         copy.dictionaryAtRoot = false
         let (dataType,content) = copy.buildMultiDimentionalArrayOfObject("element", array: data)
@@ -146,7 +146,7 @@ public struct ModelBuilder {
      
      - returns: A ModelBuilder containing the constructed Model
      */
-    private func startWithDictionary(data:[String:AnyObject]) -> ModelBuilder {
+    private func startWithDictionary(_ data:[String:AnyObject]) -> ModelBuilder {
         var copy = self
         copy.types = copy.buildTypes(copy.types, name: copy.root, fields: data)
         return copy

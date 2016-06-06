@@ -76,7 +76,7 @@ struct JSONCoder {
             let count = data.length / sizeof(UInt8)
             
             // create array of appropriate length:
-            var array = [UInt8](repeatedValue: 0, count: count)
+            var array = [UInt8](repeating: 0, count: count)
             
             // copy bytes into array
             data.getBytes(&array, length:count * sizeof(UInt8))
