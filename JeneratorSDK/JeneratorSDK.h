@@ -2,7 +2,7 @@
 //  JeneratorSDK.h
 //  JeneratorSDK
 //
-//  Created by XcodeBuildServer on 04/06/16.
+//  Created by Romain Menke on 04/06/16.
 //  Copyright © 2016 menke-dev. All rights reserved.
 //
 

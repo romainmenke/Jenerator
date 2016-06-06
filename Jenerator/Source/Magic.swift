@@ -53,3 +53,15 @@ extension NSNumber {
     }
     
 }
+
+
+extension NSURL {
+    /**
+     Drop the last component from an NSURL
+     
+     - returns: the url without it's last component
+     */
+    func removeLast() -> NSURL? {
+        return NSURL(string: self.absoluteString.stringByReplacingOccurrencesOfString(self.lastPathComponent ?? "", withString: ""))
+    }
+}

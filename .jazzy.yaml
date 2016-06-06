@@ -3,6 +3,10 @@ author: Romain Menke
 author_url: https://github.com/romainmenke
 module: Jenerator
 github_url: https://github.com/romainmenke/Jenerator
-skip_undocumented: false
+skip_undocumented: true
 min_acl: private
 clean: true
+exclude:
+    - Jenerator/Dependencies/CommandLine/Source/CommandLine.swift
+    - Jenerator/Dependencies/CommandLine/Source/StringExtensions.swift
+    - Jenerator/Dependencies/CommandLine/Source/Option.swift
