@@ -8,6 +8,9 @@
 
 import Foundation
 
+#if os(Linux)
+    import Jay
+#endif
 
 /**
  *  JSON Helper Type
@@ -21,16 +24,32 @@ struct JSONCoder {
      
      - returns: NSData if the collection is a valid JSON Object and serialization succeeds
      */
-    static func encode(object:AnyObject) -> NSData? {
-        guard NSJSONSerialization.isValidJSONObject(object) else {
+    static func encode(object:Any) -> NSData? {
+        
+        guard let anyObject = object as? AnyObject where NSJSONSerialization.isValidJSONObject(anyObject) else {
             return nil
         }
-        do {
-            let jsonData = try NSJSONSerialization.dataWithJSONObject(object, options: NSJSONWritingOptions.PrettyPrinted)
-            return jsonData
-        } catch _ as NSError {
-            return nil
-        }
+        
+        #if os(OSX) || os(iOS) || os(watchOS) || os(tvOS)
+
+            do {
+                let jsonData = try NSJSONSerialization.dataWithJSONObject(anyObject, options: NSJSONWritingOptions.PrettyPrinted)
+                return jsonData
+            } catch _ as NSError {
+                return nil
+            }
+            
+        #elseif os(Linux)
+            
+            do {
+                let dataOut = try Jay().dataFromAnyJson(json: object)
+                return NSData(bytes: dataOut, length: dataOut.count)
+            } catch {
+                return nil
+            }
+            
+        #endif
+        
     }
     
     /**
@@ -41,12 +60,34 @@ struct JSONCoder {
      - returns: a collection if serialization succeeds
      */
     static func decode(data:NSData) -> AnyObject? {
-        do {
-            let decoded = try NSJSONSerialization.JSONObjectWithData(data, options: [])
-            return decoded
-        } catch _ as NSError {
-            return nil
-        }
+        
+        #if os(OSX) || os(iOS) || os(watchOS) || os(tvOS)
+            
+            do {
+                return try NSJSONSerialization.JSONObjectWithData(data, options: [])
+            } catch _ as NSError {
+                return nil
+            }
+            
+        #elseif os(Linux)
+            
+            // http://stackoverflow.com/a/24516400/4263818
+            
+            let count = data.length / sizeof(UInt8)
+            
+            // create array of appropriate length:
+            var array = [UInt8](count: count, repeatedValue: 0)
+            
+            // copy bytes into array
+            data.getBytes(&array, length:count * sizeof(UInt8))
+            
+            do {
+                return try Jay().jsonFromData(data) as? AnyObject
+            } catch {
+                return nil
+            }
+            
+        #endif
     }
     
 }
