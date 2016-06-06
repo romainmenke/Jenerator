@@ -57,9 +57,13 @@ extension NSNumber {
      - returns: true if the object is a Bool
      */
     func isBool() -> Bool {
-        let boolID = CFBooleanGetTypeID() // the type ID of CFBoolean
-        let numID = CFGetTypeID(self) // the type ID of num
-        return numID == boolID
+        #if os(OSX) || os(iOS) || os(watchOS) || os(tvOS)
+            let boolID = CFBooleanGetTypeID() // the type ID of CFBoolean
+            let numID = CFGetTypeID(self) // the type ID of num
+            return numID == boolID
+        #elseif os(Linux)
+            return false
+        #endif
     }
     
 }
