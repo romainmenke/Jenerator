@@ -7,7 +7,6 @@
       "someBool":true,
       "someString":"text",
       "someNull":null,
-      "otherNull":{},
       "someArray":
         [
           1,
