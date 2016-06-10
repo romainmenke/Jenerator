@@ -1,7 +1,6 @@
 <p align="center">
 	<br>
     <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-2.2-orange.svg?style=flat" alt="Swift" /></a>
-    <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat" alt="Swift" /></a>
     <a href="https://travis-ci.org/romainmenke/Jenerator"><img src="https://travis-ci.org/romainmenke/Jenerator.svg?branch=master" alt="Travis CI" /></a>
     <a href="https://codecov.io/gh/romainmenke/Jenerator"><img src="https://codecov.io/gh/romainmenke/Jenerator/branch/master/graph/badge.svg" alt="CodeCov" /></a>
     <a href="http://romainmenke.github.io/Jenerator/"><img src="https://img.shields.io/badge/Documented-100%25-blue.svg" alt="Jazzy" /></a>
@@ -64,7 +63,14 @@ The commands will look like this:
 
 ### See More
 
-An example can be found here:
+Jenerator as a service is avaiable here :
+
+[Jenerator](http://52.51.22.243)
+
+That link goes to a dockerized Kitura web server running Jenerator as a Package. So it is a Swift server generating Swift code to talk to servers. Since it is hosted on AWS without any fancy routing the link might break.
+
+
+Examples can be found here:
 
 [Example](https://github.com/romainmenke/Jenerator/tree/master/examples/sample "Example")
 
