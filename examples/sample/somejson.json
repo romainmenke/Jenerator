@@ -6,6 +6,7 @@
       "someDouble":1.1,
       "someBool":true,
       "someString":"text",
+      "someNull":,
       "someArray":
         [
           1,
