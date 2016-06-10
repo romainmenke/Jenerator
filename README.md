@@ -63,11 +63,11 @@ The commands will look like this:
 
 ### See More
 
-Jenerator as a service is avaiable here :
+Jenerator as a service is available here :
 
 [Jenerator](http://52.51.22.243)
 
-That link goes to a dockerized Kitura web server running Jenerator as a Package. So it is a Swift server generating Swift code to talk to servers. Since it is hosted on AWS without any fancy routing the link might break.
+That link goes to a dockerized Kitura web server running Jenerator as a Package. So it is a Swift server generating Swift code to talk to servers. Since it is hosted on AWS without any fancy routing the link might break. Type determination is not as good without access to obj-c. Will be patched in an updated.
 
 
 Examples can be found here:
