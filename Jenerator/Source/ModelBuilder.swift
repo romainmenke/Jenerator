@@ -53,7 +53,7 @@ public struct ModelBuilder {
      
      - returns: true if Array.Element is of Type Dictionary
      */
-    func arrayContainsObjects(array : [AnyObject]) -> Bool {
+    func arrayContainsObjects(_ array : [AnyObject]) -> Bool {
         var current = array
         while let first = current.first as? [AnyObject] {
             current = first
@@ -74,16 +74,16 @@ public struct ModelBuilder {
      
      - returns: a JSONDataType and data of the first element that is not an Array
      */
-    func buildMultiDimentionalArrayOfObject(name:String, array:[AnyObject]) -> (dataType:JSONDataType,content:[String:AnyObject]?) {
+    func buildMultiDimentionalArrayOfObject(withName name:String, array:[AnyObject]) -> (dataType:JSONDataType,content:[String:AnyObject]?) {
         var type = JSONDataType.JSONArray(type: JSONDataType.JSONNull)
         var current = array
         while let first = current.first as? [AnyObject] {
             current = first
-            type = type.upgradeType(JSONDataType.JSONArray(type: JSONDataType.JSONNull))
+            type = type.upgrade(toType: JSONDataType.JSONArray(type: JSONDataType.JSONNull))
         }
         
         if let content = current.first as? [String:AnyObject] {
-            type = type.upgradeType(JSONDataType.JSONType(type: name))
+            type = type.upgrade(toType: JSONDataType.JSONType(type: name))
             return (type,content)
         }
         
@@ -97,11 +97,11 @@ public struct ModelBuilder {
      
      - returns: A ModelBuilder containing the constructed Model
      */
-    public func buildModel(data:AnyObject) -> ModelBuilder {
+    public func buildModel(fromData data:AnyObject) -> ModelBuilder {
         if let data = data as? [String:AnyObject] {
-            return self.startWithDictionary(data)
+            return self.startWithDictionary(fromData: data)
         } else if let data = data as? [AnyObject] {
-            return self.startWithArray(data)
+            return self.startWithArray(fromData: data)
         }
         return self
     }
@@ -113,10 +113,10 @@ public struct ModelBuilder {
      
      - returns: A ModelBuilder containing the constructed Model
      */
-    private func startWithArray(data:[AnyObject]) -> ModelBuilder {
+    private func startWithArray(fromData data:[AnyObject]) -> ModelBuilder {
         var copy = self
         copy.dictionaryAtRoot = false
-        let (dataType,content) = copy.buildMultiDimentionalArrayOfObject("element", array: data)
+        let (dataType,content) = copy.buildMultiDimentionalArrayOfObject(withName: "element", array: data)
         // create a field for the new type
         let field = JSONField(name: copy.root, type: dataType)
         let type = JSONCustomType(fields: [field], name: copy.root)
@@ -126,7 +126,7 @@ public struct ModelBuilder {
         if let content = content {
             
             // recursion !!
-            let nestedTypes = buildTypes(copy.types, name: "element", fields: content)
+            let nestedTypes = buildTypes(withExistingTypes: copy.types, name: "element", fields: content)
             
             // iterate over the nested types
             for type in nestedTypes {
@@ -146,9 +146,9 @@ public struct ModelBuilder {
      
      - returns: A ModelBuilder containing the constructed Model
      */
-    private func startWithDictionary(data:[String:AnyObject]) -> ModelBuilder {
+    private func startWithDictionary(fromData data:[String:AnyObject]) -> ModelBuilder {
         var copy = self
-        copy.types = copy.buildTypes(copy.types, name: copy.root, fields: data)
+        copy.types = copy.buildTypes(withExistingTypes: copy.types, name: copy.root, fields: data)
         return copy
     }
     
@@ -161,7 +161,7 @@ public struct ModelBuilder {
      
      - returns: An Array of Types
      */
-    private func buildTypes(existingTypes:[JSONCustomType], name:String, fields:[String:AnyObject]) -> [JSONCustomType] {
+    private func buildTypes(withExistingTypes existingTypes:[JSONCustomType], name:String, fields:[String:AnyObject]) -> [JSONCustomType] {
         
         var currentTypes = existingTypes
         
@@ -173,7 +173,7 @@ public struct ModelBuilder {
             if let array = keyValuePair.1 as? [AnyObject] where arrayContainsObjects(array) {
                 
                 // retreive datatype and nested content
-                let (dataType,content) = buildMultiDimentionalArrayOfObject(keyValuePair.0, array: array)
+                let (dataType,content) = buildMultiDimentionalArrayOfObject(withName: keyValuePair.0, array: array)
                 
                 // create a field for the new type
                 let field = JSONField(name: keyValuePair.0, type: dataType)
@@ -185,7 +185,7 @@ public struct ModelBuilder {
                 if let content = content {
                     
                     // recursion !!
-                    let nestedTypes = buildTypes(currentTypes, name: keyValuePair.0, fields: content)
+                    let nestedTypes = buildTypes(withExistingTypes: currentTypes, name: keyValuePair.0, fields: content)
                     
                     // iterate over the nested types
                     for type in nestedTypes {
@@ -212,7 +212,7 @@ public struct ModelBuilder {
                 newCustomType.fields.appendUnique(field)
                 
                 // recursion !!
-                let nestedTypes = buildTypes(currentTypes, name: keyValuePair.0, fields: dict)
+                let nestedTypes = buildTypes(withExistingTypes: currentTypes, name: keyValuePair.0, fields: dict)
                 
                 // iterate over the nested types
                 for type in nestedTypes {
@@ -229,7 +229,7 @@ public struct ModelBuilder {
             // Is a value
 
             // user generate to determine the type
-            let dataType = JSONDataType.generate(keyValuePair.1)
+            let dataType = JSONDataType.generate(withObject: keyValuePair.1)
             
             // create a field for the new type
             let field = JSONField(name: keyValuePair.0, type: dataType)
@@ -274,8 +274,8 @@ public struct ModelBuilder {
         }
         
         for alias in copy.typeAliasses {
-            if let index = copy.types.indexOf(alias.alias) {
-                copy.types.removeAtIndex(index)
+            if let index = copy.types.index(of: alias.alias) {
+                copy.types.remove(at: index)
             }
         }
         

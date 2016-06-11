@@ -15,7 +15,7 @@ extension Array where Element : Equatable {
      
      - parameter element: a new element
      */
-    mutating func appendUnique(element:Element) {
+    mutating func appendUnique(_ element:Element) {
         if self.contains(element) {
             return
         } else {
@@ -35,7 +35,7 @@ extension String {
     }
     /// Make the first character uppercase
     var uppercaseFirst: String {
-        return first.uppercaseString + String(characters.dropFirst())
+        return first.uppercased() + String(characters.dropFirst())
     }
 }
 
@@ -62,6 +62,6 @@ extension NSURL {
      - returns: the url without it's last component
      */
     func removeLast() -> NSURL? {
-        return NSURL(string: self.absoluteString.stringByReplacingOccurrencesOfString(self.lastPathComponent ?? "", withString: ""))
+        return NSURL(string: self.absoluteString.replacingOccurrences(of: self.lastPathComponent ?? "", with: ""))
     }
 }

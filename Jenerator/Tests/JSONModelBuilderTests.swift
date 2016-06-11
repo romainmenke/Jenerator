@@ -37,7 +37,7 @@ class JSONModelBuilderTests: XCTestCase {
         let object = [[[["some":"foo"]]]]
         
         let builder = ModelBuilder(rootName: "Root", classPrefix: "UT")
-        let (result,content) = builder.buildMultiDimentionalArrayOfObject("name", array: object)
+        let (result,content) = builder.buildMultiDimentionalArrayOfObject(withName: "name", array: object)
         
         let testType = JSONDataType.JSONArray(type: JSONDataType.JSONArray(type: JSONDataType.JSONArray(type: JSONDataType.JSONType(type: "name"))))
         
@@ -63,7 +63,7 @@ class JSONModelBuilderTests: XCTestCase {
         
         let builder = ModelBuilder(rootName: "container", classPrefix: "UT")
         
-        let types = builder.buildModel(object).types
+        let types = builder.buildModel(fromData: object).types
         XCTAssert(types.count == 3)
         
         for type in types {
@@ -109,7 +109,7 @@ class JSONModelBuilderTests: XCTestCase {
         
         let builder = ModelBuilder(rootName: "container", classPrefix: "UT")
         
-        let types = builder.buildModel(object).types
+        let types = builder.buildModel(fromData: object).types
         
         XCTAssert(types.count == 3)
         
@@ -142,11 +142,11 @@ class JSONModelBuilderTests: XCTestCase {
     func testBuildTypesDelta() {
         
         let objectA : [String:AnyObject] = ["user":["name":"bob"]]
-        let builderA = ModelBuilder(rootName: "container", classPrefix: "UT").buildModel(objectA)
+        let builderA = ModelBuilder(rootName: "container", classPrefix: "UT").buildModel(fromData: objectA)
         XCTAssert(builderA.types.count == 2)
         
         let objectB : [[String:AnyObject]] = [["user":["name":"bob"]]]
-        let builderB = ModelBuilder(rootName: "container", classPrefix: "UT").buildModel(objectB)
+        let builderB = ModelBuilder(rootName: "container", classPrefix: "UT").buildModel(fromData: objectB)
         
         NSLog((builderB.types.filter { $0.name == "container" }.first!).description)
         NSLog((builderB.types.filter { $0.name == "element" }.first!).description)
@@ -159,7 +159,7 @@ class JSONModelBuilderTests: XCTestCase {
         
         let object : [String:AnyObject] = ["user":["stats":["level":1,"power":"invisibility"],"secondaryStats":["level":2,"power":"always hungry"]]]
         
-        let builder = ModelBuilder(rootName: "container", classPrefix: "UT").buildModel(object).findAliasses()
+        let builder = ModelBuilder(rootName: "container", classPrefix: "UT").buildModel(fromData: object).findAliasses()
         
         XCTAssert(builder.types.count == 3)
         XCTAssert(builder.typeAliasses.count == 1)
@@ -178,13 +178,14 @@ class JSONModelBuilderTests: XCTestCase {
             return
         }
         
-        XCTAssert(SwiftGenerator.generate(model: builder.findAliasses()) != nil)
+        XCTAssert(SwiftGenerator.generate(fromModel: builder.findAliasses()) != nil)
+        XCTAssert(builder.types.count != 0)
         
     }
     
     func testFromFileExpectSuccess() {
         
-        guard let path = NSBundle(forClass: JSONModelBuilderTests.self).pathForResource("json-test-alpha", ofType: "json") else {
+        guard let path = NSBundle(for: JSONModelBuilderTests.self).pathForResource("json-test-alpha", ofType: "json") else {
             XCTFail()
             return
         }
@@ -195,7 +196,7 @@ class JSONModelBuilderTests: XCTestCase {
             return
         }
         
-        XCTAssert(SwiftGenerator.generate(model: builder.findAliasses()) != nil)
+        XCTAssert(SwiftGenerator.generate(fromModel: builder.findAliasses()) != nil)
         
     }
     
@@ -216,7 +217,7 @@ class JSONModelBuilderTests: XCTestCase {
     
     func testFromFileExpectFail() {
         
-        guard let path = NSBundle(forClass: JSONModelBuilderTests.self).pathForResource("json-test-beta", ofType: "json") else {
+        guard let path = NSBundle(for: JSONModelBuilderTests.self).pathForResource("json-test-beta", ofType: "json") else {
             XCTFail()
             return
         }
@@ -232,7 +233,7 @@ class JSONModelBuilderTests: XCTestCase {
     
     func testFromFileExpectFailBeta() {
         
-        guard let path = NSBundle(forClass: JSONModelBuilderTests.self).pathForResource("json-test-beta", ofType: "json") else {
+        guard let path = NSBundle(for: JSONModelBuilderTests.self).pathForResource("json-test-beta", ofType: "json") else {
             XCTFail()
             return
         }

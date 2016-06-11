@@ -18,14 +18,14 @@ extension ModelBuilder {
      
      - returns: an initialised ModelBuilder if the url returned valid JSON data
      */
-    public static func fromSource(url:NSURL, classPrefix:String) -> ModelBuilder? {
+    public static func fromSource(_ url:NSURL, classPrefix:String) -> ModelBuilder? {
         
-        guard let data = NSData(contentsOfURL: url) else {
+        guard let data = NSData(contentsOf:url) else {
             return nil
         }
         
         if let json = JSONCoder.decode(data) {
-            return ModelBuilder(rootName: "Container", classPrefix: classPrefix, source: url.absoluteString).buildModel(json)
+            return ModelBuilder(rootName: "Container", classPrefix: classPrefix, source: url.absoluteString).buildModel(fromData: json)
         }
         return nil
     }
@@ -38,14 +38,14 @@ extension ModelBuilder {
      
      - returns: an initialised ModelBuilder if the file contained valid JSON data
      */
-    public static func fromFile(path:String, classPrefix:String) -> ModelBuilder? {
+    public static func fromFile(_ path:String, classPrefix:String) -> ModelBuilder? {
         
         guard let data = NSData(contentsOfFile: path) else {
             return nil
         }
         
         if let json = JSONCoder.decode(data) {
-            return ModelBuilder(rootName: "Container", classPrefix: classPrefix).buildModel(json)
+            return ModelBuilder(rootName: "Container", classPrefix: classPrefix).buildModel(fromData: json)
         }
         return nil
     }

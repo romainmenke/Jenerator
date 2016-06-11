@@ -30,12 +30,12 @@ class JSONDataTypeTests: XCTestCase {
         let bool : AnyObject = true
         let null : AnyObject = NSNull()
         
-        let stringType = JSONDataType.generate(string)
-        let otherStringType = JSONDataType.generate(otherString)
-        let intType = JSONDataType.generate(int)
-        let doubleType = JSONDataType.generate(double)
-        let boolType = JSONDataType.generate(bool)
-        let nullType = JSONDataType.generate(null)
+        let stringType = JSONDataType.generate(withObject:string)
+        let otherStringType = JSONDataType.generate(withObject:otherString)
+        let intType = JSONDataType.generate(withObject:int)
+        let doubleType = JSONDataType.generate(withObject:double)
+        let boolType = JSONDataType.generate(withObject:bool)
+        let nullType = JSONDataType.generate(withObject:null)
         
         XCTAssert(stringType == JSONDataType.JSONString)
         XCTAssert(otherStringType == JSONDataType.JSONString)
@@ -52,13 +52,13 @@ class JSONDataTypeTests: XCTestCase {
         let nullArray : AnyObject = [NSNull()]
         let emptyArray : AnyObject = []
         
-        let stringArrayType = JSONDataType.generate(stringArray)
-        let otherStringArrayType = JSONDataType.generate(otherStringArray)
-        let intArrayType = JSONDataType.generate(intArray)
-        let doubleArrayType = JSONDataType.generate(doubleArray)
-        let boolArrayType = JSONDataType.generate(boolArray)
-        let nullArrayType = JSONDataType.generate(nullArray)
-        let emptyArrayType = JSONDataType.generate(emptyArray)
+        let stringArrayType = JSONDataType.generate(withObject:stringArray)
+        let otherStringArrayType = JSONDataType.generate(withObject:otherStringArray)
+        let intArrayType = JSONDataType.generate(withObject:intArray)
+        let doubleArrayType = JSONDataType.generate(withObject:doubleArray)
+        let boolArrayType = JSONDataType.generate(withObject:boolArray)
+        let nullArrayType = JSONDataType.generate(withObject:nullArray)
+        let emptyArrayType = JSONDataType.generate(withObject:emptyArray)
         
         XCTAssert(stringArrayType == JSONDataType.JSONArray(type: JSONDataType.JSONString))
         XCTAssert(otherStringArrayType == JSONDataType.JSONArray(type: JSONDataType.JSONString))
@@ -69,7 +69,7 @@ class JSONDataTypeTests: XCTestCase {
         XCTAssert(emptyArrayType == JSONDataType.JSONArray(type: JSONDataType.JSONNull))
         
         let nestedArray : AnyObject = [["SomeString"]]
-        let nestedArrayType = JSONDataType.generate(nestedArray)
+        let nestedArrayType = JSONDataType.generate(withObject:nestedArray)
         XCTAssert(nestedArrayType == JSONDataType.JSONArray(type: JSONDataType.JSONArray(type: JSONDataType.JSONString)))
     }
     
@@ -82,12 +82,12 @@ class JSONDataTypeTests: XCTestCase {
         let bool : AnyObject = true
         let null : AnyObject = NSNull()
         
-        let stringType = JSONDataType.generate(string)
-        let otherStringType = JSONDataType.generate(otherString)
-        let intType = JSONDataType.generate(int)
-        let doubleType = JSONDataType.generate(double)
-        let boolType = JSONDataType.generate(bool)
-        let nullType = JSONDataType.generate(null)
+        let stringType = JSONDataType.generate(withObject:string)
+        let otherStringType = JSONDataType.generate(withObject:otherString)
+        let intType = JSONDataType.generate(withObject:int)
+        let doubleType = JSONDataType.generate(withObject:double)
+        let boolType = JSONDataType.generate(withObject:bool)
+        let nullType = JSONDataType.generate(withObject:null)
         
         XCTAssert(stringType.typeString == "String")
         XCTAssert(otherStringType.typeString == "String")
@@ -107,12 +107,12 @@ class JSONDataTypeTests: XCTestCase {
         let boolArray : AnyObject = [true]
         let nullArray : AnyObject = [NSNull()]
         
-        let stringArrayType = JSONDataType.generate(stringArray)
-        let otherStringArrayType = JSONDataType.generate(otherStringArray)
-        let intArrayType = JSONDataType.generate(intArray)
-        let doubleArrayType = JSONDataType.generate(doubleArray)
-        let boolArrayType = JSONDataType.generate(boolArray)
-        let nullArrayType = JSONDataType.generate(nullArray)
+        let stringArrayType = JSONDataType.generate(withObject:stringArray)
+        let otherStringArrayType = JSONDataType.generate(withObject:otherStringArray)
+        let intArrayType = JSONDataType.generate(withObject:intArray)
+        let doubleArrayType = JSONDataType.generate(withObject:doubleArray)
+        let boolArrayType = JSONDataType.generate(withObject:boolArray)
+        let nullArrayType = JSONDataType.generate(withObject:nullArray)
         
         XCTAssert(stringArrayType.typeString == "[String]")
         XCTAssert(otherStringArrayType.typeString == "[String]")
@@ -122,7 +122,7 @@ class JSONDataTypeTests: XCTestCase {
         XCTAssert(nullArrayType.typeString == "[Any]")
         
         let nestedArray : AnyObject = [["SomeString"]]
-        let nestedArrayType = JSONDataType.generate(nestedArray)
+        let nestedArrayType = JSONDataType.generate(withObject:nestedArray)
         XCTAssert(nestedArrayType.typeString == "[[String]]")
         
         let customArrayType = JSONDataType.JSONArray(type: JSONDataType.JSONType(type: "Custom"))
@@ -139,12 +139,12 @@ class JSONDataTypeTests: XCTestCase {
         let bool : AnyObject = true
         let null : AnyObject = NSNull()
         
-        let stringType = JSONDataType.generate(string)
-        let otherStringType = JSONDataType.generate(otherString)
-        let intType = JSONDataType.generate(int)
-        let doubleType = JSONDataType.generate(double)
-        let boolType = JSONDataType.generate(bool)
-        let nullType = JSONDataType.generate(null)
+        let stringType = JSONDataType.generate(withObject:string)
+        let otherStringType = JSONDataType.generate(withObject:otherString)
+        let intType = JSONDataType.generate(withObject:int)
+        let doubleType = JSONDataType.generate(withObject:double)
+        let boolType = JSONDataType.generate(withObject:bool)
+        let nullType = JSONDataType.generate(withObject:null)
         
         XCTAssert(stringType.defaultValue == "\"\"")
         XCTAssert(otherStringType.defaultValue == "\"\"")
@@ -164,12 +164,12 @@ class JSONDataTypeTests: XCTestCase {
         let boolArray : AnyObject = [true]
         let nullArray : AnyObject = [NSNull()]
         
-        let stringArrayType = JSONDataType.generate(stringArray)
-        let otherStringArrayType = JSONDataType.generate(otherStringArray)
-        let intArrayType = JSONDataType.generate(intArray)
-        let doubleArrayType = JSONDataType.generate(doubleArray)
-        let boolArrayType = JSONDataType.generate(boolArray)
-        let nullArrayType = JSONDataType.generate(nullArray)
+        let stringArrayType = JSONDataType.generate(withObject:stringArray)
+        let otherStringArrayType = JSONDataType.generate(withObject:otherStringArray)
+        let intArrayType = JSONDataType.generate(withObject:intArray)
+        let doubleArrayType = JSONDataType.generate(withObject:doubleArray)
+        let boolArrayType = JSONDataType.generate(withObject:boolArray)
+        let nullArrayType = JSONDataType.generate(withObject:nullArray)
         
         XCTAssert(stringArrayType.defaultValue == "[]")
         XCTAssert(otherStringArrayType.defaultValue == "[]")
@@ -179,7 +179,7 @@ class JSONDataTypeTests: XCTestCase {
         XCTAssert(nullArrayType.defaultValue == "[]")
         
         let nestedArray : AnyObject = [["SomeString"]]
-        let nestedArrayType = JSONDataType.generate(nestedArray)
+        let nestedArrayType = JSONDataType.generate(withObject:nestedArray)
         XCTAssert(nestedArrayType.defaultValue == "[]")
         
         let customArrayType = JSONDataType.JSONArray(type: JSONDataType.JSONType(type: "Custom"))
@@ -196,12 +196,12 @@ class JSONDataTypeTests: XCTestCase {
         let bool : AnyObject = true
         let null : AnyObject = NSNull()
         
-        let stringType = JSONDataType.generate(string)
-        let otherStringType = JSONDataType.generate(otherString)
-        let intType = JSONDataType.generate(int)
-        let doubleType = JSONDataType.generate(double)
-        let boolType = JSONDataType.generate(bool)
-        let nullType = JSONDataType.generate(null)
+        let stringType = JSONDataType.generate(withObject:string)
+        let otherStringType = JSONDataType.generate(withObject:otherString)
+        let intType = JSONDataType.generate(withObject:int)
+        let doubleType = JSONDataType.generate(withObject:double)
+        let boolType = JSONDataType.generate(withObject:bool)
+        let nullType = JSONDataType.generate(withObject:null)
         
         XCTAssert(stringType.optionalType == false)
         XCTAssert(otherStringType.optionalType == false)
@@ -221,12 +221,12 @@ class JSONDataTypeTests: XCTestCase {
         let boolArray : AnyObject = [true]
         let nullArray : AnyObject = [NSNull()]
         
-        let stringArrayType = JSONDataType.generate(stringArray)
-        let otherStringArrayType = JSONDataType.generate(otherStringArray)
-        let intArrayType = JSONDataType.generate(intArray)
-        let doubleArrayType = JSONDataType.generate(doubleArray)
-        let boolArrayType = JSONDataType.generate(boolArray)
-        let nullArrayType = JSONDataType.generate(nullArray)
+        let stringArrayType = JSONDataType.generate(withObject:stringArray)
+        let otherStringArrayType = JSONDataType.generate(withObject:otherStringArray)
+        let intArrayType = JSONDataType.generate(withObject:intArray)
+        let doubleArrayType = JSONDataType.generate(withObject:doubleArray)
+        let boolArrayType = JSONDataType.generate(withObject:boolArray)
+        let nullArrayType = JSONDataType.generate(withObject:nullArray)
         
         XCTAssert(stringArrayType.optionalType == false)
         XCTAssert(otherStringArrayType.optionalType == false)
@@ -236,7 +236,7 @@ class JSONDataTypeTests: XCTestCase {
         XCTAssert(nullArrayType.optionalType == false)
         
         let nestedArray : AnyObject = [["SomeString"]]
-        let nestedArrayType = JSONDataType.generate(nestedArray)
+        let nestedArrayType = JSONDataType.generate(withObject:nestedArray)
         XCTAssert(nestedArrayType.optionalType == false)
         
         let customArrayType = JSONDataType.JSONArray(type: JSONDataType.JSONType(type: "Custom"))
@@ -253,12 +253,12 @@ class JSONDataTypeTests: XCTestCase {
         let bool : AnyObject = true
         let null : AnyObject = NSNull()
         
-        let stringType = JSONDataType.generate(string)
-        let otherStringType = JSONDataType.generate(otherString)
-        let intType = JSONDataType.generate(int)
-        let doubleType = JSONDataType.generate(double)
-        let boolType = JSONDataType.generate(bool)
-        let nullType = JSONDataType.generate(null)
+        let stringType = JSONDataType.generate(withObject:string)
+        let otherStringType = JSONDataType.generate(withObject:otherString)
+        let intType = JSONDataType.generate(withObject:int)
+        let doubleType = JSONDataType.generate(withObject:double)
+        let boolType = JSONDataType.generate(withObject:bool)
+        let nullType = JSONDataType.generate(withObject:null)
         
         XCTAssert(stringType.isNestedType == false)
         XCTAssert(otherStringType.isNestedType == false)
@@ -278,12 +278,12 @@ class JSONDataTypeTests: XCTestCase {
         let boolArray : AnyObject = [true]
         let nullArray : AnyObject = [NSNull()]
         
-        let stringArrayType = JSONDataType.generate(stringArray)
-        let otherStringArrayType = JSONDataType.generate(otherStringArray)
-        let intArrayType = JSONDataType.generate(intArray)
-        let doubleArrayType = JSONDataType.generate(doubleArray)
-        let boolArrayType = JSONDataType.generate(boolArray)
-        let nullArrayType = JSONDataType.generate(nullArray)
+        let stringArrayType = JSONDataType.generate(withObject:stringArray)
+        let otherStringArrayType = JSONDataType.generate(withObject:otherStringArray)
+        let intArrayType = JSONDataType.generate(withObject:intArray)
+        let doubleArrayType = JSONDataType.generate(withObject:doubleArray)
+        let boolArrayType = JSONDataType.generate(withObject:boolArray)
+        let nullArrayType = JSONDataType.generate(withObject:nullArray)
         
         XCTAssert(stringArrayType.isNestedType == false)
         XCTAssert(otherStringArrayType.isNestedType == false)
@@ -293,7 +293,7 @@ class JSONDataTypeTests: XCTestCase {
         XCTAssert(nullArrayType.isNestedType == false)
         
         let nestedArray : AnyObject = [["SomeString"]]
-        let nestedArrayType = JSONDataType.generate(nestedArray)
+        let nestedArrayType = JSONDataType.generate(withObject:nestedArray)
         XCTAssert(nestedArrayType.isNestedType == false)
         
         let customArrayType = JSONDataType.JSONArray(type: JSONDataType.JSONType(type: "Custom"))
@@ -310,12 +310,12 @@ class JSONDataTypeTests: XCTestCase {
         let bool : AnyObject = true
         let null : AnyObject = NSNull()
         
-        let stringType = JSONDataType.generate(string)
-        let otherStringType = JSONDataType.generate(otherString)
-        let intType = JSONDataType.generate(int)
-        let doubleType = JSONDataType.generate(double)
-        let boolType = JSONDataType.generate(bool)
-        let nullType = JSONDataType.generate(null)
+        let stringType = JSONDataType.generate(withObject:string)
+        let otherStringType = JSONDataType.generate(withObject:otherString)
+        let intType = JSONDataType.generate(withObject:int)
+        let doubleType = JSONDataType.generate(withObject:double)
+        let boolType = JSONDataType.generate(withObject:bool)
+        let nullType = JSONDataType.generate(withObject:null)
         
         XCTAssert(stringType.isNestedArrayType == false)
         XCTAssert(otherStringType.isNestedArrayType == false)
@@ -335,12 +335,12 @@ class JSONDataTypeTests: XCTestCase {
         let boolArray : AnyObject = [true]
         let nullArray : AnyObject = [NSNull()]
         
-        let stringArrayType = JSONDataType.generate(stringArray)
-        let otherStringArrayType = JSONDataType.generate(otherStringArray)
-        let intArrayType = JSONDataType.generate(intArray)
-        let doubleArrayType = JSONDataType.generate(doubleArray)
-        let boolArrayType = JSONDataType.generate(boolArray)
-        let nullArrayType = JSONDataType.generate(nullArray)
+        let stringArrayType = JSONDataType.generate(withObject:stringArray)
+        let otherStringArrayType = JSONDataType.generate(withObject:otherStringArray)
+        let intArrayType = JSONDataType.generate(withObject:intArray)
+        let doubleArrayType = JSONDataType.generate(withObject:doubleArray)
+        let boolArrayType = JSONDataType.generate(withObject:boolArray)
+        let nullArrayType = JSONDataType.generate(withObject:nullArray)
         
         XCTAssert(stringArrayType.isNestedArrayType == false)
         XCTAssert(otherStringArrayType.isNestedArrayType == false)
@@ -350,7 +350,7 @@ class JSONDataTypeTests: XCTestCase {
         XCTAssert(nullArrayType.isNestedArrayType == false)
         
         let nestedArray : AnyObject = [["SomeString"]]
-        let nestedArrayType = JSONDataType.generate(nestedArray)
+        let nestedArrayType = JSONDataType.generate(withObject:nestedArray)
         XCTAssert(nestedArrayType.isNestedType == false)
         
         let customArrayType = JSONDataType.JSONArray(type: JSONDataType.JSONType(type: "Custom"))
@@ -358,7 +358,7 @@ class JSONDataTypeTests: XCTestCase {
         
     }
     
-    func testTypeStringWithNameSpace() {
+    func testTypeStringWithClassPrefix() {
         
         let classPrefix = "CP"
         
@@ -369,22 +369,22 @@ class JSONDataTypeTests: XCTestCase {
         let bool : AnyObject = true
         let null : AnyObject = NSNull()
         
-        let stringType = JSONDataType.generate(string)
-        let otherStringType = JSONDataType.generate(otherString)
-        let intType = JSONDataType.generate(int)
-        let doubleType = JSONDataType.generate(double)
-        let boolType = JSONDataType.generate(bool)
-        let nullType = JSONDataType.generate(null)
+        let stringType = JSONDataType.generate(withObject:string)
+        let otherStringType = JSONDataType.generate(withObject:otherString)
+        let intType = JSONDataType.generate(withObject:int)
+        let doubleType = JSONDataType.generate(withObject:double)
+        let boolType = JSONDataType.generate(withObject:bool)
+        let nullType = JSONDataType.generate(withObject:null)
         
-        XCTAssert(stringType.typeStringWithNameSpace(classPrefix) == "String")
-        XCTAssert(otherStringType.typeStringWithNameSpace(classPrefix) == "String")
-        XCTAssert(intType.typeStringWithNameSpace(classPrefix) == "Int")
-        XCTAssert(doubleType.typeStringWithNameSpace(classPrefix) == "Double")
-        XCTAssert(boolType.typeStringWithNameSpace(classPrefix) == "Bool")
-        XCTAssert(nullType.typeStringWithNameSpace(classPrefix) == "Any")
+        XCTAssert(stringType.typeString(withClassPrefix: classPrefix) == "String")
+        XCTAssert(otherStringType.typeString(withClassPrefix: classPrefix) == "String")
+        XCTAssert(intType.typeString(withClassPrefix: classPrefix) == "Int")
+        XCTAssert(doubleType.typeString(withClassPrefix: classPrefix) == "Double")
+        XCTAssert(boolType.typeString(withClassPrefix: classPrefix) == "Bool")
+        XCTAssert(nullType.typeString(withClassPrefix: classPrefix) == "Any")
         
         let customType = JSONDataType.JSONType(type: "Custom")
-        XCTAssert(customType.typeStringWithNameSpace(classPrefix) == "CPCustom")
+        XCTAssert(customType.typeString(withClassPrefix: classPrefix) == "CPCustom")
         
         
         let stringArray : AnyObject = ["true"]
@@ -394,30 +394,30 @@ class JSONDataTypeTests: XCTestCase {
         let boolArray : AnyObject = [true]
         let nullArray : AnyObject = [NSNull()]
         
-        let stringArrayType = JSONDataType.generate(stringArray)
-        let otherStringArrayType = JSONDataType.generate(otherStringArray)
-        let intArrayType = JSONDataType.generate(intArray)
-        let doubleArrayType = JSONDataType.generate(doubleArray)
-        let boolArrayType = JSONDataType.generate(boolArray)
-        let nullArrayType = JSONDataType.generate(nullArray)
+        let stringArrayType = JSONDataType.generate(withObject:stringArray)
+        let otherStringArrayType = JSONDataType.generate(withObject:otherStringArray)
+        let intArrayType = JSONDataType.generate(withObject:intArray)
+        let doubleArrayType = JSONDataType.generate(withObject:doubleArray)
+        let boolArrayType = JSONDataType.generate(withObject:boolArray)
+        let nullArrayType = JSONDataType.generate(withObject:nullArray)
         
-        XCTAssert(stringArrayType.typeStringWithNameSpace(classPrefix) == "[String]")
-        XCTAssert(otherStringArrayType.typeStringWithNameSpace(classPrefix) == "[String]")
-        XCTAssert(intArrayType.typeStringWithNameSpace(classPrefix) == "[Int]")
-        XCTAssert(doubleArrayType.typeStringWithNameSpace(classPrefix) == "[Double]")
-        XCTAssert(boolArrayType.typeStringWithNameSpace(classPrefix) == "[Bool]")
-        XCTAssert(nullArrayType.typeStringWithNameSpace(classPrefix) == "[Any]")
+        XCTAssert(stringArrayType.typeString(withClassPrefix: classPrefix) == "[String]")
+        XCTAssert(otherStringArrayType.typeString(withClassPrefix: classPrefix) == "[String]")
+        XCTAssert(intArrayType.typeString(withClassPrefix: classPrefix) == "[Int]")
+        XCTAssert(doubleArrayType.typeString(withClassPrefix: classPrefix) == "[Double]")
+        XCTAssert(boolArrayType.typeString(withClassPrefix: classPrefix) == "[Bool]")
+        XCTAssert(nullArrayType.typeString(withClassPrefix: classPrefix) == "[Any]")
         
         let nestedArray : AnyObject = [["SomeString"]]
-        let nestedArrayType = JSONDataType.generate(nestedArray)
-        XCTAssert(nestedArrayType.typeStringWithNameSpace(classPrefix) == "[[String]]")
+        let nestedArrayType = JSONDataType.generate(withObject:nestedArray)
+        XCTAssert(nestedArrayType.typeString(withClassPrefix: classPrefix) == "[[String]]")
         
         let customArrayType = JSONDataType.JSONArray(type: JSONDataType.JSONType(type: "Custom"))
-        XCTAssert(customArrayType.typeStringWithNameSpace(classPrefix) == "[CPCustom]")
+        XCTAssert(customArrayType.typeString(withClassPrefix: classPrefix) == "[CPCustom]")
         
     }
     
-    func testArrayElementTypeStringWithNameSpace() {
+    func testArrayElementTypeStringWithClassPrefix() {
         
         let classPrefix = "CP"
         
@@ -428,22 +428,22 @@ class JSONDataTypeTests: XCTestCase {
         let bool : AnyObject = true
         let null : AnyObject = NSNull()
         
-        let stringType = JSONDataType.generate(string)
-        let otherStringType = JSONDataType.generate(otherString)
-        let intType = JSONDataType.generate(int)
-        let doubleType = JSONDataType.generate(double)
-        let boolType = JSONDataType.generate(bool)
-        let nullType = JSONDataType.generate(null)
+        let stringType = JSONDataType.generate(withObject:string)
+        let otherStringType = JSONDataType.generate(withObject:otherString)
+        let intType = JSONDataType.generate(withObject:int)
+        let doubleType = JSONDataType.generate(withObject:double)
+        let boolType = JSONDataType.generate(withObject:bool)
+        let nullType = JSONDataType.generate(withObject:null)
         
-        XCTAssert(stringType.arrayTypeStringWithNameSpace(classPrefix) == "String")
-        XCTAssert(otherStringType.arrayTypeStringWithNameSpace(classPrefix) == "String")
-        XCTAssert(intType.arrayTypeStringWithNameSpace(classPrefix) == "Int")
-        XCTAssert(doubleType.arrayTypeStringWithNameSpace(classPrefix) == "Double")
-        XCTAssert(boolType.arrayTypeStringWithNameSpace(classPrefix) == "Bool")
-        XCTAssert(nullType.arrayTypeStringWithNameSpace(classPrefix) == "Any")
+        XCTAssert(stringType.arrayTypeString(withClassPrefix: classPrefix) == "String")
+        XCTAssert(otherStringType.arrayTypeString(withClassPrefix: classPrefix) == "String")
+        XCTAssert(intType.arrayTypeString(withClassPrefix: classPrefix) == "Int")
+        XCTAssert(doubleType.arrayTypeString(withClassPrefix: classPrefix) == "Double")
+        XCTAssert(boolType.arrayTypeString(withClassPrefix: classPrefix) == "Bool")
+        XCTAssert(nullType.arrayTypeString(withClassPrefix: classPrefix) == "Any")
         
         let customType = JSONDataType.JSONType(type: "Custom")
-        XCTAssert(customType.typeStringWithNameSpace(classPrefix) == "CPCustom")
+        XCTAssert(customType.typeString(withClassPrefix: classPrefix) == "CPCustom")
         
         
         let stringArray : AnyObject = ["true"]
@@ -453,26 +453,26 @@ class JSONDataTypeTests: XCTestCase {
         let boolArray : AnyObject = [true]
         let nullArray : AnyObject = [NSNull()]
         
-        let stringArrayType = JSONDataType.generate(stringArray)
-        let otherStringArrayType = JSONDataType.generate(otherStringArray)
-        let intArrayType = JSONDataType.generate(intArray)
-        let doubleArrayType = JSONDataType.generate(doubleArray)
-        let boolArrayType = JSONDataType.generate(boolArray)
-        let nullArrayType = JSONDataType.generate(nullArray)
+        let stringArrayType = JSONDataType.generate(withObject:stringArray)
+        let otherStringArrayType = JSONDataType.generate(withObject:otherStringArray)
+        let intArrayType = JSONDataType.generate(withObject:intArray)
+        let doubleArrayType = JSONDataType.generate(withObject:doubleArray)
+        let boolArrayType = JSONDataType.generate(withObject:boolArray)
+        let nullArrayType = JSONDataType.generate(withObject:nullArray)
         
-        XCTAssert(stringArrayType.arrayTypeStringWithNameSpace(classPrefix) == "String")
-        XCTAssert(otherStringArrayType.arrayTypeStringWithNameSpace(classPrefix) == "String")
-        XCTAssert(intArrayType.arrayTypeStringWithNameSpace(classPrefix) == "Int")
-        XCTAssert(doubleArrayType.arrayTypeStringWithNameSpace(classPrefix) == "Double")
-        XCTAssert(boolArrayType.arrayTypeStringWithNameSpace(classPrefix) == "Bool")
-        XCTAssert(nullArrayType.arrayTypeStringWithNameSpace(classPrefix) == "Any")
+        XCTAssert(stringArrayType.arrayTypeString(withClassPrefix: classPrefix) == "String")
+        XCTAssert(otherStringArrayType.arrayTypeString(withClassPrefix: classPrefix) == "String")
+        XCTAssert(intArrayType.arrayTypeString(withClassPrefix: classPrefix) == "Int")
+        XCTAssert(doubleArrayType.arrayTypeString(withClassPrefix: classPrefix) == "Double")
+        XCTAssert(boolArrayType.arrayTypeString(withClassPrefix: classPrefix) == "Bool")
+        XCTAssert(nullArrayType.arrayTypeString(withClassPrefix: classPrefix) == "Any")
         
         let nestedArray : AnyObject = [["SomeString"]]
-        let nestedArrayType = JSONDataType.generate(nestedArray)
-        XCTAssert(nestedArrayType.arrayTypeStringWithNameSpace(classPrefix) == "String")
+        let nestedArrayType = JSONDataType.generate(withObject:nestedArray)
+        XCTAssert(nestedArrayType.arrayTypeString(withClassPrefix: classPrefix) == "String")
         
         let customArrayType = JSONDataType.JSONArray(type: JSONDataType.JSONType(type: "Custom"))
-        XCTAssert(customArrayType.arrayTypeStringWithNameSpace(classPrefix) == "CPCustom")
+        XCTAssert(customArrayType.arrayTypeString(withClassPrefix: classPrefix) == "CPCustom")
         
     }
     
@@ -485,12 +485,12 @@ class JSONDataTypeTests: XCTestCase {
         let bool : AnyObject = true
         let null : AnyObject = NSNull()
         
-        let stringType = JSONDataType.generate(string).renameType(withNewName: "Bad")
-        let otherStringType = JSONDataType.generate(otherString).renameType(withNewName: "Int")
-        let intType = JSONDataType.generate(int).renameType(withNewName: "Bad")
-        let doubleType = JSONDataType.generate(double).renameType(withNewName: "Bad")
-        let boolType = JSONDataType.generate(bool).renameType(withNewName: "Bad")
-        let nullType = JSONDataType.generate(null).renameType(withNewName: "Bad")
+        let stringType = JSONDataType.generate(withObject:string).renameType(withNewName: "Bad")
+        let otherStringType = JSONDataType.generate(withObject:otherString).renameType(withNewName: "Int")
+        let intType = JSONDataType.generate(withObject:int).renameType(withNewName: "Bad")
+        let doubleType = JSONDataType.generate(withObject:double).renameType(withNewName: "Bad")
+        let boolType = JSONDataType.generate(withObject:bool).renameType(withNewName: "Bad")
+        let nullType = JSONDataType.generate(withObject:null).renameType(withNewName: "Bad")
         
         XCTAssert(stringType.typeString == "String")
         XCTAssert(otherStringType.typeString == "String")
@@ -510,12 +510,12 @@ class JSONDataTypeTests: XCTestCase {
         let boolArray : AnyObject = [true]
         let nullArray : AnyObject = [NSNull()]
         
-        let stringArrayType = JSONDataType.generate(stringArray).renameType(withNewName: "")
-        let otherStringArrayType = JSONDataType.generate(otherStringArray).renameType(withNewName: "Bad")
-        let intArrayType = JSONDataType.generate(intArray).renameType(withNewName: "Bad")
-        let doubleArrayType = JSONDataType.generate(doubleArray).renameType(withNewName: "Bad")
-        let boolArrayType = JSONDataType.generate(boolArray).renameType(withNewName: "Bad")
-        let nullArrayType = JSONDataType.generate(nullArray).renameType(withNewName: "Bad")
+        let stringArrayType = JSONDataType.generate(withObject:stringArray).renameType(withNewName: "")
+        let otherStringArrayType = JSONDataType.generate(withObject:otherStringArray).renameType(withNewName: "Bad")
+        let intArrayType = JSONDataType.generate(withObject:intArray).renameType(withNewName: "Bad")
+        let doubleArrayType = JSONDataType.generate(withObject:doubleArray).renameType(withNewName: "Bad")
+        let boolArrayType = JSONDataType.generate(withObject:boolArray).renameType(withNewName: "Bad")
+        let nullArrayType = JSONDataType.generate(withObject:nullArray).renameType(withNewName: "Bad")
         
         XCTAssert(stringArrayType.typeString == "[String]")
         XCTAssert(otherStringArrayType.typeString == "[String]")
@@ -525,7 +525,7 @@ class JSONDataTypeTests: XCTestCase {
         XCTAssert(nullArrayType.typeString == "[Any]")
         
         let nestedArray : AnyObject = [["SomeString"]]
-        let nestedArrayType = JSONDataType.generate(nestedArray).renameType(withNewName: "Bad")
+        let nestedArrayType = JSONDataType.generate(withObject:nestedArray).renameType(withNewName: "Bad")
         XCTAssert(nestedArrayType.typeString == "[[String]]")
         
         let customArrayType = JSONDataType.JSONArray(type: JSONDataType.JSONType(type: "Custom")).renameType(withNewName: "Rename")
@@ -533,7 +533,7 @@ class JSONDataTypeTests: XCTestCase {
         
     }
     
-    func testUpgradeType() {
+    func testUpgrade() {
         
         let string : AnyObject = "true"
         let int : AnyObject = 1
@@ -541,12 +541,12 @@ class JSONDataTypeTests: XCTestCase {
         let bool : AnyObject = true
         let null : AnyObject = NSNull()
         
-        let stringType = JSONDataType.generate(string).upgradeType(JSONDataType.JSONInt)
-        let intType = JSONDataType.generate(int).upgradeType(JSONDataType.JSONBool)
-        let otherIntType = JSONDataType.generate(int).upgradeType(JSONDataType.JSONDouble)
-        let doubleType = JSONDataType.generate(double).upgradeType(JSONDataType.JSONInt)
-        let boolType = JSONDataType.generate(bool).upgradeType(JSONDataType.JSONInt)
-        let nullType = JSONDataType.generate(null).upgradeType(JSONDataType.JSONString)
+        let stringType = JSONDataType.generate(withObject:string).upgrade(toType: JSONDataType.JSONInt)
+        let intType = JSONDataType.generate(withObject:int).upgrade(toType: JSONDataType.JSONBool)
+        let otherIntType = JSONDataType.generate(withObject:int).upgrade(toType: JSONDataType.JSONDouble)
+        let doubleType = JSONDataType.generate(withObject:double).upgrade(toType: JSONDataType.JSONInt)
+        let boolType = JSONDataType.generate(withObject:bool).upgrade(toType: JSONDataType.JSONInt)
+        let nullType = JSONDataType.generate(withObject:null).upgrade(toType: JSONDataType.JSONString)
         
         XCTAssert(stringType.typeString == "String")
         XCTAssert(intType.typeString == "Int")
@@ -555,7 +555,7 @@ class JSONDataTypeTests: XCTestCase {
         XCTAssert(boolType.typeString == "Bool")
         XCTAssert(nullType.typeString == "String")
         
-        let customType = JSONDataType.JSONType(type: "Custom").upgradeType(JSONDataType.JSONType(type: "Upgrade"))
+        let customType = JSONDataType.JSONType(type: "Custom").upgrade(toType: JSONDataType.JSONType(type: "Upgrade"))
         XCTAssert(customType.typeString == "Custom")
         
         
@@ -565,12 +565,12 @@ class JSONDataTypeTests: XCTestCase {
         let boolArray : AnyObject = [true]
         let nullArray : AnyObject = [NSNull()]
         
-        let stringArrayType = JSONDataType.generate(stringArray).upgradeType(JSONDataType.JSONInt)
-        let intArrayType = JSONDataType.generate(intArray).upgradeType(JSONDataType.JSONBool)
-        let otherArrayIntType = JSONDataType.generate(intArray).upgradeType(JSONDataType.JSONDouble)
-        let doubleArrayType = JSONDataType.generate(doubleArray).upgradeType(JSONDataType.JSONInt)
-        let boolArrayType = JSONDataType.generate(boolArray).upgradeType(JSONDataType.JSONInt)
-        let nullArrayType = JSONDataType.generate(nullArray).upgradeType(JSONDataType.JSONString)
+        let stringArrayType = JSONDataType.generate(withObject:stringArray).upgrade(toType: JSONDataType.JSONInt)
+        let intArrayType = JSONDataType.generate(withObject:intArray).upgrade(toType: JSONDataType.JSONBool)
+        let otherArrayIntType = JSONDataType.generate(withObject:intArray).upgrade(toType: JSONDataType.JSONDouble)
+        let doubleArrayType = JSONDataType.generate(withObject:doubleArray).upgrade(toType: JSONDataType.JSONInt)
+        let boolArrayType = JSONDataType.generate(withObject:boolArray).upgrade(toType: JSONDataType.JSONInt)
+        let nullArrayType = JSONDataType.generate(withObject:nullArray).upgrade(toType: JSONDataType.JSONString)
         
         XCTAssert(stringArrayType.typeString == "[String]")
         XCTAssert(intArrayType.typeString == "[Int]")
@@ -580,10 +580,10 @@ class JSONDataTypeTests: XCTestCase {
         XCTAssert(nullArrayType.typeString == "[String]")
         
         let nestedArray : AnyObject = [["SomeString"]]
-        let nestedArrayType = JSONDataType.generate(nestedArray).upgradeType(JSONDataType.JSONType(type: "Int"))
+        let nestedArrayType = JSONDataType.generate(withObject:nestedArray).upgrade(toType: JSONDataType.JSONType(type: "Int"))
         XCTAssert(nestedArrayType.typeString == "[[String]]")
         
-        let customArrayType = JSONDataType.JSONArray(type: JSONDataType.JSONType(type: "Custom")).upgradeType(JSONDataType.JSONType(type: "Upgrade"))
+        let customArrayType = JSONDataType.JSONArray(type: JSONDataType.JSONType(type: "Custom")).upgrade(toType: JSONDataType.JSONType(type: "Upgrade"))
         XCTAssert(customArrayType.typeString == "[Custom]")
         
     }
@@ -597,12 +597,12 @@ class JSONDataTypeTests: XCTestCase {
         let bool : AnyObject = true
         let null : AnyObject = NSNull()
         
-        let stringType = JSONDataType.generate(string)
-        let intType = JSONDataType.generate(int)
-        let otherIntType = JSONDataType.generate(otherInt)
-        let doubleType = JSONDataType.generate(double)
-        let boolType = JSONDataType.generate(bool)
-        let nullType = JSONDataType.generate(null)
+        let stringType = JSONDataType.generate(withObject:string)
+        let intType = JSONDataType.generate(withObject:int)
+        let otherIntType = JSONDataType.generate(withObject:otherInt)
+        let doubleType = JSONDataType.generate(withObject:double)
+        let boolType = JSONDataType.generate(withObject:bool)
+        let nullType = JSONDataType.generate(withObject:null)
         
         XCTAssert(stringType != intType)
         XCTAssert(stringType != otherIntType)
@@ -621,12 +621,12 @@ class JSONDataTypeTests: XCTestCase {
         let boolArray : AnyObject = [true]
         let nullArray : AnyObject = [NSNull()]
         
-        let stringArrayType = JSONDataType.generate(stringArray)
-        let intArrayType = JSONDataType.generate(intArray)
-        let otherArrayIntType = JSONDataType.generate(intArray)
-        let doubleArrayType = JSONDataType.generate(doubleArray)
-        let boolArrayType = JSONDataType.generate(boolArray)
-        let nullArrayType = JSONDataType.generate(nullArray)
+        let stringArrayType = JSONDataType.generate(withObject:stringArray)
+        let intArrayType = JSONDataType.generate(withObject:intArray)
+        let otherArrayIntType = JSONDataType.generate(withObject:intArray)
+        let doubleArrayType = JSONDataType.generate(withObject:doubleArray)
+        let boolArrayType = JSONDataType.generate(withObject:boolArray)
+        let nullArrayType = JSONDataType.generate(withObject:nullArray)
         
         XCTAssert(stringArrayType != stringType)
         XCTAssert(intArrayType != intType)
@@ -636,7 +636,7 @@ class JSONDataTypeTests: XCTestCase {
         XCTAssert(nullArrayType != nullType)
         
         let nestedArray : AnyObject = [["SomeString"]]
-        let nestedArrayType = JSONDataType.generate(nestedArray)
+        let nestedArrayType = JSONDataType.generate(withObject:nestedArray)
         XCTAssert(nestedArrayType != stringArrayType)
         
         let customArrayType = JSONDataType.JSONArray(type: JSONDataType.JSONType(type: "Custom"))

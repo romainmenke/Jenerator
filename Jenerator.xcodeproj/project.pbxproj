@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05B246711D0B39520011B08A /* JSONQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B246701D0B39520011B08A /* JSONQuery.swift */; };
+		05B246731D0B3A010011B08A /* JSONQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B246721D0B3A010011B08A /* JSONQueryTests.swift */; };
+		05B246741D0B3D780011B08A /* JSONQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B246701D0B39520011B08A /* JSONQuery.swift */; };
+		05B246761D0B61820011B08A /* VersionBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B246751D0B61820011B08A /* VersionBridge.swift */; };
+		05B246771D0B62050011B08A /* VersionBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B246751D0B61820011B08A /* VersionBridge.swift */; };
+		05B25C691D0BFFFF00277B2A /* VersionBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B246751D0B61820011B08A /* VersionBridge.swift */; };
 		05B2B8E61D04CD14002A5523 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B2B8DE1D04CD14002A5523 /* CommandLine.swift */; };
 		05B2B8E81D04CD14002A5523 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B2B8DF1D04CD14002A5523 /* Option.swift */; };
 		05B2B8EA1D04CD14002A5523 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B2B8E01D04CD14002A5523 /* StringExtensions.swift */; };
@@ -68,6 +74,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		05B246701D0B39520011B08A /* JSONQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONQuery.swift; sourceTree = "<group>"; };
+		05B246721D0B3A010011B08A /* JSONQueryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONQueryTests.swift; sourceTree = "<group>"; };
+		05B246751D0B61820011B08A /* VersionBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VersionBridge.swift; path = Source/VersionBridge.swift; sourceTree = "<group>"; };
 		05B2B8DE1D04CD14002A5523 /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
 		05B2B8DF1D04CD14002A5523 /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		05B2B8E01D04CD14002A5523 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -182,6 +191,7 @@
 				7A3D342B1D0317F1004B281E /* JSONDataType.swift */,
 				7A3D342C1D0317F1004B281E /* JSONCoder.swift */,
 				7A3D342D1D0317F1004B281E /* JSONField.swift */,
+				05B246701D0B39520011B08A /* JSONQuery.swift */,
 				7A3D34301D0317F1004B281E /* Magic.swift */,
 				7A3D34311D0317F1004B281E /* ModelBuilder.swift */,
 				7A3D342F1D0317F1004B281E /* SourceToBuilder.swift */,
@@ -219,6 +229,7 @@
 				7A3D34751D032370004B281E /* JSONAliasTests.swift */,
 				7A3D34601D031836004B281E /* JSONModelBuilderTests.swift */,
 				7AEC2D661D0346FC00AFB96A /* JSONCoderTests.swift */,
+				05B246721D0B3A010011B08A /* JSONQueryTests.swift */,
 				7AEC2D681D034EE300AFB96A /* json-test-alpha.json */,
 				7AEC2D6B1D0350D500AFB96A /* json-test-beta.json */,
 			);
@@ -248,6 +259,7 @@
 		7ADD6F7D1CFF409D007F59B8 /* Jenerator */ = {
 			isa = PBXGroup;
 			children = (
+				05B246751D0B61820011B08A /* VersionBridge.swift */,
 				7A3561921D0091B900A386E5 /* CLI */,
 				7A3D34281D0317F1004B281E /* Source */,
 				05B2B8DA1D04CD14002A5523 /* Dependencies */,
@@ -407,7 +419,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A3D34521D031826004B281E /* JSONCoder.swift in Sources */,
+				05B246771D0B62050011B08A /* VersionBridge.swift in Sources */,
 				7A3D34581D031826004B281E /* SwiftGenerator.swift in Sources */,
+				05B246741D0B3D780011B08A /* JSONQuery.swift in Sources */,
 				7A3D34511D031826004B281E /* JSONDataType.swift in Sources */,
 				7A3D34501D031826004B281E /* JSONCustomType.swift in Sources */,
 				7A3D34531D031826004B281E /* JSONField.swift in Sources */,
@@ -423,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A3D34631D03184E004B281E /* DevelTests.swift in Sources */,
+				05B25C691D0BFFFF00277B2A /* VersionBridge.swift in Sources */,
 				7A3D34671D03184E004B281E /* JSONFieldTests.swift in Sources */,
 				7AEC2D671D0346FC00AFB96A /* JSONCoderTests.swift in Sources */,
 				7A3D34661D03184E004B281E /* JSONDataTypeTests.swift in Sources */,
@@ -430,6 +445,7 @@
 				7A3D34651D03184E004B281E /* JSONCustomTypeTests.swift in Sources */,
 				7A3D346A1D03184E004B281E /* MagicTests.swift in Sources */,
 				7A3D34761D032370004B281E /* JSONAliasTests.swift in Sources */,
+				05B246731D0B3A010011B08A /* JSONQueryTests.swift in Sources */,
 				7A3D34691D03184E004B281E /* JSONTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,6 +458,7 @@
 				05B2B8E61D04CD14002A5523 /* CommandLine.swift in Sources */,
 				7A3D34731D0318F2004B281E /* ModelBuilder.swift in Sources */,
 				7A3D346E1D0318F2004B281E /* JSONCoder.swift in Sources */,
+				05B246761D0B61820011B08A /* VersionBridge.swift in Sources */,
 				7A3D346B1D0318F2004B281E /* JSONAliasses.swift in Sources */,
 				7A3D34721D0318F2004B281E /* Magic.swift in Sources */,
 				7A3561971D0091E200A386E5 /* main.swift in Sources */,
@@ -450,6 +467,7 @@
 				7A3D346D1D0318F2004B281E /* JSONDataType.swift in Sources */,
 				05B2B8F31D04CD6B002A5523 /* CLI.swift in Sources */,
 				7A3D346F1D0318F2004B281E /* JSONField.swift in Sources */,
+				05B246711D0B39520011B08A /* JSONQuery.swift in Sources */,
 				7A3D34741D0318F2004B281E /* SwiftGenerator.swift in Sources */,
 				05B2B8EA1D04CD14002A5523 /* StringExtensions.swift in Sources */,
 			);

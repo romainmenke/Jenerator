@@ -45,7 +45,7 @@ class MagicTests: XCTestCase {
     
     func testIsBool() {
         
-        func anyAsNumber(any:AnyObject) -> NSNumber {
+        func anyAsNumber(_ any:AnyObject) -> NSNumber {
             if let number = any as? NSNumber {
                 return number
             } else {
@@ -70,7 +70,7 @@ class MagicTests: XCTestCase {
     
     func testIsBoolElaborate() {
         
-        func anyAsNumber(any:AnyObject) -> NSNumber {
+        func anyAsNumber(_ any:AnyObject) -> NSNumber {
             if let number = any as? NSNumber {
                 return number
             } else {

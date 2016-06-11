@@ -21,16 +21,31 @@ struct JSONCoder {
      
      - returns: NSData if the collection is a valid JSON Object and serialization succeeds
      */
-    static func encode(object:AnyObject) -> NSData? {
+    static func encode(_ object:AnyObject) -> NSData? {
+        
         guard NSJSONSerialization.isValidJSONObject(object) else {
             return nil
         }
-        do {
-            let jsonData = try NSJSONSerialization.dataWithJSONObject(object, options: NSJSONWritingOptions.PrettyPrinted)
-            return jsonData
-        } catch _ as NSError {
-            return nil
-        }
+        
+        #if swift(>=3.0)
+            
+            do {
+                let jsonData = try NSJSONSerialization.data(withJSONObject:object, options: NSJSONWritingOptions.prettyPrinted)
+                return jsonData
+            } catch _ as NSError {
+                return nil
+            }
+            
+        #elseif swift(>=2.2)
+            
+            do {
+                let jsonData = try NSJSONSerialization.dataWithJSONObject(object, options: NSJSONWritingOptions.PrettyPrinted)
+                return jsonData
+            } catch _ as NSError {
+                return nil
+            }
+            
+        #endif
     }
     
     /**
@@ -40,13 +55,27 @@ struct JSONCoder {
      
      - returns: a collection if serialization succeeds
      */
-    static func decode(data:NSData) -> AnyObject? {
-        do {
-            let decoded = try NSJSONSerialization.JSONObjectWithData(data, options: [])
-            return decoded
-        } catch _ as NSError {
-            return nil
-        }
+    static func decode(_ data:NSData) -> AnyObject? {
+        
+        #if swift(>=3.0)
+            
+            do {
+                let decoded = try NSJSONSerialization.jsonObject(with: data, options: [])
+                return decoded
+            } catch _ as NSError {
+                return nil
+            }
+            
+        #elseif swift(>=2.2)
+            
+            do {
+                let decoded = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+                return decoded
+            } catch _ as NSError {
+                return nil
+            }
+            
+        #endif
     }
     
 }
