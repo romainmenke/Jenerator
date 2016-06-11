@@ -118,7 +118,7 @@ public struct ModelBuilder {
         copy.dictionaryAtRoot = false
         let (dataType,content) = copy.buildMultiDimentionalArrayOfObject(withName: "element", array: data)
         // create a field for the new type
-        let field = JSONField(name: copy.root, type: dataType)
+        let field = JSONField(name: "elements", type: dataType)
         let type = JSONCustomType(fields: [field], name: copy.root)
         copy.types.appendUnique(type)
         

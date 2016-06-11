@@ -132,7 +132,11 @@ public struct SwiftGenerator {
         
         var structInitialiser = "\n"
         
-        structInitialiser += "    init(data:[String:AnyObject]) {\n"
+        if type.name.uppercaseFirst == model.root.uppercaseFirst && model.dictionaryAtRoot == false {
+            return generateArrayContainerInitialiser(fromModel: model, type: type)
+        } else {
+            structInitialiser += "    init(data:[String:AnyObject]) {\n"
+        }
         
         // for each field
         for field in type.fields {
@@ -156,6 +160,28 @@ public struct SwiftGenerator {
         
         return structInitialiser
     }
+    
+    private static func generateArrayContainerInitialiser(fromModel model: ModelBuilder, type: JSONCustomType) -> String {
+        
+        var structInitialiser = "\n"
+        
+        structInitialiser += "    init(array:[AnyObject]) {\n"
+
+        
+        // for each field
+        for field in type.fields {
+            // if field is an array
+            structInitialiser += "\n"
+
+            structInitialiser += "        self.\(field.name) = []\n"
+            structInitialiser += generateArrayInitialiser(fromModel: model, field: field, currentIndent: "        ")
+        }
+        structInitialiser += "    }\n"
+        structInitialiser += ""
+        
+        return structInitialiser
+    }
+    
     
     /**
      Generate Array Initialiser
@@ -215,13 +241,13 @@ public struct SwiftGenerator {
      */
     private static func generateFetch(fromModel model: ModelBuilder, type: JSONCustomType) -> String {
         
+        guard type.name.uppercaseFirst == model.root.uppercaseFirst else {
+            return ""
+        }
+        
         var fetchString = "\n"
         
         fetchString += generateFetchComment()
-        
-        guard type.name.uppercaseFirst == model.root.uppercaseFirst && model.dictionaryAtRoot else {
-            return ""
-        }
         
         if let source = model.source {
             fetchString += "    static func fromSource() -> \(model.classPrefix)\(type.name.uppercaseFirst)? {\n\n"
@@ -237,8 +263,14 @@ public struct SwiftGenerator {
         
         fetchString += "        do {\n"
         fetchString += "            let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers)\n"
-        fetchString += "            if let dict = json as? [String:AnyObject] {\n"
-        fetchString += "                return \(model.classPrefix + model.root)(data: dict)\n"
+        
+        if type.name.uppercaseFirst == model.root.uppercaseFirst && model.dictionaryAtRoot {
+            fetchString += "            if let dict = json as? [String:AnyObject] {\n"
+            fetchString += "                return \(model.classPrefix + model.root)(data: dict)\n"
+        } else {
+            fetchString += "            if let array = json as? [AnyObject] {\n"
+            fetchString += "                return \(model.classPrefix + model.root)(array: array)\n"
+        }
         fetchString += "            }\n"
         fetchString += "        } catch {}\n"
         fetchString += "        return nil\n"
