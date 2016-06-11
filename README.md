@@ -67,7 +67,9 @@ Jenerator as a service is available here :
 
 [Jenerator](http://52.51.22.243)
 
-That link goes to a dockerized Kitura web server running Jenerator as a Package. So it is a Swift server generating Swift code to talk to servers. Since it is hosted on AWS without any fancy routing the link might break. Type determination is not as good without access to obj-c. Will be patched in an updated.
+That link goes to a dockerized Kitura web server running Jenerator as a Package. So it is a Swift server generating Swift code to talk to servers. Since it is hosted on AWS without any fancy routing the link might break.
+
+<iframe src="http://52.51.22.243" width="100%" height="600px"></iframe>
 
 
 Examples can be found here:
