@@ -1,9 +1,11 @@
 <p align="center">
 	<br>
     <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-2.2-orange.svg?style=flat" alt="Swift" /></a>
+		<a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat" alt="Swift" /></a>
+		<img src="https://img.shields.io/badge/Platform-OSX-grey.svg?style=flat" alt="Platform" />
     <a href="https://travis-ci.org/romainmenke/Jenerator"><img src="https://travis-ci.org/romainmenke/Jenerator.svg?branch=master" alt="Travis CI" /></a>
     <a href="https://codecov.io/gh/romainmenke/Jenerator"><img src="https://codecov.io/gh/romainmenke/Jenerator/branch/master/graph/badge.svg" alt="CodeCov" /></a>
-    <a href="http://romainmenke.github.io/Jenerator/"><img src="https://img.shields.io/badge/Documented-100%25-blue.svg" alt="Jazzy" /></a>
+    <a href="http://romainmenke.github.io/Jenerator/"><img src="https://img.shields.io/badge/Documented-87%25-blue.svg" alt="Jazzy" /></a>
 </p>
 
 # Jenerator
