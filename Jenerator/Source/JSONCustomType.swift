@@ -19,6 +19,13 @@ struct JSONCustomType : Equatable, CustomStringConvertible {
     /// The name of the Type
     var name : String
     
+    var query : JSONQuery? = nil
+    
+    init(fields fields:[JSONField], name:String) {
+        self.fields = fields
+        self.name = name
+    }
+    
     /// Formatted list of the name and fields
     var description: String {
         get {

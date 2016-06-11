@@ -63,27 +63,21 @@ class JSONModelBuilderTests: XCTestCase {
         
         let builder = ModelBuilder(rootName: "jenerator", classPrefix: "UT")
         
-        let types = builder.buildModel(fromData: object).types
+        let types = builder.buildModel(fromData: object, withSource:nil).types
         XCTAssert(types.count == 3)
         
         for type in types {
             if type.name == userType.name {
-                NSLog(type.description)
-                NSLog(userType.description)
                 XCTAssert(type == userType)
                 XCTAssert(type.fields == userType.fields)
                 continue
             }
             if type.name == statsType.name {
-                NSLog(type.description)
-                NSLog(statsType.description)
                 XCTAssert(type == statsType)
                 XCTAssert(type.fields == statsType.fields)
                 continue
             }
             if type.name == container.name {
-                NSLog(type.description)
-                NSLog(container.description)
                 XCTAssert(type == container)
                 XCTAssert(type.fields == container.fields)
                 continue
@@ -109,28 +103,22 @@ class JSONModelBuilderTests: XCTestCase {
         
         let builder = ModelBuilder(rootName: "jenerator", classPrefix: "UT")
         
-        let types = builder.buildModel(fromData: object).types
+        let types = builder.buildModel(fromData: object, withSource:nil).types
         
         XCTAssert(types.count == 3)
         
         for type in types {
             if type.name == userType.name {
-                NSLog(type.description)
-                NSLog(userType.description)
                 XCTAssert(type == userType)
                 XCTAssert(type.fields == userType.fields)
                 continue
             }
             if type.name == statsType.name {
-                NSLog(type.description)
-                NSLog(statsType.description)
                 XCTAssert(type == statsType)
                 XCTAssert(type.fields == statsType.fields)
                 continue
             }
             if type.name == container.name {
-                NSLog(type.description)
-                NSLog(container.description)
                 XCTAssert(type == container)
                 XCTAssert(type.fields == container.fields)
                 continue
@@ -142,15 +130,12 @@ class JSONModelBuilderTests: XCTestCase {
     func testBuildTypesDelta() {
         
         let objectA : [String:AnyObject] = ["user":["name":"bob"]]
-        let builderA = ModelBuilder(rootName: "jenerator", classPrefix: "UT").buildModel(fromData: objectA)
+        let builderA = ModelBuilder(rootName: "jenerator", classPrefix: "UT").buildModel(fromData: objectA, withSource:nil)
         XCTAssert(builderA.types.count == 2)
         
         let objectB : [[String:AnyObject]] = [["user":["name":"bob"]]]
-        let builderB = ModelBuilder(rootName: "jenerator", classPrefix: "UT").buildModel(fromData: objectB)
+        let builderB = ModelBuilder(rootName: "jenerator", classPrefix: "UT").buildModel(fromData: objectB, withSource:nil)
         
-        NSLog((builderB.types.filter { $0.name == "jenerator" }.first!).description)
-        NSLog((builderB.types.filter { $0.name == "jeneratorElement" }.first!).description)
-        NSLog((builderB.types.filter { $0.name == "user" }.first!).description)
         XCTAssert(builderB.types.count == 3)
         
     }
@@ -159,10 +144,29 @@ class JSONModelBuilderTests: XCTestCase {
         
         let object : [String:AnyObject] = ["user":["stats":["level":1,"power":"invisibility"],"secondaryStats":["level":2,"power":"always hungry"]]]
         
-        let builder = ModelBuilder(rootName: "jenerator", classPrefix: "UT").buildModel(fromData: object).findAliasses()
+        let builder = ModelBuilder(rootName: "jenerator", classPrefix: "UT").buildModel(fromData: object, withSource:nil).findAliasses()
         
         XCTAssert(builder.types.count == 3)
         XCTAssert(builder.typeAliasses.count == 1)
+        
+    }
+    
+    func testFromAPISourceExpectSuccess() {
+        
+        guard let url = NSURL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%202487889&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys") else {
+            XCTFail()
+            return
+        }
+        
+        guard let builder = ModelBuilder.fromSource(url, classPrefix: "SJ") else {
+            XCTFail()
+            return
+        }
+        
+        let code = SwiftGenerator.generate(fromModel: builder.findAliasses())
+        NSLog(code ?? "")
+        XCTAssert(code != nil)
+        XCTAssert(builder.types.count != 0)
         
     }
     
@@ -179,6 +183,7 @@ class JSONModelBuilderTests: XCTestCase {
         }
         
         let code = SwiftGenerator.generate(fromModel: builder.findAliasses())
+        
         XCTAssert(code != nil)
         XCTAssert(builder.types.count != 0)
         

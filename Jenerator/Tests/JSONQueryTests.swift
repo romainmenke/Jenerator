@@ -28,7 +28,10 @@ class JSONQueryTests: XCTestCase {
             return
         }
         
-        let query = JSONQuery(source: url)
+        guard let query = JSONQuery(source: url) else {
+            XCTFail()
+            return
+        }
         
         var urlString = urlStart
         urlString += "?"

@@ -25,6 +25,10 @@ import Foundation
             return self.stringByRemovingPercentEncoding
         }
         
+        var urlEncoding: String? {
+            return self.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        }
+        
     }
 #endif
 
@@ -51,6 +55,14 @@ import Foundation
         
         mutating func remove(at index: Int) -> Element {
             return self.removeAtIndex(index)
+        }
+        
+    }
+    
+    extension SequenceType {
+        
+        public func enumerated() -> EnumerateSequence<Self> {
+            return enumerate()
         }
         
     }

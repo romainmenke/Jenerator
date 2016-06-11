@@ -16,8 +16,13 @@ struct JSONQuery {
     
     var params : [(key:String,value:String)]
     var source : NSURL
+    var base : String {
+        get {
+            return source.absoluteString.components(separatedBy: "?").first ?? source.absoluteString
+        }
+    }
     
-    init(source:NSURL) {
+    init?(source:NSURL) {
         
         self.source = source
         self.params = []

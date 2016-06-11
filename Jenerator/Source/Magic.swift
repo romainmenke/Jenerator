@@ -37,6 +37,13 @@ extension String {
     var uppercaseFirst: String {
         return first.uppercased() + String(characters.dropFirst())
     }
+    
+    func stringByAddingPercentEncodingForRFC3986() -> String? {
+        let unreserved = "-._~/?"
+        let allowed = NSMutableCharacterSet.alphanumericCharacterSet()
+        allowed.addCharactersInString(unreserved)
+        return stringByAddingPercentEncodingWithAllowedCharacters(allowed)
+    }
 }
 
 extension NSNumber {

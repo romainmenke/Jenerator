@@ -25,9 +25,6 @@ public struct ModelBuilder {
     /// Top level object is a dictionary, set to false if it is an array
     var dictionaryAtRoot : Bool = true
     
-    /// Source Url as String
-    var source : String?
-    
     /// Class Prefix for all Types
     var classPrefix : String
 
@@ -40,10 +37,9 @@ public struct ModelBuilder {
      
      - returns: a ModelBuilder
      */
-    public init(rootName root:String, classPrefix: String, source:String? = nil) {
+    public init(rootName root:String, classPrefix: String) {
         self.root = root
         self.classPrefix = classPrefix
-        self.source = source
     }
     
     /**
@@ -97,11 +93,11 @@ public struct ModelBuilder {
      
      - returns: A ModelBuilder containing the constructed Model
      */
-    public func buildModel(fromData data:AnyObject) -> ModelBuilder {
+    public func buildModel(fromData data:AnyObject, withSource source: NSURL?) -> ModelBuilder {
         if let data = data as? [String:AnyObject] {
-            return self.startWithDictionary(fromData: data)
+            return self.startWithDictionary(fromData: data, withSource: source)
         } else if let data = data as? [AnyObject] {
-            return self.startWithArray(fromData: data)
+            return self.startWithArray(fromData: data, withSource: source)
         }
         return self
     }
@@ -113,13 +109,14 @@ public struct ModelBuilder {
      
      - returns: A ModelBuilder containing the constructed Model
      */
-    private func startWithArray(fromData data:[AnyObject]) -> ModelBuilder {
+    private func startWithArray(fromData data:[AnyObject], withSource source: NSURL?) -> ModelBuilder {
         var copy = self
         copy.dictionaryAtRoot = false
         let (dataType,content) = copy.buildMultiDimentionalArrayOfObject(withName: "jeneratorElement", array: data)
         // create a field for the new type
         let field = JSONField(name: "elements", type: dataType)
-        let type = JSONCustomType(fields: [field], name: copy.root)
+        var type = JSONCustomType(fields: [field], name: copy.root)
+        if let source = source { type.query = JSONQuery(source: source) }
         copy.types.appendUnique(type)
         
         // if there was content in the array, go deeper
@@ -146,9 +143,9 @@ public struct ModelBuilder {
      
      - returns: A ModelBuilder containing the constructed Model
      */
-    private func startWithDictionary(fromData data:[String:AnyObject]) -> ModelBuilder {
+    private func startWithDictionary(fromData data:[String:AnyObject], withSource source: NSURL?) -> ModelBuilder {
         var copy = self
-        copy.types = copy.buildTypes(withExistingTypes: copy.types, name: copy.root, fields: data)
+        copy.types = copy.buildTypes(withExistingTypes: copy.types, name: copy.root, fields: data, withSource: source)
         return copy
     }
     
@@ -161,11 +158,15 @@ public struct ModelBuilder {
      
      - returns: An Array of Types
      */
-    private func buildTypes(withExistingTypes existingTypes:[JSONCustomType], name:String, fields:[String:AnyObject]) -> [JSONCustomType] {
+    private func buildTypes(withExistingTypes existingTypes:[JSONCustomType], name:String, fields:[String:AnyObject], withSource source: NSURL? = nil) -> [JSONCustomType] {
         
         var currentTypes = existingTypes
         
         var newCustomType = JSONCustomType(fields: [], name: name)
+        
+        if name == root, let source = source {
+            newCustomType.query = JSONQuery(source: source)
+        }
         
         for keyValuePair in fields {
             

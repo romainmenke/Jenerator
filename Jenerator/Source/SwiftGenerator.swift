@@ -249,13 +249,7 @@ public struct SwiftGenerator {
         
         fetchString += generateFetchComment()
         
-        if let source = model.source {
-            fetchString += "    static func fromSource() -> \(model.classPrefix)\(type.name.uppercaseFirst)? {\n\n"
-            fetchString += "        guard let url = NSURL(string: \"\(source)\"), data = NSData(contentsOfURL: url) else {\n"
-        } else if model.source == nil {
-            fetchString += "    static func fromSource(urlString : String) -> \(model.classPrefix)\(type.name.uppercaseFirst)? {\n\n"
-            fetchString += "        guard let url = NSURL(string: urlString), data = NSData(contentsOfURL: url) else {\n"
-        }
+        fetchString += generateFancyFetch(fromModel: model, type: type)
         
         fetchString += "            return nil\n"
         fetchString += "        }\n"
@@ -266,10 +260,10 @@ public struct SwiftGenerator {
         
         if type.name.uppercaseFirst == model.root.uppercaseFirst && model.dictionaryAtRoot {
             fetchString += "            if let dict = json as? [String:AnyObject] {\n"
-            fetchString += "                return \(model.classPrefix + model.root)(data: dict)\n"
+            fetchString += "                return \(model.classPrefix + model.root.uppercaseFirst)(data: dict)\n"
         } else {
             fetchString += "            if let array = json as? [AnyObject] {\n"
-            fetchString += "                return \(model.classPrefix + model.root)(array: array)\n"
+            fetchString += "                return \(model.classPrefix + model.root.uppercaseFirst)(array: array)\n"
         }
         fetchString += "            }\n"
         fetchString += "        } catch {}\n"
@@ -278,6 +272,57 @@ public struct SwiftGenerator {
         fetchString += ""
         
         return fetchString
+    }
+    
+    private static func generateFancyFetch(fromModel model: ModelBuilder, type: JSONCustomType) -> String {
+        
+        var declaration : String = ""
+        
+        if let query = type.query  {
+            
+            var parameters : String = ""
+            
+            for (index,pair) in query.params.enumerated() {
+                
+                if index != 0 {
+                    parameters += ", "
+                }
+                
+                parameters += pair.key + ": String?"
+                
+            }
+            
+            var queryString : String = query.base + ""
+            var paramsEncoding : String = ""
+            
+            for (index,pair) in query.params.enumerated() {
+                
+                if index == 0 {
+                    queryString += "?"
+                }
+                
+                if index != 0 {
+                    queryString += "&"
+                }
+                
+                paramsEncoding += "let \(pair.key)Encoded = (\(pair.key) ?? \"\(pair.value)\").stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) ?? \"\"\n"
+                
+                let encoded = pair.key.urlEncoding ?? pair.key
+                queryString += encoded + "=" + "\\(\(pair.key)Encoded)"
+                
+            }
+            
+            declaration += "    static func fromSource(\(parameters)) -> \(model.classPrefix)\(type.name.uppercaseFirst)? {\n\n"
+            
+            declaration += "        \(paramsEncoding)\n"
+            
+            declaration += "        guard let url = NSURL(string: \"\(queryString)\"), data = NSData(contentsOfURL: url) else {\n"
+        } else if type.query?.source == nil {
+            declaration += "    static func fromSource(urlString : String) -> \(model.classPrefix)\(type.name.uppercaseFirst)? {\n\n"
+            declaration += "        guard let url = NSURL(string: urlString), data = NSData(contentsOfURL: url) else {\n"
+        }
+        
+        return declaration
     }
     
     /**
