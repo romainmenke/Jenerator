@@ -1,0 +1,25 @@
+[
+  {
+    "someDict":
+    {
+      "someUint":1,
+      "someInt":-1,
+      "someDouble":1.1,
+      "someBool":true,
+      "someString":"text",
+      "someNull":null,
+      "someArray":
+        [
+          1,
+          2,
+          3
+        ],
+      "otherDict":
+      {
+        "alpha":"alphaValue",
+        "beta":"betaValue",
+        "delta":"deltaValue"
+      }
+    }
+  }
+]

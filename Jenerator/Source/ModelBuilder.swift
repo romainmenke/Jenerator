@@ -22,7 +22,7 @@ public struct ModelBuilder {
     /// Root Object for the query and top level objects
     var root : String
     
-    /// top level object is a dictionary, set to false if it is an array
+    /// Top level object is a dictionary, set to false if it is an array
     var dictionaryAtRoot : Bool = true
     
     /// Source Url as String
@@ -280,5 +280,23 @@ public struct ModelBuilder {
         }
         
         return copy
+    }
+    
+    
+    public func isCompatible(withModel model: ModelBuilder) -> Bool {
+        
+        for currentType in types {
+            var foundCompatibleType = false
+            for newType in model.types {
+                if currentType.isCompatible(withType: newType) {
+                    foundCompatibleType = true
+                }
+            }
+            if !foundCompatibleType {
+                return false
+            }
+        }
+        
+        return true
     }
 }

@@ -37,6 +37,14 @@ import Foundation
             return self.indexOf(element)
         }
         
+        func index(of predicate: (Self.Generator.Element) throws -> Bool) rethrows -> Self.Index? {
+            if let index = try? self.indexOf(predicate) {
+                return index
+            } else {
+                return nil
+            }
+        }
+        
     }
     
     extension Array {

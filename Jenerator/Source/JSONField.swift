@@ -27,6 +27,14 @@ struct JSONField : Equatable, CustomStringConvertible {
     }
 }
 
+extension JSONField : Hashable {
+    
+    var hashValue: Int {
+        return (name + type.typeString).hashValue
+    }
+    
+}
+
 /**
  Equality
  

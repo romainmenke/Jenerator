@@ -168,17 +168,19 @@ class JSONModelBuilderTests: XCTestCase {
     
     func testFromSourceExpectSuccess() {
         
-        guard let url = NSURL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22BHP.AX%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=") else {
+        guard let url = NSURL(string: "https://raw.githubusercontent.com/romainmenke/Jenerator/master/examples/sample/somejson.json") else {
             XCTFail()
             return
         }
         
-        guard let builder = ModelBuilder.fromSource(url, classPrefix: "YF") else {
+        guard let builder = ModelBuilder.fromSource(url, classPrefix: "SJ") else {
             XCTFail()
             return
         }
         
-        XCTAssert(SwiftGenerator.generate(fromModel: builder.findAliasses()) != nil)
+        let code = SwiftGenerator.generate(fromModel: builder.findAliasses())
+        NSLog(code ?? "")
+        XCTAssert(code != nil)
         XCTAssert(builder.types.count != 0)
         
     }
