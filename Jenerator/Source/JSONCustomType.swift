@@ -36,6 +36,11 @@ struct JSONCustomType : Equatable, CustomStringConvertible {
 extension JSONCustomType {
     
     func isCompatible(withType type: JSONCustomType) -> Bool {
+        
+        guard name == type.name else {
+            return false
+        }
+        
         // every current field must be represented in the new type
         for element in fields {
             if !(type.fields.contains(element)) {

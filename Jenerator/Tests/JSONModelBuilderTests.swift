@@ -59,9 +59,9 @@ class JSONModelBuilderTests: XCTestCase {
         
         let userField = JSONField(name: "user", type: JSONDataType.JSONType(type: "user"))
         
-        let container = JSONCustomType(fields: [userField], name: "container")
+        let container = JSONCustomType(fields: [userField], name: "jenerator")
         
-        let builder = ModelBuilder(rootName: "container", classPrefix: "UT")
+        let builder = ModelBuilder(rootName: "jenerator", classPrefix: "UT")
         
         let types = builder.buildModel(fromData: object).types
         XCTAssert(types.count == 3)
@@ -105,9 +105,9 @@ class JSONModelBuilderTests: XCTestCase {
         
         let userField = JSONField(name: "users", type: JSONDataType.JSONArray(type: JSONDataType.JSONType(type: "users")))
         
-        let container = JSONCustomType(fields: [userField], name: "container")
+        let container = JSONCustomType(fields: [userField], name: "jenerator")
         
-        let builder = ModelBuilder(rootName: "container", classPrefix: "UT")
+        let builder = ModelBuilder(rootName: "jenerator", classPrefix: "UT")
         
         let types = builder.buildModel(fromData: object).types
         
@@ -142,14 +142,14 @@ class JSONModelBuilderTests: XCTestCase {
     func testBuildTypesDelta() {
         
         let objectA : [String:AnyObject] = ["user":["name":"bob"]]
-        let builderA = ModelBuilder(rootName: "container", classPrefix: "UT").buildModel(fromData: objectA)
+        let builderA = ModelBuilder(rootName: "jenerator", classPrefix: "UT").buildModel(fromData: objectA)
         XCTAssert(builderA.types.count == 2)
         
         let objectB : [[String:AnyObject]] = [["user":["name":"bob"]]]
-        let builderB = ModelBuilder(rootName: "container", classPrefix: "UT").buildModel(fromData: objectB)
+        let builderB = ModelBuilder(rootName: "jenerator", classPrefix: "UT").buildModel(fromData: objectB)
         
-        NSLog((builderB.types.filter { $0.name == "container" }.first!).description)
-        NSLog((builderB.types.filter { $0.name == "element" }.first!).description)
+        NSLog((builderB.types.filter { $0.name == "jenerator" }.first!).description)
+        NSLog((builderB.types.filter { $0.name == "jeneratorElement" }.first!).description)
         NSLog((builderB.types.filter { $0.name == "user" }.first!).description)
         XCTAssert(builderB.types.count == 3)
         
@@ -159,7 +159,7 @@ class JSONModelBuilderTests: XCTestCase {
         
         let object : [String:AnyObject] = ["user":["stats":["level":1,"power":"invisibility"],"secondaryStats":["level":2,"power":"always hungry"]]]
         
-        let builder = ModelBuilder(rootName: "container", classPrefix: "UT").buildModel(fromData: object).findAliasses()
+        let builder = ModelBuilder(rootName: "jenerator", classPrefix: "UT").buildModel(fromData: object).findAliasses()
         
         XCTAssert(builder.types.count == 3)
         XCTAssert(builder.typeAliasses.count == 1)

@@ -35,5 +35,20 @@ class JSONFieldTests: XCTestCase {
         XCTAssert(fieldA != fieldC)
         XCTAssert(fieldA != fieldD)
     }
+    
+    func testHashValue() {
+        
+        let fieldA = JSONField(name: "Alpha", type: JSONDataType.JSONInt)
+        let fieldB = JSONField(name: "Alpha", type: JSONDataType.JSONDouble)
+        let fieldC = JSONField(name: "Beta", type: JSONDataType.JSONInt)
+        
+        let fieldA2 = JSONField(name: "Alpha", type: JSONDataType.JSONInt)
+        
+        XCTAssert(fieldA.hashValue != fieldB.hashValue)
+        XCTAssert(fieldA.hashValue != fieldC.hashValue)
+        XCTAssert(fieldA.hashValue == fieldA2.hashValue)
+        XCTAssert(fieldA.hashValue == fieldA.hashValue)
+        
+    }
 
 }

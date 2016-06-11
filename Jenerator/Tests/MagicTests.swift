@@ -90,4 +90,17 @@ class MagicTests: XCTestCase {
         XCTAssert(anyAsNumber(boolFalseAny).isBool() == true)
         
     }
+    
+    func testRemoveLast() {
+        
+        guard let url = NSURL(string:"https://raw.githubusercontent.com/romainmenke/Jenerator/master/examples/sample/somejson.json"), urlTest = url.removeLast(), compare = NSURL(string:"https://raw.githubusercontent.com/romainmenke/Jenerator/master/examples/sample/") else {
+            XCTFail()
+            return
+        }
+        
+        XCTAssert(urlTest.absoluteString == compare.absoluteString)
+        
+        XCTAssert(url.absoluteString != urlTest.absoluteString)
+        
+    }
 }
