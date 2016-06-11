@@ -14,7 +14,7 @@
     <a title="ModelBuilder Struct Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Jenerator Docs</a> (100% documented)</p>
+        <p><a href="../index.html">Jenerator Docs</a> (87% documented)</p>
         <p class="header-right"><a href="https://github.com/romainmenke/Jenerator"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -84,6 +84,12 @@
                 <a href="../Extensions/Array.html">Array</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Ps14CollectionType">CollectionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/c:objc(cs)NSData">NSData</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/String.html">String</a>
               </li>
             </ul>
@@ -140,6 +146,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/JSONField.html">JSONField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V9Jenerator9JSONQuery">JSONQuery</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/JSONTypeAlias.html">JSONTypeAlias</a>
@@ -264,7 +273,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>top level object is a dictionary, set to false if it is an array</p>
+                        <p>Top level object is a dictionary, set to false if it is an array</p>
 
                       </div>
                       <div class="declaration">
@@ -430,7 +439,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">arrayContainsObjects</span><span class="p">(</span><span class="nv">array</span> <span class="p">:</span> <span class="p">[</span><span class="kt">AnyObject</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">arrayContainsObjects</span><span class="p">(</span><span class="n">_</span> <span class="nv">array</span> <span class="p">:</span> <span class="p">[</span><span class="kt">AnyObject</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -465,9 +474,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FV9Jenerator12ModelBuilder34buildMultiDimentionalArrayOfObjectFTSS5arrayGSaPs9AnyObject___T8dataTypeOS_12JSONDataType7contentGSqGVs10DictionarySSPS1_____"></a>
-                    <a name="//apple_ref/swift/Method/buildMultiDimentionalArrayOfObject(_:array:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FV9Jenerator12ModelBuilder34buildMultiDimentionalArrayOfObjectFTSS5arrayGSaPs9AnyObject___T8dataTypeOS_12JSONDataType7contentGSqGVs10DictionarySSPS1_____">buildMultiDimentionalArrayOfObject(_:array:)</a>
+                    <a name="/s:FV9Jenerator12ModelBuilder34buildMultiDimentionalArrayOfObjectFT8withNameSS5arrayGSaPs9AnyObject___T8dataTypeOS_12JSONDataType7contentGSqGVs10DictionarySSPS1_____"></a>
+                    <a name="//apple_ref/swift/Method/buildMultiDimentionalArrayOfObject(withName:array:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV9Jenerator12ModelBuilder34buildMultiDimentionalArrayOfObjectFT8withNameSS5arrayGSaPs9AnyObject___T8dataTypeOS_12JSONDataType7contentGSqGVs10DictionarySSPS1_____">buildMultiDimentionalArrayOfObject(withName:array:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -482,7 +491,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">buildMultiDimentionalArrayOfObject</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span><span class="kt">String</span><span class="p">,</span> <span class="nv">array</span><span class="p">:[</span><span class="kt">AnyObject</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">dataType</span><span class="p">:</span><span class="kt">JSONDataType</span><span class="p">,</span><span class="nv">content</span><span class="p">:[</span><span class="kt">String</span><span class="p">:</span><span class="kt">AnyObject</span><span class="p">]?)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">buildMultiDimentionalArrayOfObject</span><span class="p">(</span><span class="n">withName</span> <span class="nv">name</span><span class="p">:</span><span class="kt">String</span><span class="p">,</span> <span class="nv">array</span><span class="p">:[</span><span class="kt">AnyObject</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">dataType</span><span class="p">:</span><span class="kt">JSONDataType</span><span class="p">,</span><span class="nv">content</span><span class="p">:[</span><span class="kt">String</span><span class="p">:</span><span class="kt">AnyObject</span><span class="p">]?)</span></code></pre>
 
                         </div>
                       </div>
@@ -530,9 +539,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FV9Jenerator12ModelBuilder10buildModelFPs9AnyObject_S0_"></a>
-                    <a name="//apple_ref/swift/Method/buildModel(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FV9Jenerator12ModelBuilder10buildModelFPs9AnyObject_S0_">buildModel(_:)</a>
+                    <a name="/s:FV9Jenerator12ModelBuilder10buildModelFT8fromDataPs9AnyObject__S0_"></a>
+                    <a name="//apple_ref/swift/Method/buildModel(fromData:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV9Jenerator12ModelBuilder10buildModelFT8fromDataPs9AnyObject__S0_">buildModel(fromData:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -547,7 +556,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">buildModel</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span><span class="kt">AnyObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ModelBuilder</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">buildModel</span><span class="p">(</span><span class="n">fromData</span> <span class="nv">data</span><span class="p">:</span><span class="kt">AnyObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ModelBuilder</span></code></pre>
 
                         </div>
                       </div>
@@ -582,9 +591,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FV9Jenerator12ModelBuilderP33_D7B3C4E7FBBE369C6269D283B9F5EF6514startWithArrayFGSaPs9AnyObject__S0_"></a>
-                    <a name="//apple_ref/swift/Method/startWithArray(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FV9Jenerator12ModelBuilderP33_D7B3C4E7FBBE369C6269D283B9F5EF6514startWithArrayFGSaPs9AnyObject__S0_">startWithArray(_:)</a>
+                    <a name="/s:FV9Jenerator12ModelBuilderP33_D7B3C4E7FBBE369C6269D283B9F5EF6514startWithArrayFT8fromDataGSaPs9AnyObject___S0_"></a>
+                    <a name="//apple_ref/swift/Method/startWithArray(fromData:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV9Jenerator12ModelBuilderP33_D7B3C4E7FBBE369C6269D283B9F5EF6514startWithArrayFT8fromDataGSaPs9AnyObject___S0_">startWithArray(fromData:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -599,7 +608,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">startWithArray</span><span class="p">(</span><span class="nv">data</span><span class="p">:[</span><span class="kt">AnyObject</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">ModelBuilder</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">startWithArray</span><span class="p">(</span><span class="n">fromData</span> <span class="nv">data</span><span class="p">:[</span><span class="kt">AnyObject</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">ModelBuilder</span></code></pre>
 
                         </div>
                       </div>
@@ -634,9 +643,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FV9Jenerator12ModelBuilderP33_D7B3C4E7FBBE369C6269D283B9F5EF6519startWithDictionaryFGVs10DictionarySSPs9AnyObject__S0_"></a>
-                    <a name="//apple_ref/swift/Method/startWithDictionary(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FV9Jenerator12ModelBuilderP33_D7B3C4E7FBBE369C6269D283B9F5EF6519startWithDictionaryFGVs10DictionarySSPs9AnyObject__S0_">startWithDictionary(_:)</a>
+                    <a name="/s:FV9Jenerator12ModelBuilderP33_D7B3C4E7FBBE369C6269D283B9F5EF6519startWithDictionaryFT8fromDataGVs10DictionarySSPs9AnyObject___S0_"></a>
+                    <a name="//apple_ref/swift/Method/startWithDictionary(fromData:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV9Jenerator12ModelBuilderP33_D7B3C4E7FBBE369C6269D283B9F5EF6519startWithDictionaryFT8fromDataGVs10DictionarySSPs9AnyObject___S0_">startWithDictionary(fromData:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -651,7 +660,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">startWithDictionary</span><span class="p">(</span><span class="nv">data</span><span class="p">:[</span><span class="kt">String</span><span class="p">:</span><span class="kt">AnyObject</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">ModelBuilder</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">startWithDictionary</span><span class="p">(</span><span class="n">fromData</span> <span class="nv">data</span><span class="p">:[</span><span class="kt">String</span><span class="p">:</span><span class="kt">AnyObject</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">ModelBuilder</span></code></pre>
 
                         </div>
                       </div>
@@ -686,9 +695,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FV9Jenerator12ModelBuilderP33_D7B3C4E7FBBE369C6269D283B9F5EF6510buildTypesFTGSaVS_14JSONCustomType_4nameSS6fieldsGVs10DictionarySSPs9AnyObject___GSaS1__"></a>
-                    <a name="//apple_ref/swift/Method/buildTypes(_:name:fields:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FV9Jenerator12ModelBuilderP33_D7B3C4E7FBBE369C6269D283B9F5EF6510buildTypesFTGSaVS_14JSONCustomType_4nameSS6fieldsGVs10DictionarySSPs9AnyObject___GSaS1__">buildTypes(_:name:fields:)</a>
+                    <a name="/s:FV9Jenerator12ModelBuilderP33_D7B3C4E7FBBE369C6269D283B9F5EF6510buildTypesFT17withExistingTypesGSaVS_14JSONCustomType_4nameSS6fieldsGVs10DictionarySSPs9AnyObject___GSaS1__"></a>
+                    <a name="//apple_ref/swift/Method/buildTypes(withExistingTypes:name:fields:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV9Jenerator12ModelBuilderP33_D7B3C4E7FBBE369C6269D283B9F5EF6510buildTypesFT17withExistingTypesGSaVS_14JSONCustomType_4nameSS6fieldsGVs10DictionarySSPs9AnyObject___GSaS1__">buildTypes(withExistingTypes:name:fields:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -703,7 +712,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">buildTypes</span><span class="p">(</span><span class="nv">existingTypes</span><span class="p">:[</span><span class="kt">JSONCustomType</span><span class="p">],</span> <span class="nv">name</span><span class="p">:</span><span class="kt">String</span><span class="p">,</span> <span class="nv">fields</span><span class="p">:[</span><span class="kt">String</span><span class="p">:</span><span class="kt">AnyObject</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">JSONCustomType</span><span class="p">]</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">buildTypes</span><span class="p">(</span><span class="n">withExistingTypes</span> <span class="nv">existingTypes</span><span class="p">:[</span><span class="kt">JSONCustomType</span><span class="p">],</span> <span class="nv">name</span><span class="p">:</span><span class="kt">String</span><span class="p">,</span> <span class="nv">fields</span><span class="p">:[</span><span class="kt">String</span><span class="p">:</span><span class="kt">AnyObject</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">JSONCustomType</span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -817,7 +826,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">fromSource</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span><span class="kt">NSURL</span><span class="p">,</span> <span class="nv">classPrefix</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ModelBuilder</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">fromSource</span><span class="p">(</span><span class="n">_</span> <span class="nv">url</span><span class="p">:</span><span class="kt">NSURL</span><span class="p">,</span> <span class="nv">classPrefix</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ModelBuilder</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -882,7 +891,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">fromFile</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span><span class="kt">String</span><span class="p">,</span> <span class="nv">classPrefix</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ModelBuilder</span><span class="p">?</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">fromFile</span><span class="p">(</span><span class="n">_</span> <span class="nv">path</span><span class="p">:</span><span class="kt">String</span><span class="p">,</span> <span class="nv">classPrefix</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ModelBuilder</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -932,7 +941,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://github.com/romainmenke" target="_blank" rel="external">Romain Menke</a>. All rights reserved. (Last updated: 2016-06-06)</p>
+          <p>&copy; 2016 <a class="link" href="https://github.com/romainmenke" target="_blank" rel="external">Romain Menke</a>. All rights reserved. (Last updated: 2016-06-11)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
