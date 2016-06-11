@@ -116,7 +116,7 @@ public struct ModelBuilder {
     private func startWithArray(fromData data:[AnyObject]) -> ModelBuilder {
         var copy = self
         copy.dictionaryAtRoot = false
-        let (dataType,content) = copy.buildMultiDimentionalArrayOfObject(withName: "element", array: data)
+        let (dataType,content) = copy.buildMultiDimentionalArrayOfObject(withName: "jeneratorElement", array: data)
         // create a field for the new type
         let field = JSONField(name: "elements", type: dataType)
         let type = JSONCustomType(fields: [field], name: copy.root)
@@ -126,7 +126,7 @@ public struct ModelBuilder {
         if let content = content {
             
             // recursion !!
-            let nestedTypes = buildTypes(withExistingTypes: copy.types, name: "element", fields: content)
+            let nestedTypes = buildTypes(withExistingTypes: copy.types, name: "jeneratorElement", fields: content)
             
             // iterate over the nested types
             for type in nestedTypes {

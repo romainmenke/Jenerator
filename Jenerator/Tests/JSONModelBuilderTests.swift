@@ -179,7 +179,6 @@ class JSONModelBuilderTests: XCTestCase {
         }
         
         let code = SwiftGenerator.generate(fromModel: builder.findAliasses())
-        NSLog(code ?? "")
         XCTAssert(code != nil)
         XCTAssert(builder.types.count != 0)
         
@@ -198,7 +197,6 @@ class JSONModelBuilderTests: XCTestCase {
         }
         
         let code = SwiftGenerator.generate(fromModel: builder.findAliasses())
-        NSLog(code ?? "")
         XCTAssert(code != nil)
         XCTAssert(builder.types.count != 0)
         

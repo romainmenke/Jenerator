@@ -25,7 +25,7 @@ extension ModelBuilder {
         }
         
         if let json = JSONCoder.decode(data) {
-            return ModelBuilder(rootName: "Container", classPrefix: classPrefix, source: url.absoluteString).buildModel(fromData: json)
+            return ModelBuilder(rootName: "jenerator", classPrefix: classPrefix, source: url.absoluteString).buildModel(fromData: json)
         }
         return nil
     }
@@ -45,7 +45,7 @@ extension ModelBuilder {
         }
         
         if let json = JSONCoder.decode(data) {
-            return ModelBuilder(rootName: "Container", classPrefix: classPrefix).buildModel(fromData: json)
+            return ModelBuilder(rootName: "jenerator", classPrefix: classPrefix).buildModel(fromData: json)
         }
         return nil
     }

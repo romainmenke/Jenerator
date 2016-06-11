@@ -25,7 +25,7 @@ struct JSONQuery {
         guard let query = source.query else {
             return
         }
-
+        
         for pair in query.components(separatedBy: "&") {
             let keyValue = pair.components(separatedBy: "=")
             guard var key = keyValue.first, var value = keyValue.last where keyValue.count == 2 else {
