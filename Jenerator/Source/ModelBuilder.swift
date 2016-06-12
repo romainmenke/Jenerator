@@ -117,7 +117,7 @@ public struct ModelBuilder {
         let field = JSONField(name: "elements", type: dataType)
         var type = JSONCustomType(fields: [field], name: copy.root)
         if let source = source { type.query = JSONQuery(source: source) }
-        copy.types.appendUnique(type)
+        copy.types = add(newType: type, toExistingTypes: copy.types)
         
         // if there was content in the array, go deeper
         if let content = content {
@@ -129,7 +129,7 @@ public struct ModelBuilder {
             for type in nestedTypes {
                 
                 // add only the new types
-                copy.types.appendUnique(type)
+                copy.types = add(newType: type, toExistingTypes: copy.types)
             }
         }
         
@@ -173,7 +173,7 @@ public struct ModelBuilder {
             // Is an array containing an object
             if let array = keyValuePair.1 as? [AnyObject] where arrayContainsObjects(array) {
                 
-                // retreive datatype and nested content
+                // retrieve datatype and nested content
                 let (dataType,content) = buildMultiDimentionalArrayOfObject(withName: keyValuePair.0, array: array)
                 
                 // create a field for the new type
@@ -192,7 +192,7 @@ public struct ModelBuilder {
                     for type in nestedTypes {
                         
                         // add only the new types
-                        currentTypes.appendUnique(type)
+                        currentTypes = add(newType: type, toExistingTypes: currentTypes)
                     }
                 }
                 continue
@@ -219,7 +219,7 @@ public struct ModelBuilder {
                 for type in nestedTypes {
                     
                     // add only the new types
-                    currentTypes.appendUnique(type)
+                    currentTypes = add(newType: type, toExistingTypes: currentTypes)
                 }
                 
                 continue
@@ -241,11 +241,28 @@ public struct ModelBuilder {
         }
         
         // add the new type to the current types
-        currentTypes.appendUnique(newCustomType)
+        currentTypes = add(newType: newCustomType, toExistingTypes: currentTypes)
         
         // return the current types up the chain (cause recursion)
         return currentTypes
         
+    }
+    
+    private func add(newType new:JSONCustomType,toExistingTypes existingTypes:[JSONCustomType]) -> [JSONCustomType] {
+        
+        var copy = existingTypes
+        
+        if let index = copy.index(of: new) {
+            var current = copy[index]
+            for field in new.fields {
+                current.fields.appendUnique(field)
+            }
+            copy[index] = current
+        } else {
+            copy.appendUnique(new)
+        }
+        
+        return copy
     }
     
     /**

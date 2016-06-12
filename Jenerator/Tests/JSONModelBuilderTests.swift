@@ -207,6 +207,25 @@ class JSONModelBuilderTests: XCTestCase {
         
     }
     
+    func testFromSourceDifferenceInTypeExpectSuccess() {
+        
+        guard let url = NSURL(string: "https://raw.githubusercontent.com/romainmenke/Jenerator/master/examples/sample/sametypedifferentfields.json") else {
+            XCTFail()
+            return
+        }
+        
+        guard let builder = ModelBuilder.fromSource(url, classPrefix: "SJ") else {
+            XCTFail()
+            return
+        }
+        
+        let code = SwiftGenerator.generate(fromModel: builder.findAliasses())
+        NSLog(code ?? "")
+        XCTAssert(code != nil)
+        XCTAssert(builder.types.count != 0)
+        
+    }
+    
     func testFromFileExpectSuccess() {
         
         guard let path = NSBundle(for: JSONModelBuilderTests.self).pathForResource("json-test-alpha", ofType: "json") else {

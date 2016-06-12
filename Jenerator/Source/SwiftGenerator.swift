@@ -89,7 +89,7 @@ public struct SwiftGenerator {
         var structHeader = "\n"
         
         structHeader += generateStructComments(fromModel: model, type: type)
-        structHeader += "struct \(model.classPrefix)\(type.name.uppercaseFirst) {\n"
+        structHeader += "class \(model.classPrefix)\(type.name.uppercaseFirst) {\n"
         structHeader += ""
         
         return structHeader
