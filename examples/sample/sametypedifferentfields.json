@@ -1,0 +1,14 @@
+{
+  "someDict":
+    {
+      "someInt":1,
+      "someBool":true,
+      "someDict":
+        {
+          "someInt":1,
+          "someBool":true,
+          "someString":"foo",
+          "someDict":{}
+        }
+    }
+}
