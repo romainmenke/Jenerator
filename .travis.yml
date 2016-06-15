@@ -3,10 +3,11 @@ language: objective-c
 matrix:
   include:
     - osx_image: xcode7.3
-      env:
-        - SWIFT_VERSION=2.2-SNAPSHOT-2016-01-06-a
-        - SWIFT_VERSION=DEVELOPMENT-SNAPSHOT-2016-05-31-a
-        - SWIFT_VERSION=DEVELOPMENT-SNAPSHOT-2016-06-06-a
+      env: SWIFT_VERSION=2.2-SNAPSHOT-2016-01-06-a
+    - osx_image: xcode7.3
+      env: SWIFT_VERSION=DEVELOPMENT-SNAPSHOT-2016-05-31-a
+    - osx_image: xcode7.3
+      env: SWIFT_VERSION=DEVELOPMENT-SNAPSHOT-2016-06-06-a
     - osx_image: xcode8
 
 script:
