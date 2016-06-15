@@ -27,13 +27,13 @@ private var source : String = ""
 /// File Name String
 private var fileName : String = ""
 /// Source NSURL
-private var sourceUrl : NSURL = NSURL()
+private var sourceUrl : VURL?
 /// Save Path String
 private var savePath : String = ""
 /// Class Prefix String
 private var classPrefix : String = ""
 /// Current Path
-let currentPath = NSFileManager.defaultManager().currentDirectoryPath
+let currentPath = FileManager.default().currentDirectoryPath
 
 /// Model Builder
 var builder : ModelBuilder?
@@ -64,7 +64,7 @@ func earlyEscapes() {
         exit(EX_USAGE)
     }
     
-    guard let sourceUrlArg = NSURL(string: sourceArg) else {
+    guard let sourceUrlArg = URL(string: sourceArg) else {
         print("Malformed Source Url/Path")
         exit(EXIT_FAILURE)
     }
@@ -72,7 +72,7 @@ func earlyEscapes() {
     // assign the verified values
     source = sourceArg
     sourceUrl = sourceUrlArg
-    fileName = fileNameArg.stringByReplacingOccurrencesOfString(".swift", withString: "") + ".swift"
+    fileName = fileNameArg.replacingOccurrences(of: ".swift", with: "") + ".swift"
     classPrefix = classPrefixFlag.value ?? "JN"
 }
 
@@ -80,6 +80,10 @@ func earlyEscapes() {
  Parse the JSON and build the model
  */
 func parseJSON() {
+    
+    guard let sourceUrl = sourceUrl else {
+        return
+    }
     
     if sourceUrl.host == nil {
         savePath = saveDirFlag.value ?? sourceUrl.removeLast()?.absoluteString ?? currentPath
@@ -101,7 +105,7 @@ func writeToFile() {
         let modelFilePath = savePath + "/" + fileName
         
         do {
-            try code.writeToFile(modelFilePath, atomically:true, encoding:NSUTF8StringEncoding)
+            try code.write(toFile: modelFilePath, atomically:true, encoding:String.Encoding.utf8)
             exit(EXIT_SUCCESS)
         } catch {
             print("Can't write to", modelFilePath)

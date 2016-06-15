@@ -10,7 +10,14 @@ import Foundation
 
 
 #if swift(>=3.0)
-#elseif swift(>=2.2)
+    
+    extension String {
+        var urlEncoding: String? {
+            return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlHostAllowed)
+        }
+    }
+
+    #elseif swift(>=2.2)
     extension String {
         
         func components(separatedBy separator: String) -> [String] {
@@ -21,6 +28,10 @@ import Foundation
             return self.uppercaseString
         }
         
+        func lowercased() -> String {
+            return self.lowercaseString
+        }
+        
         var removingPercentEncoding: String? {
             return self.stringByRemovingPercentEncoding
         }
@@ -29,12 +40,24 @@ import Foundation
             return self.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
         }
         
+        func rangeOfCharacter(from set: NSCharacterSet) -> Range<Index>? {
+            return rangeOfCharacterFromSet(set)
+        }
+        
+        func replacingOccurrences(of target: String, with replacement: String) -> String {
+            return stringByReplacingOccurrencesOfString(target, withString: replacement)
+        }
+        
+        mutating func removeSubrange(_ range:Range<Index>) {
+            self.removeRange(range)
+        }
+        
     }
 #endif
-
-
+    
+    
 #if swift(>=3.0)
-#elseif swift(>=2.2)
+    #elseif swift(>=2.2)
     extension CollectionType where Generator.Element : Equatable {
         
         func index(of element: Self.Generator.Element) -> Self.Index? {
@@ -67,21 +90,11 @@ import Foundation
         
     }
 #endif
-
-#if swift(>=3.0)
-#elseif swift(>=2.2)
-    extension String {
-        
-        func replacingOccurrences(of target: String, with replacement: String) -> String {
-            return stringByReplacingOccurrencesOfString(target, withString: replacement)
-        }
-        
-    }
     
-#endif
 
+    
 #if swift(>=3.0)
-#elseif swift(>=2.2)
+    #elseif swift(>=2.2)
     extension NSData {
         
         convenience init?(contentsOf url: NSURL) {
@@ -91,10 +104,10 @@ import Foundation
     }
     
 #endif
-
-
+    
+    
 #if swift(>=3.0)
-#elseif swift(>=2.2)
+    #elseif swift(>=2.2)
     extension NSBundle {
         
         convenience init(for aClass: Swift.AnyClass) {
@@ -104,8 +117,82 @@ import Foundation
     }
 #endif
 
+
+#if swift(>=3.0)
+    extension URL {
+        /**
+         Drop the last component from an NSURL
+         
+         - returns: the url without it's last component
+         */
+        func removeLast() -> URL? {
+            return URL(string: (self.absoluteString?.replacingOccurrences(of: self.lastPathComponent ?? "", with: ""))!)
+        }
+    }
+#elseif swift(>=2.2)
+    extension NSURL {
+        /**
+         Drop the last component from an NSURL
+         
+         - returns: the url without it's last component
+         */
+        func removeLast() -> NSURL? {
+            return NSURL(string: (self.absoluteString.replacingOccurrences(of: self.lastPathComponent ?? "", with: "")))
+        }
+    }
+#endif
+
+#if swift(>=3.0)
+    typealias VURL = URL
+    typealias VData = Data
+    typealias VCharacterSet = CharacterSet
+#elseif swift(>=2.2)
+    typealias VURL = NSURL
+    typealias VData = NSData
+    typealias VCharacterSet = NSCharacterSet
+    typealias JSONSerialization = NSJSONSerialization
+#endif
+
+#if swift(>=3.0)
+#elseif swift(>=2.2)
+    extension NSMutableCharacterSet {
+        func formUnion(with otherSet:NSCharacterSet) {
+            self.formUnionWithCharacterSet(otherSet)
+        }
+    }
+    
+    extension NSCharacterSet {
+        static var uppercaseLetters : NSCharacterSet {
+            get {
+                return self.uppercaseLetterCharacterSet()
+            }
+        }
+        
+        static var lowercaseLetters : NSCharacterSet {
+            get {
+                return self.lowercaseLetterCharacterSet()
+            }
+        }
+        
+        static var alphanumerics : NSCharacterSet {
+            get {
+                return self.alphanumericCharacterSet()
+            }
+        }
+        
+        convenience init(charactersIn string: String) {
+            self.init(charactersInString:string)
+        }
+        
+        var inverted : NSCharacterSet {
+            get {
+                return self.invertedSet
+            }
+        }
+    }
+#endif
+
+
 //#if swift(>=3.0)
 //#elseif swift(>=2.2)
 //#endif
-
-

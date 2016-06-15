@@ -71,21 +71,38 @@ public struct ModelBuilder {
      - returns: a JSONDataType and data of the first element that is not an Array
      */
     func buildMultiDimentionalArrayOfObject(withName name:String, array:[AnyObject]) -> (dataType:JSONDataType,content:[String:AnyObject]?) {
-        var type = JSONDataType.JSONArray(type: JSONDataType.JSONNull)
+        var type = JSONDataType.jsonArray(type: JSONDataType.jsonNull)
         var current = array
         while let first = current.first as? [AnyObject] {
             current = first
-            type = type.upgrade(toType: JSONDataType.JSONArray(type: JSONDataType.JSONNull))
+            type = type.upgrade(toType: JSONDataType.jsonArray(type: JSONDataType.jsonNull))
         }
         
         if let content = current.first as? [String:AnyObject] {
-            type = type.upgrade(toType: JSONDataType.JSONType(type: name))
+            type = type.upgrade(toType: JSONDataType.jsonType(type: name))
             return (type,content)
         }
         
         return (type,nil)
     }
     
+    #if swift(>=3.0)
+    /**
+     Start of Analysis
+     
+     - parameter data: Data returned from an API call or read from a .json file
+     
+     - returns: A ModelBuilder containing the constructed Model
+     */
+    public func buildModel(fromData data:AnyObject, withSource source: URL?) -> ModelBuilder {
+        if let data = data as? [String:AnyObject] {
+            return self.startWithDictionary(fromData: data, withSource: source)
+        } else if let data = data as? [AnyObject] {
+            return self.startWithArray(fromData: data, withSource: source)
+        }
+        return self
+    }
+    #elseif swift(>=2.2)
     /**
      Start of Analysis
      
@@ -101,6 +118,8 @@ public struct ModelBuilder {
         }
         return self
     }
+    #endif
+
     
     /**
      Top level Object is an Array
@@ -109,7 +128,7 @@ public struct ModelBuilder {
      
      - returns: A ModelBuilder containing the constructed Model
      */
-    private func startWithArray(fromData data:[AnyObject], withSource source: NSURL?) -> ModelBuilder {
+    private func startWithArray(fromData data:[AnyObject], withSource source: VURL?) -> ModelBuilder {
         var copy = self
         copy.dictionaryAtRoot = false
         let (dataType,content) = copy.buildMultiDimentionalArrayOfObject(withName: "jeneratorElement", array: data)
@@ -143,7 +162,7 @@ public struct ModelBuilder {
      
      - returns: A ModelBuilder containing the constructed Model
      */
-    private func startWithDictionary(fromData data:[String:AnyObject], withSource source: NSURL?) -> ModelBuilder {
+    private func startWithDictionary(fromData data:[String:AnyObject], withSource source: VURL?) -> ModelBuilder {
         var copy = self
         copy.types = copy.buildTypes(withExistingTypes: copy.types, name: copy.root, fields: data, withSource: source)
         return copy
@@ -158,7 +177,7 @@ public struct ModelBuilder {
      
      - returns: An Array of Types
      */
-    private func buildTypes(withExistingTypes existingTypes:[JSONCustomType], name:String, fields:[String:AnyObject], withSource source: NSURL? = nil) -> [JSONCustomType] {
+    private func buildTypes(withExistingTypes existingTypes:[JSONCustomType], name:String, fields:[String:AnyObject], withSource source: VURL? = nil) -> [JSONCustomType] {
         
         var currentTypes = existingTypes
         
@@ -204,7 +223,7 @@ public struct ModelBuilder {
             if let dict = keyValuePair.1 as? [String:AnyObject] {
                 
                 // user generate to determine the type
-                let dataType = JSONDataType.JSONType(type: keyValuePair.0)
+                let dataType = JSONDataType.jsonType(type: keyValuePair.0)
                 
                 // create a field for the new type
                 let field = JSONField(name: keyValuePair.0, type: dataType)

@@ -2,8 +2,53 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Jenerator.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>JeneratorApp.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>JeneratorSDK.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>JeneratorSDKTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>JeneratorXcode.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0580FCE51D0F6BB70088F230</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0580FD031D0F6E220088F230</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0580FD1A1D0FEAFF0088F230</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7A3D34371D031814004B281E</key>
 		<dict>
 			<key>primary</key>

@@ -38,12 +38,12 @@ extension String {
         return first.uppercased() + String(characters.dropFirst())
     }
     
-    func stringByAddingPercentEncodingForRFC3986() -> String? {
-        let unreserved = "-._~/?"
-        let allowed = NSMutableCharacterSet.alphanumericCharacterSet()
-        allowed.addCharactersInString(unreserved)
-        return stringByAddingPercentEncodingWithAllowedCharacters(allowed)
-    }
+//    func stringByAddingPercentEncodingForRFC3986() -> String? {
+//        let unreserved = "-._~/?"
+//        let allowed = NSMutableCharacterSet.alphanumerics
+//        allowed.addCharacters(in: unreserved)
+//        return addingPercentEncoding(withAllowedCharacters: allowed as CharacterSet)
+//    }
 }
 
 extension NSNumber {
@@ -59,16 +59,4 @@ extension NSNumber {
         return numID == boolID
     }
     
-}
-
-
-extension NSURL {
-    /**
-     Drop the last component from an NSURL
-     
-     - returns: the url without it's last component
-     */
-    func removeLast() -> NSURL? {
-        return NSURL(string: self.absoluteString.replacingOccurrences(of: self.lastPathComponent ?? "", with: ""))
-    }
 }

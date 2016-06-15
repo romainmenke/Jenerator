@@ -13,8 +13,9 @@
 		0559638E1D04A34100DD9220 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0559638C1D04A34100DD9220 /* Main.storyboard */; };
 		055963991D04A34100DD9220 /* JeneratorSDKSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055963981D04A34100DD9220 /* JeneratorSDKSampleTests.swift */; };
 		055963A41D04A34100DD9220 /* JeneratorSDKSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055963A31D04A34100DD9220 /* JeneratorSDKSampleUITests.swift */; };
-		055963B21D04A37600DD9220 /* JeneratorSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 055963B11D04A37600DD9220 /* JeneratorSDK.framework */; };
-		055963B31D04A37600DD9220 /* JeneratorSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 055963B11D04A37600DD9220 /* JeneratorSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		05C082EB1D10A7DB00827849 /* BasicUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C082EA1D10A7DB00827849 /* BasicUsage.swift */; };
+		05C082FB1D10B74300827849 /* JeneratorSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C082FA1D10B74300827849 /* JeneratorSDK.framework */; };
+		05C082FC1D10B74300827849 /* JeneratorSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 05C082FA1D10B74300827849 /* JeneratorSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,13 +36,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		055963B41D04A37600DD9220 /* Embed Frameworks */ = {
+		05C082E91D10A73F00827849 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				055963B31D04A37600DD9220 /* JeneratorSDK.framework in Embed Frameworks */,
+				05C082FC1D10B74300827849 /* JeneratorSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,7 +62,9 @@
 		0559639F1D04A34100DD9220 /* JeneratorSDKSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JeneratorSDKSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		055963A31D04A34100DD9220 /* JeneratorSDKSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JeneratorSDKSampleUITests.swift; sourceTree = "<group>"; };
 		055963A51D04A34100DD9220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		055963B11D04A37600DD9220 /* JeneratorSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JeneratorSDK.framework; path = JeneratorSDKSample/JeneratorSDK.framework; sourceTree = "<group>"; };
+		05C082EA1D10A7DB00827849 /* BasicUsage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicUsage.swift; sourceTree = "<group>"; };
+		05C082EE1D10AC1F00827849 /* TestTheGeneratedCode.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TestTheGeneratedCode.playground; sourceTree = "<group>"; };
+		05C082FA1D10B74300827849 /* JeneratorSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JeneratorSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				055963B21D04A37600DD9220 /* JeneratorSDK.framework in Frameworks */,
+				05C082FB1D10B74300827849 /* JeneratorSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +96,8 @@
 		0559637A1D04A34100DD9220 = {
 			isa = PBXGroup;
 			children = (
-				055963B11D04A37600DD9220 /* JeneratorSDK.framework */,
+				05C082FA1D10B74300827849 /* JeneratorSDK.framework */,
+				05C082EE1D10AC1F00827849 /* TestTheGeneratedCode.playground */,
 				055963851D04A34100DD9220 /* JeneratorSDKSample */,
 				055963971D04A34100DD9220 /* JeneratorSDKSampleTests */,
 				055963A21D04A34100DD9220 /* JeneratorSDKSampleUITests */,
@@ -119,6 +123,7 @@
 				0559638A1D04A34100DD9220 /* Assets.xcassets */,
 				0559638C1D04A34100DD9220 /* Main.storyboard */,
 				0559638F1D04A34100DD9220 /* Info.plist */,
+				05C082EA1D10A7DB00827849 /* BasicUsage.swift */,
 			);
 			path = JeneratorSDKSample;
 			sourceTree = "<group>";
@@ -151,7 +156,7 @@
 				0559637F1D04A34100DD9220 /* Sources */,
 				055963801D04A34100DD9220 /* Frameworks */,
 				055963811D04A34100DD9220 /* Resources */,
-				055963B41D04A37600DD9220 /* Embed Frameworks */,
+				05C082E91D10A73F00827849 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -210,13 +215,16 @@
 				TargetAttributes = {
 					055963821D04A34100DD9220 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					055963931D04A34100DD9220 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 055963821D04A34100DD9220;
 					};
 					0559639E1D04A34100DD9220 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 055963821D04A34100DD9220;
 					};
 				};
@@ -272,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05C082EB1D10A7DB00827849 /* BasicUsage.swift in Sources */,
 				055963891D04A34100DD9220 /* ViewController.swift in Sources */,
 				055963871D04A34100DD9220 /* AppDelegate.swift in Sources */,
 			);
@@ -410,11 +419,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/JeneratorSDKSample",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = JeneratorSDKSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.menke-dev.JeneratorSDKSample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -426,11 +437,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/JeneratorSDKSample",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = JeneratorSDKSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.menke-dev.JeneratorSDKSample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -443,6 +456,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.menke-dev.JeneratorSDKSampleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JeneratorSDKSample.app/Contents/MacOS/JeneratorSDKSample";
 			};
 			name = Debug;
@@ -456,6 +470,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.menke-dev.JeneratorSDKSampleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JeneratorSDKSample.app/Contents/MacOS/JeneratorSDKSample";
 			};
 			name = Release;
@@ -468,6 +483,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.menke-dev.JeneratorSDKSampleUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = JeneratorSDKSample;
 			};
 			name = Debug;
@@ -480,6 +496,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.menke-dev.JeneratorSDKSampleUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = JeneratorSDKSample;
 			};
 			name = Release;
@@ -503,6 +520,7 @@
 				055963AA1D04A34100DD9220 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		055963AB1D04A34100DD9220 /* Build configuration list for PBXNativeTarget "JeneratorSDKSampleTests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +529,7 @@
 				055963AD1D04A34100DD9220 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		055963AE1D04A34100DD9220 /* Build configuration list for PBXNativeTarget "JeneratorSDKSampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +538,7 @@
 				055963B01D04A34100DD9220 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

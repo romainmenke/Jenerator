@@ -21,7 +21,7 @@ struct JSONCustomType : Equatable, CustomStringConvertible {
     
     var query : JSONQuery? = nil
     
-    init(fields fields:[JSONField], name:String) {
+    init(fields:[JSONField], name:String) {
         self.fields = fields
         self.name = name
     }

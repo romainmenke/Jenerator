@@ -39,7 +39,7 @@ class JSONModelBuilderTests: XCTestCase {
         let builder = ModelBuilder(rootName: "Root", classPrefix: "UT")
         let (result,content) = builder.buildMultiDimentionalArrayOfObject(withName: "name", array: object)
         
-        let testType = JSONDataType.JSONArray(type: JSONDataType.JSONArray(type: JSONDataType.JSONArray(type: JSONDataType.JSONType(type: "name"))))
+        let testType = JSONDataType.jsonArray(type: JSONDataType.jsonArray(type: JSONDataType.jsonArray(type: JSONDataType.jsonType(type: "name"))))
         
         XCTAssert(content as? [String:String] ?? [:] == ["some":"foo"])
         XCTAssert(result == testType)
@@ -50,14 +50,14 @@ class JSONModelBuilderTests: XCTestCase {
         
         let object : [String:AnyObject] = ["user":["stats":["level":1,"power":"invisibility"]]]
         
-        let levelField = JSONField(name: "level", type: .JSONInt)
-        let powerField = JSONField(name: "power", type: .JSONString)
+        let levelField = JSONField(name: "level", type: .jsonInt)
+        let powerField = JSONField(name: "power", type: .jsonString)
         let statsType = JSONCustomType(fields: [levelField,powerField], name: "stats")
         
-        let statsField = JSONField(name: "stats", type: JSONDataType.JSONType(type: "stats"))
+        let statsField = JSONField(name: "stats", type: JSONDataType.jsonType(type: "stats"))
         let userType = JSONCustomType(fields: [statsField], name: "user")
         
-        let userField = JSONField(name: "user", type: JSONDataType.JSONType(type: "user"))
+        let userField = JSONField(name: "user", type: JSONDataType.jsonType(type: "user"))
         
         let container = JSONCustomType(fields: [userField], name: "jenerator")
         
@@ -90,14 +90,14 @@ class JSONModelBuilderTests: XCTestCase {
         
         let object : [String:AnyObject] = ["users":[["stats":["level":1,"power":"invisibility"]]]]
         
-        let levelField = JSONField(name: "level", type: .JSONInt)
-        let powerField = JSONField(name: "power", type: .JSONString)
+        let levelField = JSONField(name: "level", type: .jsonInt)
+        let powerField = JSONField(name: "power", type: .jsonString)
         let statsType = JSONCustomType(fields: [levelField,powerField], name: "stats")
         
-        let statsField = JSONField(name: "stats", type: JSONDataType.JSONType(type: "stats"))
+        let statsField = JSONField(name: "stats", type: JSONDataType.jsonType(type: "stats"))
         let userType = JSONCustomType(fields: [statsField], name: "users")
         
-        let userField = JSONField(name: "users", type: JSONDataType.JSONArray(type: JSONDataType.JSONType(type: "users")))
+        let userField = JSONField(name: "users", type: JSONDataType.jsonArray(type: JSONDataType.jsonType(type: "users")))
         
         let container = JSONCustomType(fields: [userField], name: "jenerator")
         
@@ -153,7 +153,7 @@ class JSONModelBuilderTests: XCTestCase {
     
     func testFromAPISourceExpectSuccess() {
         
-        guard let url = NSURL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%202487889&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys") else {
+        guard let url = URL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%202487889&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys") else {
             XCTFail()
             return
         }
@@ -172,7 +172,7 @@ class JSONModelBuilderTests: XCTestCase {
     
     func testFromSourceExpectSuccess() {
         
-        guard let url = NSURL(string: "https://raw.githubusercontent.com/romainmenke/Jenerator/master/examples/sample/somejson.json") else {
+        guard let url = URL(string: "https://raw.githubusercontent.com/romainmenke/Jenerator/master/examples/sample/somejson.json") else {
             XCTFail()
             return
         }
@@ -191,7 +191,7 @@ class JSONModelBuilderTests: XCTestCase {
     
     func testFromSourceArrayExpectSuccess() {
         
-        guard let url = NSURL(string: "https://raw.githubusercontent.com/romainmenke/Jenerator/master/examples/sample/somejsonarray.json") else {
+        guard let url = URL(string: "https://raw.githubusercontent.com/romainmenke/Jenerator/master/examples/sample/somejsonarray.json") else {
             XCTFail()
             return
         }
@@ -209,7 +209,7 @@ class JSONModelBuilderTests: XCTestCase {
     
     func testFromSourceDifferenceInTypeExpectSuccess() {
         
-        guard let url = NSURL(string: "https://raw.githubusercontent.com/romainmenke/Jenerator/master/examples/sample/sametypedifferentfields.json") else {
+        guard let url = URL(string: "https://raw.githubusercontent.com/romainmenke/Jenerator/master/examples/sample/sametypedifferentfields.json") else {
             XCTFail()
             return
         }
@@ -228,7 +228,7 @@ class JSONModelBuilderTests: XCTestCase {
     
     func testFromFileExpectSuccess() {
         
-        guard let path = NSBundle(for: JSONModelBuilderTests.self).pathForResource("json-test-alpha", ofType: "json") else {
+        guard let path = Bundle(for: JSONModelBuilderTests.self).pathForResource("json-test-alpha", ofType: "json") else {
             XCTFail()
             return
         }
@@ -245,7 +245,7 @@ class JSONModelBuilderTests: XCTestCase {
     
     func testFromSourceExpectFail() {
         
-        guard let url = NSURL(string: "https://google.com") else {
+        guard let url = URL(string: "https://google.com") else {
             XCTFail()
             return
         }
@@ -260,7 +260,7 @@ class JSONModelBuilderTests: XCTestCase {
     
     func testFromFileExpectFail() {
         
-        guard let path = NSBundle(for: JSONModelBuilderTests.self).pathForResource("json-test-beta", ofType: "json") else {
+        guard let path = Bundle(for: JSONModelBuilderTests.self).pathForResource("json-test-beta", ofType: "json") else {
             XCTFail()
             return
         }
@@ -276,7 +276,7 @@ class JSONModelBuilderTests: XCTestCase {
     
     func testFromFileExpectFailBeta() {
         
-        guard let path = NSBundle(for: JSONModelBuilderTests.self).pathForResource("json-test-beta", ofType: "json") else {
+        guard let path = Bundle(for: JSONModelBuilderTests.self).pathForResource("json-test-beta", ofType: "json") else {
             XCTFail()
             return
         }

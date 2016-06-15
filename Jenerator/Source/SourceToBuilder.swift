@@ -18,17 +18,32 @@ extension ModelBuilder {
      
      - returns: an initialised ModelBuilder if the url returned valid JSON data
      */
-    public static func fromSource(_ url:NSURL, classPrefix:String) -> ModelBuilder? {
+    #if swift(>=3.0)
+        public static func fromSource(_ url:URL, classPrefix:String) -> ModelBuilder? {
         
-        guard let data = NSData(contentsOf:url) else {
+            guard let data = try? Data(contentsOf:url) else {
+                return nil
+            }
+            
+            if let json = JSONCoder.decode(data) {
+                return ModelBuilder(rootName: "jenerator", classPrefix: classPrefix).buildModel(fromData: json, withSource: url)
+            }
             return nil
         }
-        
-        if let json = JSONCoder.decode(data) {
-            return ModelBuilder(rootName: "jenerator", classPrefix: classPrefix).buildModel(fromData: json, withSource: url)
+    #elseif swift(>=2.2)
+        public static func fromSource(_ url:NSURL, classPrefix:String) -> ModelBuilder? {
+            
+            guard let data = NSData(contentsOf:url) else {
+                return nil
+            }
+            
+            if let json = JSONCoder.decode(data) {
+                return ModelBuilder(rootName: "jenerator", classPrefix: classPrefix).buildModel(fromData: json, withSource: url)
+            }
+            return nil
         }
-        return nil
-    }
+    #endif
+    
     
     /**
      Constructer for a local JSON source
@@ -38,15 +53,29 @@ extension ModelBuilder {
      
      - returns: an initialised ModelBuilder if the file contained valid JSON data
      */
-    public static func fromFile(_ path:String, classPrefix:String) -> ModelBuilder? {
+    #if swift(>=3.0)
+        public static func fromFile(_ path:String, classPrefix:String) -> ModelBuilder? {
         
-        guard let data = NSData(contentsOfFile: path) else {
+            guard let data = try? Data(contentsOf: VURL(fileURLWithPath: path)) else {
+                return nil
+            }
+            
+            if let json = JSONCoder.decode(data) {
+                return ModelBuilder(rootName: "jenerator", classPrefix: classPrefix).buildModel(fromData: json, withSource: nil)
+            }
             return nil
         }
-        
-        if let json = JSONCoder.decode(data) {
-            return ModelBuilder(rootName: "jenerator", classPrefix: classPrefix).buildModel(fromData: json, withSource: nil)
+    #elseif swift(>=2.2)
+        public static func fromFile(_ path:String, classPrefix:String) -> ModelBuilder? {
+            
+            guard let data = NSData(contentsOf: VURL(fileURLWithPath: path)) else {
+                return nil
+            }
+            
+            if let json = JSONCoder.decode(data) {
+                return ModelBuilder(rootName: "jenerator", classPrefix: classPrefix).buildModel(fromData: json, withSource: nil)
+            }
+            return nil
         }
-        return nil
-    }
+    #endif
 }

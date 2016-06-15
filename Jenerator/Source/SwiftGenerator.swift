@@ -108,7 +108,7 @@ public struct SwiftGenerator {
         var structFields = "\n"
         
         for field in type.fields {
-            structFields += "    var \(field.name) : \(field.type.typeString(withClassPrefix: model.classPrefix))"
+            structFields += "    var \(field.name.lowercased().swiftify()) : \(field.type.typeString(withClassPrefix: model.classPrefix))"
             if field.type.optionalType {
                 structFields += "?\n"
             } else {
@@ -143,16 +143,16 @@ public struct SwiftGenerator {
             // if field is an array
             structInitialiser += "\n"
             if field.type.isNestedArrayType {
-                structInitialiser += "        self.\(field.name) = []\n"
+                structInitialiser += "        self.\(field.name.lowercased().swiftify()) = []\n"
                 structInitialiser += "        if let array = data[\"\(field.name)\"] as? [AnyObject] {\n"
                 structInitialiser += generateArrayInitialiser(fromModel: model, field: field, currentIndent: "            ")
                 structInitialiser += "        }\n"
             } else if field.type.isNestedType {
                 structInitialiser += "        if let object = data[\"\(field.name)\"] as? [String:AnyObject] {\n"
-                structInitialiser += "            self.\(field.name) = \(field.type.typeString(withClassPrefix: model.classPrefix))(data: object)\n"
+                structInitialiser += "            self.\(field.name.lowercased().swiftify()) = \(field.type.typeString(withClassPrefix: model.classPrefix))(data: object)\n"
                 structInitialiser += "        }\n"
             } else {
-                structInitialiser += "        self.\(field.name) = (data[\"\(field.name)\"] as? \(field.type.typeString(withClassPrefix: model.classPrefix))) ?? \(field.type.defaultValue)\n"
+                structInitialiser += "        self.\(field.name.lowercased().swiftify()) = (data[\"\(field.name)\"] as? \(field.type.typeString(withClassPrefix: model.classPrefix))) ?? \(field.type.defaultValue)\n"
             }
         }
         structInitialiser += "    }\n"
@@ -173,7 +173,7 @@ public struct SwiftGenerator {
             // if field is an array
             structInitialiser += "\n"
 
-            structInitialiser += "        self.\(field.name) = []\n"
+            structInitialiser += "        self.\(field.name.lowercased().swiftify()) = []\n"
             structInitialiser += generateArrayInitialiser(fromModel: model, field: field, currentIndent: "        ")
         }
         structInitialiser += "    }\n"
@@ -205,7 +205,7 @@ public struct SwiftGenerator {
             arrayInitialiser +=     "    }\n"
         } else {
             arrayInitialiser +=     "\(currentIndent)    if let element = element as? [String:AnyObject] {\n"
-            arrayInitialiser +=     "\(currentIndent)        self.\(field.name).append(\(field.type.arrayTypeString(withClassPrefix:model.classPrefix))(data: element))\n"
+            arrayInitialiser +=     "\(currentIndent)        self.\(field.name.lowercased().swiftify()).append(\(field.type.arrayTypeString(withClassPrefix:model.classPrefix))(data: element))\n"
             arrayInitialiser +=     "\(currentIndent)    }\n"
         }
         arrayInitialiser +=         "\(currentIndent)}\n"

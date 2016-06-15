@@ -21,16 +21,16 @@ struct JSONCoder {
      
      - returns: NSData if the collection is a valid JSON Object and serialization succeeds
      */
-    static func encode(_ object:AnyObject) -> NSData? {
+    static func encode(_ object:AnyObject) -> VData? {
         
-        guard NSJSONSerialization.isValidJSONObject(object) else {
+        guard JSONSerialization.isValidJSONObject(object) else {
             return nil
         }
         
         #if swift(>=3.0)
             
             do {
-                let jsonData = try NSJSONSerialization.data(withJSONObject:object, options: NSJSONWritingOptions.prettyPrinted)
+                let jsonData = try JSONSerialization.data(withJSONObject:object, options: JSONSerialization.WritingOptions.prettyPrinted)
                 return jsonData
             } catch _ as NSError {
                 return nil
@@ -55,12 +55,12 @@ struct JSONCoder {
      
      - returns: a collection if serialization succeeds
      */
-    static func decode(_ data:NSData) -> AnyObject? {
+    static func decode(_ data:VData) -> AnyObject? {
         
         #if swift(>=3.0)
             
             do {
-                let decoded = try NSJSONSerialization.jsonObject(with: data, options: [])
+                let decoded = try JSONSerialization.jsonObject(with: data, options: [])
                 return decoded
             } catch _ as NSError {
                 return nil

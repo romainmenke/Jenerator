@@ -22,8 +22,8 @@ class JSONFieldTests: XCTestCase {
     }
 
     func testJSONFieldEquality() {
-        let typeInt = JSONDataType.JSONInt
-        let typeDouble = JSONDataType.JSONDouble
+        let typeInt = JSONDataType.jsonInt
+        let typeDouble = JSONDataType.jsonDouble
         
         let fieldA = JSONField(name: "Alpha", type: typeInt)
         let fieldB = JSONField(name: "Alpha", type: typeDouble)
@@ -38,11 +38,11 @@ class JSONFieldTests: XCTestCase {
     
     func testHashValue() {
         
-        let fieldA = JSONField(name: "Alpha", type: JSONDataType.JSONInt)
-        let fieldB = JSONField(name: "Alpha", type: JSONDataType.JSONDouble)
-        let fieldC = JSONField(name: "Beta", type: JSONDataType.JSONInt)
+        let fieldA = JSONField(name: "Alpha", type: JSONDataType.jsonInt)
+        let fieldB = JSONField(name: "Alpha", type: JSONDataType.jsonDouble)
+        let fieldC = JSONField(name: "Beta", type: JSONDataType.jsonInt)
         
-        let fieldA2 = JSONField(name: "Alpha", type: JSONDataType.JSONInt)
+        let fieldA2 = JSONField(name: "Alpha", type: JSONDataType.jsonInt)
         
         XCTAssert(fieldA.hashValue != fieldB.hashValue)
         XCTAssert(fieldA.hashValue != fieldC.hashValue)

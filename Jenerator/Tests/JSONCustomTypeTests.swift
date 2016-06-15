@@ -24,7 +24,7 @@ class JSONCustomTypeTests: XCTestCase {
     
     func testJSONCustomTypeEquality() {
         
-        let fieldA = JSONField(name: "Alpha", type: JSONDataType.JSONInt)
+        let fieldA = JSONField(name: "Alpha", type: JSONDataType.jsonInt)
         
         // different name same fields
         let typeA = JSONCustomType(fields: [], name: "Alpha")
@@ -41,9 +41,9 @@ class JSONCustomTypeTests: XCTestCase {
     
     func testJSONCustomTypeCompatibility() {
         
-        let fieldA = JSONField(name: "Alpha", type: JSONDataType.JSONInt)
-        let fieldB = JSONField(name: "Beta", type: JSONDataType.JSONString)
-        let fieldC = JSONField(name: "Delta", type: JSONDataType.JSONBool)
+        let fieldA = JSONField(name: "Alpha", type: JSONDataType.jsonInt)
+        let fieldB = JSONField(name: "Beta", type: JSONDataType.jsonString)
+        let fieldC = JSONField(name: "Delta", type: JSONDataType.jsonBool)
         
         // different name same fields
         let typeA = JSONCustomType(fields: [fieldA,fieldB], name: "Alpha")

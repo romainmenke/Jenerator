@@ -15,14 +15,19 @@ import Foundation
 struct JSONQuery {
     
     var params : [(key:String,value:String)]
-    var source : NSURL
+    var source : VURL
+    
     var base : String {
         get {
-            return source.absoluteString.components(separatedBy: "?").first ?? source.absoluteString
+            #if swift(>=3.0)
+                return source.absoluteString!.components(separatedBy: "?").first ?? source.absoluteString!
+            #elseif swift(>=2.2)
+                return source.absoluteString.components(separatedBy: "?").first ?? source.absoluteString
+            #endif
         }
     }
     
-    init?(source:NSURL) {
+    init?(source:VURL) {
         
         self.source = source
         self.params = []

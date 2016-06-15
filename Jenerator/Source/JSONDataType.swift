@@ -26,29 +26,29 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
      *
      *  @param type:String Name for the custom type
      */
-    case JSONType(type:String)
+    case jsonType(type:String)
     
     /**
      *  Array Type
      *
      *  @param type:JSONDataType Type of the array element
      */
-    case JSONArray(type:JSONDataType)
+    case jsonArray(type:JSONDataType)
     
     /// String Type
-    case JSONString
+    case jsonString
     
     /// Int Type
-    case JSONInt
+    case jsonInt
     
     /// FloatingPoint Type
-    case JSONDouble
+    case jsonDouble
     
     /// Boolean Type
-    case JSONBool
+    case jsonBool
     
     /// Nil Type
-    case JSONNull
+    case jsonNull
     
     /// returns the typeString
     var description: String {
@@ -68,44 +68,44 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
         
         if let object = object as? [AnyObject] {
             if let first = object.first {
-                return JSONDataType.JSONArray(type: JSONDataType.generate(withObject: first))
+                return JSONDataType.jsonArray(type: JSONDataType.generate(withObject: first))
             }
             
-            return JSONDataType.JSONArray(type: .JSONNull)
+            return JSONDataType.jsonArray(type: .jsonNull)
         }
         
         if let number = object as? NSNumber {
             if number.isBool() {
-                return JSONDataType.JSONBool
+                return JSONDataType.jsonBool
             } else if let int = object as? Int where int == number {
-                return JSONDataType.JSONInt
+                return JSONDataType.jsonInt
             } else {
-                return JSONDataType.JSONDouble
+                return JSONDataType.jsonDouble
             }
         } else if object is String {
-            return JSONDataType.JSONString
+            return JSONDataType.jsonString
         }
             
-        return JSONDataType.JSONNull
+        return JSONDataType.jsonNull
     }
     
     /// Swift equivalent of JSON type
     var typeString : String {
         get {
             switch self {
-            case .JSONString :
+            case .jsonString :
                 return "String"
-            case .JSONBool :
+            case .jsonBool :
                 return "Bool"
-            case .JSONInt :
+            case .jsonInt :
                 return "Int"
-            case .JSONDouble :
+            case .jsonDouble :
                 return "Double"
-            case .JSONNull :
+            case .jsonNull :
                 return "Any"
-            case .JSONType(let type) :
+            case .jsonType(let type) :
                 return type.uppercaseFirst
-            case .JSONArray(let type) :
+            case .jsonArray(let type) :
                 return "[\(type.typeString.uppercaseFirst)]"
             }
         }
@@ -115,19 +115,19 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
     var defaultValue : String {
         get {
             switch self {
-            case .JSONString :
+            case .jsonString :
                 return "\"\""
-            case .JSONBool :
+            case .jsonBool :
                 return "false"
-            case .JSONInt :
+            case .jsonInt :
                 return "0"
-            case .JSONDouble :
+            case .jsonDouble :
                 return "0.0"
-            case .JSONNull :
+            case .jsonNull :
                 return "nil"
-            case .JSONType(_) :
+            case .jsonType(_) :
                 return "nil"
-            case .JSONArray(_) :
+            case .jsonArray(_) :
                 return "[]"
             }
         }
@@ -136,9 +136,9 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
     /// True if JSONDataType is optional
     var optionalType : Bool {
         switch self {
-        case .JSONType(_) :
+        case .jsonType(_) :
             return true
-        case .JSONNull :
+        case .jsonNull :
             return true
         default:
             return false
@@ -148,7 +148,7 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
     /// True if Array contains a Custom Type
     var isNestedArrayType : Bool {
         switch self {
-        case .JSONArray(let type) where type.isNestedType :
+        case .jsonArray(let type) where type.isNestedType :
             return true
         default:
             return false
@@ -158,7 +158,7 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
     /// True if Type is a Custom Type
     var isNestedType : Bool {
         switch self {
-        case .JSONType(_) :
+        case .jsonType(_) :
             return true
         default:
             return false
@@ -168,7 +168,7 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
     /// Returns Element Type for an Array Type
     var unNestOneDimension : JSONDataType {
         switch self {
-        case .JSONArray(let type) :
+        case .jsonArray(let type) :
             return type
         default:
             return self
@@ -178,9 +178,9 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
     /// Returns True if Type is an Array Type with an Array Type as Element
     var isMultiDimensional : Bool {
         switch self {
-        case .JSONArray(let type) :
+        case .jsonArray(let type) :
             switch type {
-            case .JSONArray(_):
+            case .jsonArray(_):
                 return true
             default:
                 return false
@@ -204,7 +204,7 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
      */
     private func gatherDimensions(currentDimension current:Int) -> Int {
         switch self {
-        case .JSONArray(let type) :
+        case .jsonArray(let type) :
             return type.gatherDimensions(currentDimension: current + 1)
         default:
             return current
@@ -220,7 +220,7 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
      */
     func arrayTypeString(withClassPrefix classPrefix:String) -> String {
         switch self {
-        case .JSONArray(let type) :
+        case .jsonArray(let type) :
             return type.arrayTypeString(withClassPrefix: classPrefix)
         default:
             return self.typeString(withClassPrefix: classPrefix)
@@ -236,9 +236,9 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
      */
     func typeString(withClassPrefix classPrefix:String) -> String {
         switch self {
-        case .JSONArray(let type) :
+        case .jsonArray(let type) :
             return "[\(type.typeString(withClassPrefix: classPrefix).uppercaseFirst)]"
-        case .JSONType(_) :
+        case .jsonType(_) :
             return classPrefix + typeString
         default:
             return typeString
@@ -254,10 +254,10 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
      */
     func renameType(withNewName name:String) -> JSONDataType {
         switch self {
-        case .JSONType(_) :
-            return JSONDataType.JSONType(type: name)
-        case .JSONArray(let type) :
-            return JSONDataType.JSONArray(type: type.renameType(withNewName: name))
+        case .jsonType(_) :
+            return JSONDataType.jsonType(type: name)
+        case .jsonArray(let type) :
+            return JSONDataType.jsonArray(type: type.renameType(withNewName: name))
         default :
             return self
         }
@@ -272,16 +272,16 @@ indirect enum JSONDataType : Equatable, CustomStringConvertible {
      */
     func upgrade(toType newType: JSONDataType) -> JSONDataType {
         switch self {
-        case .JSONInt :
-            if newType == .JSONDouble {
-                return .JSONDouble
+        case .jsonInt :
+            if newType == .jsonDouble {
+                return .jsonDouble
             } else {
                 return self
             }
-        case .JSONNull :
+        case .jsonNull :
             return newType
-        case .JSONArray(let type) :
-            return .JSONArray(type: type.upgrade(toType: newType))
+        case .jsonArray(let type) :
+            return .jsonArray(type: type.upgrade(toType: newType))
         default:
             return self
         }

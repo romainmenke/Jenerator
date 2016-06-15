@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  JeneratorSDKSample
+//  JeneratorApp
 //
-//  Created by Romain Menke on 05/06/16.
-//  Copyright © 2016 Romain Menke. All rights reserved.
+//  Created by Romain Menke on 14/06/2016.
+//  Copyright © 2016 menke-dev. All rights reserved.
 //
 
 import Cocoa
