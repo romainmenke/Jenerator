@@ -226,19 +226,13 @@ class JSONModelBuilderTests: XCTestCase {
         
     }
     
+    #if swift(>=3.0)
     func testFromFileExpectSuccess() {
         
-        #if swift(>=3.0)
-            guard let path = Bundle(for: JSONModelBuilderTests.self).pathForResource("json-test-alpha", ofType: "json") else {
-                XCTFail()
-                return
-            }
-        #elseif swift(>=2.2)
-            guard let path = NSBundle(forClass:JSONModelBuilderTests.self).pathForResource("json-test-alpha", ofType: "json") else {
-                XCTFail()
-                return
-            }
-        #endif
+        guard let path = Bundle(for: JSONModelBuilderTests.self).pathForResource("json-test-alpha", ofType: "json") else {
+            XCTFail()
+            return
+        }
         
         guard let builder = ModelBuilder.fromFile(path, classPrefix: "UT") else {
             XCTFail()
@@ -248,6 +242,24 @@ class JSONModelBuilderTests: XCTestCase {
         XCTAssert(SwiftGenerator.generate(fromModel: builder.findAliasses()) != nil)
         
     }
+    #elseif swift(>=2.2)
+    func testFromFileExpectSuccess() {
+    
+        guard let path = NSBundle(forClass:JSONModelBuilderTests.self).pathForResource("json-test-alpha", ofType: "json") else {
+            XCTFail()
+            return
+        }
+        
+        guard let builder = ModelBuilder.fromFile(path, classPrefix: "UT") else {
+            XCTFail()
+            return
+        }
+        
+        XCTAssert(SwiftGenerator.generate(fromModel: builder.findAliasses()) != nil)
+    
+    }
+    #endif
+
     
     func testFromSourceExpectFail() {
         
@@ -264,20 +276,13 @@ class JSONModelBuilderTests: XCTestCase {
         
     }
     
+    #if swift(>=3.0)
     func testFromFileExpectFail() {
-        
-        #if swift(>=3.0)
-            guard let path = Bundle(for: JSONModelBuilderTests.self).pathForResource("json-test-beta", ofType: "json") else {
+
+        guard let path = Bundle(for: JSONModelBuilderTests.self).pathForResource("json-test-beta", ofType: "json") else {
             XCTFail()
             return
-            }
-        #elseif swift(>=2.2)
-            guard let path = NSBundle(forClass:JSONModelBuilderTests.self).pathForResource("json-test-beta", ofType: "json") else {
-                XCTFail()
-                return
-            }
-        #endif
-        
+        }
         
         guard let _ = ModelBuilder.fromFile(path, classPrefix: "UT") else {
             return
@@ -286,21 +291,45 @@ class JSONModelBuilderTests: XCTestCase {
         XCTFail()
         
     }
-    
-    func testFromFileExpectFailBeta() {
+    #elseif swift(>=2.2)
+    func testFromFileExpectFail() {
         
-        #if swift(>=3.0)
-            guard let path = Bundle(for: JSONModelBuilderTests.self).pathForResource("json-test-beta", ofType: "json") else {
+        guard let path = NSBundle(forClass:JSONModelBuilderTests.self).pathForResource("json-test-beta", ofType: "json") else {
             XCTFail()
             return
-            }
-        #elseif swift(>=2.2)
-            guard let path = NSBundle(forClass:JSONModelBuilderTests.self).pathForResource("json-test-beta", ofType: "json") else {
-                XCTFail()
-                return
-            }
-        #endif
+        }
         
+        guard let _ = ModelBuilder.fromFile(path, classPrefix: "UT") else {
+            return
+        }
+        
+        XCTFail()
+    
+    }
+    #endif
+    
+    #if swift(>=3.0)
+    func testFromFileExpectFailBeta() {
+        
+        guard let path = Bundle(for: JSONModelBuilderTests.self).pathForResource("json-test-beta", ofType: "json") else {
+            XCTFail()
+            return
+        }
+
+        guard let _ = ModelBuilder.fromFile(path + "blah", classPrefix: "UT") else {
+            return
+        }
+        
+        XCTFail()
+        
+    }
+    #elseif swift(>=2.2)
+    func testFromFileExpectFailBeta() {
+    
+        guard let path = NSBundle(forClass:JSONModelBuilderTests.self).pathForResource("json-test-beta", ofType: "json") else {
+            XCTFail()
+            return
+        }
         
         guard let _ = ModelBuilder.fromFile(path + "blah", classPrefix: "UT") else {
             return
@@ -309,4 +338,5 @@ class JSONModelBuilderTests: XCTestCase {
         XCTFail()
         
     }
+    #endif
 }

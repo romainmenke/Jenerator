@@ -21,19 +21,51 @@ class JSONQueryTests: XCTestCase {
         super.tearDown()
     }
 
+    #if swift(>=3.0)
     func testInit() {
         
-        #if swift(>=3.0)
-            guard let url = VURL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22BHP.AX%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="), let urlStart = url.absoluteString?.components(separatedBy: "?").first else {
+        guard let url = VURL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22BHP.AX%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="), let urlStart = url.absoluteString?.components(separatedBy: "?").first else {
             XCTFail()
             return
+        }
+        
+        guard let query = JSONQuery(source: url) else {
+            XCTFail()
+            return
+        }
+        
+        var urlString = urlStart
+        urlString += "?"
+
+            
+        for (index,param) in query.params.enumerated() {
+            guard let key = param.key.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlHostAllowed()), let value = param.value.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlHostAllowed()) else {
+                continue
             }
-        #elseif swift(>=2.2)
-            guard let url = VURL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22BHP.AX%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="), let urlStart = url.absoluteString.components(separatedBy: "?").first else {
-                XCTFail()
-                return
+            
+            if index != 0 {
+                urlString += "&"
             }
-        #endif
+            
+            urlString += key
+            urlString += "="
+            urlString += value
+            
+        }
+        
+        XCTAssert(urlString.removingPercentEncoding == url.absoluteString?.removingPercentEncoding)
+        XCTAssert(urlString.removingPercentEncoding?.urlEncoding == url.absoluteString?.removingPercentEncoding?.urlEncoding)
+        
+    }
+    
+    #elseif swift(>=2.2)
+    
+    func testInit() {
+        
+        guard let url = VURL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22BHP.AX%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="), let urlStart = url.absoluteString.components(separatedBy: "?").first else {
+            XCTFail()
+            return
+        }
         
         guard let query = JSONQuery(source: url) else {
             XCTFail()
@@ -43,49 +75,24 @@ class JSONQueryTests: XCTestCase {
         var urlString = urlStart
         urlString += "?"
         
-        #if swift(>=3.0)
             
-            for (index,param) in query.params.enumerated() {
-                guard let key = param.key.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlHostAllowed()), let value = param.value.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlHostAllowed()) else {
-                    continue
-                }
-                
-                if index != 0 {
-                    urlString += "&"
-                }
-                
-                urlString += key
-                urlString += "="
-                urlString += value
-                
+        for (index,param) in query.params.enumerate() {
+            guard let key = param.key.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()), let value = param.value.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()) else {
+                continue
             }
             
-            XCTAssert(urlString.removingPercentEncoding == url.absoluteString?.removingPercentEncoding)
-            XCTAssert(urlString.removingPercentEncoding?.urlEncoding == url.absoluteString?.removingPercentEncoding?.urlEncoding)
-            
-        #elseif swift(>=2.2)
-            
-            for (index,param) in query.params.enumerate() {
-                guard let key = param.key.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()), let value = param.value.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()) else {
-                    continue
-                }
-                
-                if index != 0 {
-                    urlString += "&"
-                }
-                
-                urlString += key
-                urlString += "="
-                urlString += value
+            if index != 0 {
+                urlString += "&"
             }
             
-            XCTAssert(urlString == url.absoluteString)
-            
-        #endif
+            urlString += key
+            urlString += "="
+            urlString += value
+        }
         
-        
+        XCTAssert(urlString == url.absoluteString)
+
     }
-
-
+    #endif
 
 }
