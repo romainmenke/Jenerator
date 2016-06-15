@@ -93,7 +93,7 @@ class MagicTests: XCTestCase {
     
     func testRemoveLast() {
         
-        guard let url = URL(string:"https://raw.githubusercontent.com/romainmenke/Jenerator/master/examples/sample/somejson.json"), urlTest = url.removeLast(), compare = URL(string:"https://raw.githubusercontent.com/romainmenke/Jenerator/master/examples/sample/") else {
+        guard let url = VURL(string:"https://raw.githubusercontent.com/romainmenke/Jenerator/master/examples/sample/somejson.json"), urlTest = url.removeLast(), compare = VURL(string:"https://raw.githubusercontent.com/romainmenke/Jenerator/master/examples/sample/") else {
             XCTFail()
             return
         }
