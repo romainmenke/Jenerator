@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Array Extension Reference</title>
+    <title>JNCustomType Struct Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Extension/Array" class="dashAnchor"></a>
-    <a title="Array Extension Reference"></a>
+    <a name="//apple_ref/swift/Struct/JNCustomType" class="dashAnchor"></a>
+    <a title="JNCustomType Struct Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">Jenerator Docs</a> (88% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">Jenerator Reference</a>
         <img id="carat" src="../img/carat.png" />
-        Array Extension Reference
+        JNCustomType Struct Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -132,14 +132,15 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Array</h1>
+            <h1>JNCustomType</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">RandomAccessCollection</span><span class="p">,</span> <span class="kt">MutableCollection</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">struct</span> <span class="kt">JNCustomType</span> <span class="p">:</span> <span class="kt">JNCustom</span><span class="p">,</span> <span class="kt">Equatable</span><span class="p">,</span> <span class="kt">CustomStringConvertible</span></code></pre>
 
                 </div>
               </div>
-            
+            <p>A JSON object</p>
+
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -147,9 +148,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:Fe9JeneratorRxs9EquatablerSa12appendUniqueFxT_"></a>
-                    <a name="//apple_ref/swift/Method/appendUnique(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:Fe9JeneratorRxs9EquatablerSa12appendUniqueFxT_">appendUnique(_:)</a>
+                    <a name="/s:vV9Jenerator12JNCustomType6fieldsGSaVS_7JNField_"></a>
+                    <a name="//apple_ref/swift/Property/fields" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV9Jenerator12JNCustomType6fieldsGSaVS_7JNField_">fields</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -157,14 +158,95 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Append a new elment to an array if the array doesn&rsquo;t yet contain it</p>
+                        <p>The key-value pairs found in the JSON object</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">appendUnique</span><span class="p">(</span><span class="n">_</span> <span class="nv">element</span><span class="p">:</span><span class="kt">Element</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">fields</span> <span class="p">:</span> <span class="p">[</span><span class="kt">JNField</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV9Jenerator12JNCustomType4nameSS"></a>
+                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV9Jenerator12JNCustomType4nameSS">name</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The name of the Type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">name</span> <span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV9Jenerator12JNCustomType11classPrefixSS"></a>
+                    <a name="//apple_ref/swift/Property/classPrefix" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV9Jenerator12JNCustomType11classPrefixSS">classPrefix</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Class Prefix for the Type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">classPrefix</span> <span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV9Jenerator12JNCustomTypecFT6fieldsGSaVS_7JNField_4nameSS11classPrefixSS_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(fields:name:classPrefix:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV9Jenerator12JNCustomTypecFT6fieldsGSaVS_7JNField_4nameSS11classPrefixSS_S0_">init(fields:name:classPrefix:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a JNCustomType with a series of fields, a unique name, and a Class Prefix.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="nf">init</span><span class="p">(</span><span class="nv">fields</span><span class="p">:[</span><span class="kt">JNField</span><span class="p">],</span> <span class="nv">name</span><span class="p">:</span><span class="kt">String</span><span class="p">,</span> <span class="nv">classPrefix</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -175,18 +257,49 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>element</em>
+                                <em>fields</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>a new element</p>
+                                  <p>the fields found in the JSON object</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the key of the JSON object</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>classPrefix</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the Class Prefix for the Type</p>
 
                                 </div>
                               </td>
                             </tr>
                           </tbody>
                         </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A JNCustomType Instance</p>
+
                       </div>
                     </section>
                   </div>
