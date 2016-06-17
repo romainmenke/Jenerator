@@ -5,7 +5,7 @@
 		<img src="https://img.shields.io/badge/Platform-OSX-grey.svg?style=flat" alt="Platform" />
     <a href="https://travis-ci.org/romainmenke/Jenerator"><img src="https://travis-ci.org/romainmenke/Jenerator.svg?branch=master" alt="Travis CI" /></a>
     <a href="https://codecov.io/gh/romainmenke/Jenerator"><img src="https://codecov.io/gh/romainmenke/Jenerator/branch/master/graph/badge.svg" alt="CodeCov" /></a>
-    <a href="http://romainmenke.github.io/Jenerator/"><img src="https://img.shields.io/badge/Documented-87%25-blue.svg" alt="Jazzy" /></a>
+    <a href="http://romainmenke.github.io/Jenerator/"><img src="https://img.shields.io/badge/Documented-86%25-blue.svg" alt="Jazzy" /></a>
 </p>
 
 # Jenerator
