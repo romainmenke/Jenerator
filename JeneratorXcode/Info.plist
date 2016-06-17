@@ -36,7 +36,7 @@
 					<key>XCSourceEditorCommandIdentifier</key>
 					<string>com.menke-dev.JeneratorApp.JeneratorXcode.SourceEditorCommand</string>
 					<key>XCSourceEditorCommandName</key>
-					<string>Jenerate</string>
+					<string>Build</string>
 				</dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>

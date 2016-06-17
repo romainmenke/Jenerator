@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JNCommandLine Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/JNCommandLine" class="dashAnchor"></a>
+    <a title="JNCommandLine Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Jenerator Docs</a> (88% documented)</p>
+        <p class="header-right"><a href="https://github.com/romainmenke/Jenerator"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Jenerator Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        JNCommandLine Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/JNCommandLine.html">JNCommandLine</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/JNDataType.html">JNDataType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF9Jeneratoroi2neFTVS_7JNFieldS0__Sb">!=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF9Jeneratoroi2neFTVS_11JNTypeAliasS0__Sb">!=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF9Jeneratoroi2neFTOS_10JNDataTypeS0__Sb">!=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF9Jeneratoroi2neFTPS_8JNCustom_PS0___Sb">!=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF9Jeneratoroi2neu0_RxS_8JNCustom_S0_rFTxq__Sb">!=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF9Jeneratoroi2eeu0_RxS_8JNCustom_S0_rFTxq__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF9Jeneratoroi2eeFTOS_10JNDataTypeS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF9Jeneratoroi2eeFTPS_8JNCustom_PS0___Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF9Jeneratoroi2eeFTVS_7JNFieldS0__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF9Jeneratoroi2eeFTVS_11JNTypeAliasS0__Sb">==(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/JNCustom.html">JNCustom</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/JNCoder.html">JNCoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/JNCustomRootType.html">JNCustomRootType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/JNCustomType.html">JNCustomType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/JNField.html">JNField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/JNModel.html">JNModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:V9Jenerator7JNQuery">JNQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/JNTypeAlias.html">JNTypeAlias</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SwiftGenerator.html">SwiftGenerator</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>JNCommandLine</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">class</span> <span class="kt">JNCommandLine</span></code></pre>
+
+                </div>
+              </div>
+            <p>Command Line Object for Jenerator</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC9Jenerator13JNCommandLine3cliCS_11CommandLine"></a>
+                    <a name="//apple_ref/swift/Property/cli" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC9Jenerator13JNCommandLine3cliCS_11CommandLine">cli</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Command Line</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">let</span> <span class="nv">cli</span> <span class="o">=</span> <span class="kt">CommandLine</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC9Jenerator13JNCommandLine10sourceFlagCS_12StringOption"></a>
+                    <a name="//apple_ref/swift/Property/sourceFlag" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC9Jenerator13JNCommandLine10sourceFlagCS_12StringOption">sourceFlag</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Source Url</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">let</span> <span class="nv">sourceFlag</span> <span class="o">=</span> <span class="kt">StringOption</span><span class="p">(</span><span class="nv">shortFlag</span><span class="p">:</span> <span class="s">"s"</span><span class="p">,</span> <span class="nv">longFlag</span><span class="p">:</span> <span class="s">"source"</span><span class="p">,</span> <span class="nv">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">helpMessage</span><span class="p">:</span> <span class="s">"Path to .json file or Url to remote JSON, use double quotes"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC9Jenerator13JNCommandLine11saveDirFlagCS_12StringOption"></a>
+                    <a name="//apple_ref/swift/Property/saveDirFlag" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC9Jenerator13JNCommandLine11saveDirFlagCS_12StringOption">saveDirFlag</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Save Directory</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">let</span> <span class="nv">saveDirFlag</span> <span class="o">=</span> <span class="kt">StringOption</span><span class="p">(</span><span class="nv">shortFlag</span><span class="p">:</span> <span class="s">"d"</span><span class="p">,</span> <span class="nv">longFlag</span><span class="p">:</span> <span class="s">"dir"</span><span class="p">,</span> <span class="nv">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="nv">helpMessage</span><span class="p">:</span> <span class="s">"Path to save directory"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC9Jenerator13JNCommandLine12fileNameFlagCS_12StringOption"></a>
+                    <a name="//apple_ref/swift/Property/fileNameFlag" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC9Jenerator13JNCommandLine12fileNameFlagCS_12StringOption">fileNameFlag</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Filename for generated code</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">let</span> <span class="nv">fileNameFlag</span> <span class="o">=</span> <span class="kt">StringOption</span><span class="p">(</span><span class="nv">shortFlag</span><span class="p">:</span> <span class="s">"f"</span><span class="p">,</span> <span class="nv">longFlag</span><span class="p">:</span> <span class="s">"file"</span><span class="p">,</span> <span class="nv">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">helpMessage</span><span class="p">:</span> <span class="s">"Name for generated .swift file"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC9Jenerator13JNCommandLine15classPrefixFlagCS_12StringOption"></a>
+                    <a name="//apple_ref/swift/Property/classPrefixFlag" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC9Jenerator13JNCommandLine15classPrefixFlagCS_12StringOption">classPrefixFlag</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Class Prefix for generated Types</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">let</span> <span class="nv">classPrefixFlag</span> <span class="o">=</span> <span class="kt">StringOption</span><span class="p">(</span><span class="nv">shortFlag</span><span class="p">:</span> <span class="s">"c"</span><span class="p">,</span> <span class="nv">longFlag</span><span class="p">:</span> <span class="s">"classprefix"</span><span class="p">,</span> <span class="nv">required</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="nv">helpMessage</span><span class="p">:</span> <span class="s">"Class Prefix for generated Types"</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC9Jenerator13JNCommandLineP33_3C33499FBC6C9CB930BD18EF55CC1C0D6sourceSS"></a>
+                    <a name="//apple_ref/swift/Property/source" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC9Jenerator13JNCommandLineP33_3C33499FBC6C9CB930BD18EF55CC1C0D6sourceSS">source</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Source Url String</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">source</span> <span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC9Jenerator13JNCommandLineP33_3C33499FBC6C9CB930BD18EF55CC1C0D8fileNameSS"></a>
+                    <a name="//apple_ref/swift/Property/fileName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC9Jenerator13JNCommandLineP33_3C33499FBC6C9CB930BD18EF55CC1C0D8fileNameSS">fileName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>File Name String</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">fileName</span> <span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC9Jenerator13JNCommandLineP33_3C33499FBC6C9CB930BD18EF55CC1C0D9sourceUrlGSqV10Foundation3URL_"></a>
+                    <a name="//apple_ref/swift/Property/sourceUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC9Jenerator13JNCommandLineP33_3C33499FBC6C9CB930BD18EF55CC1C0D9sourceUrlGSqV10Foundation3URL_">sourceUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Source NSURL</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">sourceUrl</span> <span class="p">:</span> <span class="kt">VURL</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC9Jenerator13JNCommandLineP33_3C33499FBC6C9CB930BD18EF55CC1C0D8savePathSS"></a>
+                    <a name="//apple_ref/swift/Property/savePath" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC9Jenerator13JNCommandLineP33_3C33499FBC6C9CB930BD18EF55CC1C0D8savePathSS">savePath</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Save Path String</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">savePath</span> <span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC9Jenerator13JNCommandLineP33_3C33499FBC6C9CB930BD18EF55CC1C0D11classPrefixSS"></a>
+                    <a name="//apple_ref/swift/Property/classPrefix" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC9Jenerator13JNCommandLineP33_3C33499FBC6C9CB930BD18EF55CC1C0D11classPrefixSS">classPrefix</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Class Prefix String</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">classPrefix</span> <span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC9Jenerator13JNCommandLine11currentPathSS"></a>
+                    <a name="//apple_ref/swift/Property/currentPath" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC9Jenerator13JNCommandLine11currentPathSS">currentPath</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Current Path</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">let</span> <span class="nv">currentPath</span> <span class="o">=</span> <span class="kt">FileManager</span><span class="o">.</span><span class="nf">default</span><span class="p">()</span><span class="o">.</span><span class="n">currentDirectoryPath</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC9Jenerator13JNCommandLine5modelGSqVS_7JNModel_"></a>
+                    <a name="//apple_ref/swift/Property/model" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC9Jenerator13JNCommandLine5modelGSqVS_7JNModel_">model</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Model Builder</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">model</span> <span class="p">:</span> <span class="kt">JNModel</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFC9Jenerator13JNCommandLine4mainFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/main()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFC9Jenerator13JNCommandLine4mainFT_T_">main()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The main runloop for Jenerator</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">main</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC9Jenerator13JNCommandLineP33_3C33499FBC6C9CB930BD18EF55CC1C0D14parseArgumentsFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/parseArguments()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9Jenerator13JNCommandLineP33_3C33499FBC6C9CB930BD18EF55CC1C0D14parseArgumentsFT_T_">parseArguments()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use Command Line to gather the arguments passed to Jenerator</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">parseArguments</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC9Jenerator13JNCommandLineP33_3C33499FBC6C9CB930BD18EF55CC1C0D12earlyEscapesFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/earlyEscapes()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9Jenerator13JNCommandLineP33_3C33499FBC6C9CB930BD18EF55CC1C0D12earlyEscapesFT_T_">earlyEscapes()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Exit if values are bad or missing</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">earlyEscapes</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC9Jenerator13JNCommandLineP33_3C33499FBC6C9CB930BD18EF55CC1C0D9parseJSONFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/parseJSON()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9Jenerator13JNCommandLineP33_3C33499FBC6C9CB930BD18EF55CC1C0D9parseJSONFT_T_">parseJSON()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Parse the JSON and build the model</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">parseJSON</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC9Jenerator13JNCommandLineP33_3C33499FBC6C9CB930BD18EF55CC1C0D11writeToFileFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/writeToFile()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC9Jenerator13JNCommandLineP33_3C33499FBC6C9CB930BD18EF55CC1C0D11writeToFileFT_T_">writeToFile()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Save the generated code to a file</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">writeToFile</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://github.com/romainmenke" target="_blank" rel="external">Romain Menke</a>. All rights reserved. (Last updated: 2016-06-16)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.6.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

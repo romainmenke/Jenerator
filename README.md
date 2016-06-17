@@ -47,11 +47,24 @@ print(SwiftGenerator.generate(model: builder))
 
  - The remote mode takes a url, a save directory, a save file name and a class prefix. It will then parse it and save it in the specified directory.
 
-The commands will look like this:
+cmd options :
 
-`$ jenerator "myJSONRemoteSource" "saveDirectory" filename classPrefix`
+```
+-s, --source:
+		Path to .json file or Url to remote JSON, use double quotes
+-d, --dir:
+		Path to save directory
+-f, --file:
+		Name for generated .swift file
+-c, --classprefix:
+		Class Prefix for generated Types
+```
 
-`$ jenerator "myJSONLocalSource" filename classPrefix`
+cmd :
+
+`$ jenerator -s "myJSONRemoteSource"  -d "saveDirectory" -f filename  -c classPrefix`
+
+`$ jenerator -s "myJSONLocalSource" -f filename -c classPrefix`
 
 
 ### Install

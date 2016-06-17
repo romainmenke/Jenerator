@@ -39,8 +39,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         for match in matches {
             if let url = match.url, host = url.host {
                 let autoClassPrefix = host.components(separatedBy: ".").reduce("", combine: { $0 + $1.first.uppercased() })
-                let builder = ModelBuilder.fromSource(url, classPrefix: autoClassPrefix)?.findAliasses()
-                if let builder = builder, code = SwiftGenerator.generate(fromModel: builder) {
+                let builder = JNModel.from(url:url, withPrefix: autoClassPrefix)?.findAliasses()
+                if let builder = builder, code = SwiftGenerator.generate(from: builder) {
                     codeString += code
                 }
             }
